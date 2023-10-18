@@ -1,0 +1,25 @@
+experiment:
+  title: Single-Layer RNN with ___ params
+  mode: integration
+
+  model:
+    network_name: rnn
+    in_dim: 4
+    hidden_dims: [100]
+    out_dim: 1
+  
+  training:
+    dataset_name: mnist
+    n_epochs: 100
+    batch_size: 32
+    output_path: ./io/output/mlp
+
+  optimizer:
+    optimizer_name: adam
+    lr: 0.001
+    betas: [0.9, 0.999]
+    eps: 1.e-7
+    weight_decay: 1.e-4
+    amsgrad: false
+
+  seed: 42

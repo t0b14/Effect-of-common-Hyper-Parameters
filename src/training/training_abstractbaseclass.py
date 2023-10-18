@@ -6,7 +6,7 @@ from tqdm import tqdm
 import torch
 import numpy as np
 
-from src.training.utils.data import dataset_factory
+from src.training.data import dataset_creator
 from src.constants import MODEL_DIR
 
 # defines an abstract base class for training
@@ -19,7 +19,7 @@ class ABCTrainingModule(ABC):
         self.last_test_image_batch = None
 
         # Load dataset
-        self.dataset, self.test_dataset = dataset_factory(params)
+        self.dataset, self.test_dataset = dataset_creator(params)
 
         self.train_dataset, self.val_dataset = torch.utils.data.random_split(
             self.dataset, [0.8, 0.2]
@@ -39,7 +39,6 @@ class ABCTrainingModule(ABC):
         self.output_path = Path(params["output_path"])
         self.output_path.mkdir(parents=True, exist_ok=True)
 
-        # Set device
         self.device = torch.device("cpu")
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
@@ -47,10 +46,9 @@ class ABCTrainingModule(ABC):
         print("Using device:", self.device)
         self.model.to(self.device)
 
-        print("Number of parameters:", self.model.num_params)
-
 
     def fit(self, num_epochs: int = 100):
+        #TODO
         best_val_loss = float("inf")
         train_loss_history = []
         val_loss_history = []

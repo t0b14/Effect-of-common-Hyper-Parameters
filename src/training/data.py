@@ -8,8 +8,11 @@ import torchvision.transforms as transforms
 
 from src.constants import INPUT_DIR
 
-def dataset_factory(params):
+def dataset_creator(params):
     if params["dataset_name"] == "mnist":
+        ###
+        # ADD dataset
+        ###
         return torchvision.datasets.MNIST(
             root=INPUT_DIR,
             train=True,

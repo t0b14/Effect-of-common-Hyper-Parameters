@@ -1,10 +1,13 @@
 from src.network import rnn
 
-def model_factory(params):
+def model_creator(params):
 
-    elif params["network_name"] == "rnn":
+    if params["network_name"] == "rnn":
         return rnn(
-            i_dont_know =params["i_dont_know"],
+            in_dim=params["in_dim"],
+            out_dim=params["out_dim"],
+            hidden_dims=params["hidden_dims"],
         )
+    # if params["network_name"] ...
     else:
         raise ValueError("Invalid network name")

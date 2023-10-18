@@ -1,19 +1,20 @@
-from src.model import model_factory
-from src.optimizer import optimizer_factory
+from src.model import model_creator
+from src.optimizer import optimizer_creator
 from src.training.training_rnn_ext1 import RNNTrainingModule1
 
 
+# setup and run 
 def run(config):
-    model = model_factory(config["model"])
 
-    optimizer = optimizer_factory(model.parameters(), config["optimizer"])
+    model = model_creator(config["model"])
 
-    tm = VAETrainingModule(model, optimizer, config["training"])
+    optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
-    # Test all trained models
+    tm = RNNTrainingModule1(model, optimizer, config["training"])
+    
+    #train
     model_tags = tm.fit(num_epochs=config["training"]["n_epochs"])
 
+    #test
     for tag in model_tags:
         tm.test(tag)
-
-    print(f"Number of parameters: {tm.model.num_params}")

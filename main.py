@@ -7,7 +7,7 @@ from src.constants import CONFIG_DIR
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-o", "--config", help="Config file to use", default="config.yaml"
+        "-o", "--config", help="Config file to use", default="rnn.yaml"
     )
     args = parser.parse_args()
 

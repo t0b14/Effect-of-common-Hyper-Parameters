@@ -1,6 +1,5 @@
 experiment:
   title: Single-Layer RNN with ___ params
-  mode: integration
 
   model:
     network_name: rnn

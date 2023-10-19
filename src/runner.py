@@ -1,12 +1,17 @@
 from src.model import model_creator
 from src.optimizer import optimizer_creator
+from src.network import rnn
+
 from src.training.training_rnn_ext1 import RNNTrainingModule1
 
 
 # setup and run 
 def run(config):
 
-    model = model_creator(config["model"])
+    params = config["model"]
+    model = rnn(in_dim=params["in_dim"],
+                out_dim=params["out_dim"],
+                hidden_dims=params["hidden_dims"],)
 
     optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 

@@ -14,12 +14,12 @@ class ABCTrainingModule(ABC):
     def __init__(self, model, optimizer, params) -> None:
         self.model = model
         self.optimizer = optimizer
-        self.batch_size = params.get("batch_size", 32)
+        self.batch_size = params.get("batch_size", 16)
         self.epoch = 0
-        self.last_test_image_batch = None
-
+        
         # Load dataset
-        self.dataset, self.test_dataset = dataset_creator(params)
+        # (input_shape, n_timesteps, n_trials)
+        self.coherencies_trial, self.conditionIds, self.dataset, self.test_dataset = dataset_creator(params)
 
         self.train_dataset, self.val_dataset = torch.utils.data.random_split(
             self.dataset, [0.8, 0.2]
@@ -168,5 +168,5 @@ class ABCTrainingModule(ABC):
 
     @abstractmethod
     def compute_metrics(self, model_predictions, labels):
-        """Returns a dictionary of metrics, the key will be used as teh display name in the progress bar"""
+        """Returns a dictionary of metrics, the key will be used as the display name in the progress bar"""
         pass

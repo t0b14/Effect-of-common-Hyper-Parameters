@@ -8,10 +8,13 @@ experiment:
     out_dim: 1
   
   training:
-    dataset_name: mnist
+    dataset_name: ctxt
     n_epochs: 100
-    batch_size: 32
-    output_path: ./io/output/mlp
+    batch_size: 14
+    seq_length: 100
+    n_trials: 5
+    with_inputnoise: 1
+    output_path: ./io/output/rnn1
 
   optimizer:
     optimizer_name: adam

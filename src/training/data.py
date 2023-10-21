@@ -116,10 +116,12 @@ class InputGeneratorCtxt(object):
         return inputs, targets
 
 class CustomDataset(Dataset):
-    def __init__(self, inputs, target):
+    def __init__(self, inputs, target, batch_size, seq_length):
         super().__init__()
         self.inputs = torch.tensor(inputs)
         self.target = torch.tensor(target)
+        self.batch_size = batch_size
+        self.seq_length = seq_length
 
     def __len__(self):
         return len(self.inputs)
@@ -128,15 +130,22 @@ class CustomDataset(Dataset):
         trial_input = self.inputs[:,:,idx]
         trial_output = self.target[:,:,idx]
 
+        n_timesteps = trial_input.shape(-1)
 
+        # trial_input: (inputs, timesteps) -> (seq_length, batch_size, inputs)
+        trial_input = trial_input.permute(1,0)
+        trial_output = trial_output.permute(1,0)
 
-        return 
+        trial_input = trial_input.reshape(self.seq_length, self.batch_size, n_timesteps)
+        trial_output = trial_output.reshape(self.seq_length, self.batch_size, n_timesteps)
+        
+        return (trial_input, trial_output)
     
 def dataset_creator(params):
     if params["dataset_name"] == "ctxt":
         n_trials, with_inputnoise = params["n_trials"], params["with_inputnoise"]
         [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt().get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
-        cdataset = CustomDataset(inputs, targets, params[][], )
+        cdataset = CustomDataset(inputs, targets, params[batch_size], params[seq_length])
         return [coherencies_trial, conditionIds, cdataset]
     else:
         raise ValueError("Invalid dataset name")

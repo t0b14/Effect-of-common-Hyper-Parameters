@@ -1,25 +1,24 @@
-from src.model import model_creator
 from src.optimizer import optimizer_creator
-from src.network import rnn
-
+from src.network.rnn import cRNN
 from src.training.training_rnn_ext1 import RNNTrainingModule1
-
+from src.vizual import plot_h
 
 # setup and run 
 def run(config):
 
     params = config["model"]
-    model = rnn(in_dim=params["in_dim"],
-                out_dim=params["out_dim"],
-                hidden_dims=params["hidden_dims"],)
+
+    model = cRNN(input_s=params["in_dim"],
+                output_s=params["out_dim"],
+                hidden_s=params["hidden_dims"],)
 
     optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
     tm = RNNTrainingModule1(model, optimizer, config["training"])
     
     #train
-    model_tags = tm.fit(num_epochs=config["training"]["n_epochs"])
-
+    tm.fit(num_epochs=config["training"]["n_epochs"])
     #test
-    for tag in model_tags:
-        tm.test(tag)
+    tm.test()
+    
+    plot_h(tm)

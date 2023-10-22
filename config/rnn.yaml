@@ -1,27 +1,27 @@
 experiment:
-  title: Single-Layer RNN with ___ params
+  title: Single-Layer RNN
 
   model:
     network_name: rnn
     in_dim: 4
-    hidden_dims: [100]
+    hidden_dims: 5
     out_dim: 1
   
   training:
     dataset_name: ctxt
-    n_epochs: 100
-    batch_size: 14
-    seq_length: 100
+    n_epochs: 5 #TODO
+    batch_size: 16
+    seq_length: 1400
     n_trials: 5
     with_inputnoise: 1
     output_path: ./io/output/rnn1
 
   optimizer:
     optimizer_name: adam
-    lr: 0.001
+    lr: 0.01
     betas: [0.9, 0.999]
     eps: 1.e-7
-    weight_decay: 1.e-4
+    weight_decay: 1.e-5
     amsgrad: false
 
   seed: 42

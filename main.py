@@ -13,5 +13,4 @@ if __name__ == "__main__":
 
     config = load_config(CONFIG_DIR / args.config)
     set_seed(config["experiment"]["seed"])
-
     run(config["experiment"])

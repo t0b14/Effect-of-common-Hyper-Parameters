@@ -13,6 +13,6 @@ def plot_h(tm):
     #print(coherency.shape) (2,60) 
     #print(conditionIds.shape) (1,60)
 
-    print(coherency[0, (conditionIds[0,:] == 1)])
-    print("------------------")
-    print(conditionIds)
+    #print(coherency[0, (conditionIds[0,:] == 1)])
+    #print("------------------")
+    #print(conditionIds)

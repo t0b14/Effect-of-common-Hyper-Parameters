@@ -131,7 +131,7 @@ class CustomDataset(Dataset):
         # trial_input: (inputs, timesteps) -> (seq_length, inputs)
         trial_input = trial_input.permute(1,0)
         trial_output = trial_output.permute(1,0)
-
+        
         return trial_input, trial_output
     
 def dataset_creator(params):
@@ -140,8 +140,8 @@ def dataset_creator(params):
         [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt().get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
         # according to coherencies_trial and conditionIds taking last quintile  
         # as test set is representative of train set
-        n_total_trials = len(inputs[0,0,:]) 
-        n_train_trials = round(n_total_trials * 0.8)
+        n_total_trials = len(inputs[0,0,:]) # TODO
+        n_train_trials = 1 #round(n_total_trials * 0.8)
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
         test_inputs, test_targets = inputs[:,:,n_train_trials:], targets[:,:,n_train_trials:] 
 

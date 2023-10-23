@@ -47,13 +47,30 @@ class ABCTrainingModule(ABC):
         for cur_epoch in (pbar_epoch := tqdm(range(num_epochs))):
             self.epoch = cur_epoch
             running_loss = 0.0
+
             for i, (inputs, targets) in enumerate(self.train_dataloader):
-                inputs = inputs.to(self.device)
-                targets = targets.to(self.device)
-                out, loss = self.step(inputs, targets)
-                running_loss += loss
-                if(i % 10 == 0):
-                    train_loss_history.append(loss)
+                def closure():
+                    out, loss = self.compute_loss(inputs, targets)
+                    self.optimizer.zero_grad()
+                    loss.backward()
+                    return loss
+                self.optimizer.step(closure())
+            #    inputs = inputs.to(self.device)
+             #   targets = targets.to(self.device)
+              #  out, loss = self.step(inputs, targets)
+               # running_loss += loss
+            
+            if(cur_epoch % 10 == 0):
+                pass
+            #train_loss_history.append(loss)
+                
+            if(cur_epoch % num_epochs == num_epochs-1):  
+                print("---------------")  
+                for i in range(len(out[0,:,0])):
+                    if(i % 100 == 0):
+                        pass
+                        #print(i, "\t", out[0,i,0].item(), "\t", targets[0,i,0].item())
+                print("----------------")
 
             pbar_description = f"Epoch[{cur_epoch + 1}/{num_epochs}], Loss: {running_loss / len(self.train_dataloader):.4f}"
             pbar_epoch.set_description(pbar_description)

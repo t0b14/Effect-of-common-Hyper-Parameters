@@ -118,7 +118,7 @@ class InputGeneratorCtxt(object):
 class CustomDataset(Dataset):
     def __init__(self, inputs, target):
         super().__init__()
-        self.inputs = torch.tensor(inputs).to(torch.float32)
+        self.inputs = torch.nn.functional.normalize(torch.tensor(inputs).to(torch.float32), dim=2)
         self.target = torch.tensor(target).to(torch.float32)
 
     def __len__(self):
@@ -137,11 +137,12 @@ class CustomDataset(Dataset):
 def dataset_creator(params):
     if params["dataset_name"] == "ctxt":
         n_trials, with_inputnoise = params["n_trials"], params["with_inputnoise"]
+        # (2,60) (1,60) (4,1400,60) (1,1400,60)
         [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt().get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
         # according to coherencies_trial and conditionIds taking last quintile  
         # as test set is representative of train set
         n_total_trials = len(inputs[0,0,:]) # TODO
-        n_train_trials = 1 #round(n_total_trials * 0.8)
+        n_train_trials = round(n_total_trials * 0.9)
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
         test_inputs, test_targets = inputs[:,:,n_train_trials:], targets[:,:,n_train_trials:] 
 

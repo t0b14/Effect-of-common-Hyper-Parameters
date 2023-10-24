@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 import json
 from tqdm import tqdm
-
+import math
 import torch
 import numpy as np
 
@@ -22,7 +22,7 @@ class ABCTrainingModule(ABC):
         self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(params)
 
         self.train_dataloader = torch.utils.data.DataLoader(
-            self.train_dataset, batch_size=self.batch_size, shuffle=True
+            self.train_dataset, batch_size=self.batch_size, shuffle=False
         )
         
         self.test_dataloader = torch.utils.data.DataLoader(
@@ -43,34 +43,35 @@ class ABCTrainingModule(ABC):
 
 
     def fit(self, num_epochs: int = 100):
+        self.model.train()
         train_loss_history = []
         for cur_epoch in (pbar_epoch := tqdm(range(num_epochs))):
             self.epoch = cur_epoch
             running_loss = 0.0
 
             for i, (inputs, targets) in enumerate(self.train_dataloader):
-                def closure():
-                    out, loss = self.compute_loss(inputs, targets)
-                    self.optimizer.zero_grad()
-                    loss.backward()
-                    return loss
-                self.optimizer.step(closure())
-            #    inputs = inputs.to(self.device)
-             #   targets = targets.to(self.device)
-              #  out, loss = self.step(inputs, targets)
-               # running_loss += loss
+                #print(inputs.shape)
+                #print(torch.mean(inputs[:,0,0]).item(), " ", torch.mean(inputs[0,:,0]).item(), " ", torch.mean(inputs[0,0,:]).item())
+                #def closure():
+                #    out, loss = self.compute_loss(inputs, targets)
+                #    self.optimizer.zero_grad()
+                #    loss.backward()
+                #    return loss
+                #self.optimizer.step(closure())
+                inputs = inputs.to(self.device)
+                targets = targets.to(self.device)
+                out, loss = self.step(inputs, targets)
+                running_loss += loss
             
             if(cur_epoch % 10 == 0):
-                pass
-            #train_loss_history.append(loss)
+                train_loss_history.append(loss)
                 
             if(cur_epoch % num_epochs == num_epochs-1):  
-                print("---------------")  
+                print("--------------- Train ---------------")  
                 for i in range(len(out[0,:,0])):
                     if(i % 100 == 0):
-                        pass
-                        #print(i, "\t", out[0,i,0].item(), "\t", targets[0,i,0].item())
-                print("----------------")
+                        print(i, "\t", round(out[0,i,0].item(), 4), "\t", round(targets[0,i,0].item(),4))
+                print("-------------------------------------")
 
             pbar_description = f"Epoch[{cur_epoch + 1}/{num_epochs}], Loss: {running_loss / len(self.train_dataloader):.4f}"
             pbar_epoch.set_description(pbar_description)
@@ -97,6 +98,12 @@ class ABCTrainingModule(ABC):
                 running_test_loss += loss
                 test_predictions.append(out)
                 test_labels.append(targets)
+
+        print("--------------- Test ---------------")  
+        for i in range(len(out[0,:,0])):
+            if(i % 100 == 0):
+                print(i, "\t", round(out[0,i,0].item(), 4), "\t", round(targets[0,i,0].item(), 4))
+        print("-------------------------------------")
         
         test_metrics = self.compute_metrics(
             test_predictions, test_labels
@@ -150,6 +157,9 @@ class ABCTrainingModule(ABC):
     def get_output_paths(self):
         return (self.output_path / "train_loss_history.npy", self.output_path / "coherencies_trial.npy", self.output_path / "conditionIds.npy")
     
+    #def get_output():
+    #    return 
+
     @abstractmethod
     def compute_loss(self, inputs, labels):
         """Returns loss"""

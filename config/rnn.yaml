@@ -9,24 +9,24 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 3000 #TODO
-    batch_size: 4
+    n_epochs: 500 #TODO
+    batch_size: 16
     seq_length: 1400
     n_trials: 5
-    with_inputnoise: 1
+    with_inputnoise: 0
     output_path: ./io/output/rnn1
 
   optimizer:
-    #optimizer_name: adam
-    #lr: 0.001
-    #betas: [0.9, 0.999]
-    #eps: 1.e-7
-    #weight_decay: 1.e-6
-    #amsgrad: false
-    optimizer_name: lbfgs
-    lr: 0.01
-    max_iter: 20
-    max_eval: None
-    history_size: 100
+    optimizer_name: adam
+    lr: 0.001
+    betas: [0.9, 0.999]
+    eps: 1.e-7
+    weight_decay: 1.e-4
+    amsgrad: false
+    #optimizer_name: lbfgs
+    #lr: 0.01
+    #max_iter: 20
+    #max_eval: None
+    #history_size: 100
 
   seed: 42

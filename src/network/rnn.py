@@ -15,10 +15,13 @@ class cRNN(nn.Module):
         self.rnn = nn.RNN(input_size=self.i_s, hidden_size=self.h_s, num_layers=1, 
                           nonlinearity='tanh', bias=False, batch_first=batch_first, 
                           dropout=0., bidirectional=False, device=self.dev)
+        self.batchnorm = nn.BatchNorm1d(20)
         self.fc = nn.Linear(self.h_s, self.o_s)
 
     def forward(self, x):
 
         out, _ = self.rnn(x)
+        # batchnorm wants (batch, channels, timestep) instead of (batch,timestep,channels)
+        out = self.batchnorm(out.permute(0,2,1)).permute(0,2,1)
         out = self.fc(out)
         return out

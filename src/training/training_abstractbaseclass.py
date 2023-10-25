@@ -19,6 +19,7 @@ class ABCTrainingModule(ABC):
 
         self.total_seq_length = params["total_seq_length"]
         self.n_intervals = int(params["total_seq_length"] / params["seq_length"])
+        self.seq_length = params["seq_length"]
         assert(self.total_seq_length % self.n_intervals == 0)
         
         self.hidden_dims = params["hidden_dims"]
@@ -60,8 +61,10 @@ class ABCTrainingModule(ABC):
                 h_1 = None
 
                 for j in range(self.n_intervals):
-                    inter = j*self.n_intervals
-                    val = (j+1)*self.n_intervals if j != (self.n_intervals-1) else None
+                    
+                    inter = j*self.seq_length
+                    val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
+
                     partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
 
@@ -103,16 +106,15 @@ class ABCTrainingModule(ABC):
                 whole_seq_out = None
 
                 for j in range(self.n_intervals):
-                    inter = j*self.n_intervals
-                    val = (j+1)*self.n_intervals if j != (self.n_intervals-1) else None
+                    inter = j*self.seq_length
+                    val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
                     partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
 
                     out, loss, h_1 = self.step(partial_in, partial_tar, h_1, eval=True)
                     h_1 = h_1.detach()
-            
+                    
                     running_test_loss += loss
-
                     whole_seq_out = out if whole_seq_out is None else torch.cat( (whole_seq_out, out), 1)
 
                 test_predictions.append(whole_seq_out)
@@ -131,7 +133,7 @@ class ABCTrainingModule(ABC):
         print(f"Model {model_tag}")
         print(test_metrics)
 
-    def step(self, inputs, labels, h_1, eval=False):
+    def step(self, inputs, labels, h_1=None, eval=False):
         """Returns loss"""
         out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
         step_loss = loss.item()
@@ -139,7 +141,7 @@ class ABCTrainingModule(ABC):
         if not eval:
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 2.0)
+            #torch.nn.utils.clip_grad_norm_(self.model.parameters(), 5.0)
             self.optimizer.step()
 
         return out, step_loss, h_1
@@ -181,6 +183,27 @@ class ABCTrainingModule(ABC):
         self.model.load_state_dict(
             torch.load(self.output_path / f"{model_tag}_model.pt")
         )
+        return self.output_path
+
+    def output_whole_dataset(self):
+        whole_pred = None
+        whole_tar = None
+
+        for _, (inputs, targets) in enumerate(self.train_dataloader):
+            inputs, targets = inputs.to(self.device), targets.to(self.device)
+            out, _, _ = self.step(inputs, targets, eval=True)
+
+            whole_pred = out if whole_pred is None else torch.cat( (whole_pred, out), 0)
+            whole_tar = targets if whole_tar is None else torch.cat( (whole_tar, targets), 0)
+
+        for _, (inputs, targets) in enumerate(self.test_dataloader):
+            inputs, targets = inputs.to(self.device), targets.to(self.device)
+            out, _, _ = self.step(inputs, targets, eval=True)
+
+            whole_pred = out if whole_pred is None else torch.cat( (whole_pred, out), 0)
+            whole_tar = targets if whole_tar is None else torch.cat( (whole_tar, targets), 0)
+            
+        return whole_pred, whole_tar
 
     @abstractmethod
     def compute_loss(self, inputs, labels):

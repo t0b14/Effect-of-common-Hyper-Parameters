@@ -10,6 +10,6 @@ class RNNTrainingModule1(ABCTrainingModule):
         out, h_1 = self.model(inputs, h_1)
         return out, self.loss(out, labels), h_1
     
-    def compute_metrics(self, model_predictions, labels): # TODO what metric?
+    def compute_metrics(self, model_predictions, labels): 
         metric = {"test_loss": [(self.loss(model_predictions[i], labels[i])).item() for i in range(len(model_predictions))]}
         return metric

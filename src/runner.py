@@ -23,4 +23,4 @@ def run(config):
         tm.test()
     
     if config["options"]["visualize"]:
-        plot_h(tm)
+        plot_h(tm, config["options"])

@@ -16,9 +16,11 @@ def run(config):
 
     tm = RNNTrainingModule1(model, optimizer, config["training"])
     
-    #train
-    tm.fit(num_epochs=config["training"]["n_epochs"])
-    #test
-    tm.test()
+    if config["options"]["train_n_test"]:
+        #train
+        tm.fit(num_epochs=config["training"]["n_epochs"])
+        #test
+        tm.test()
     
-    plot_h(tm)
+    if config["options"]["visualize"]:
+        plot_h(tm)

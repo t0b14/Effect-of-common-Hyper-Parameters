@@ -6,4 +6,5 @@ matplotlib
 torch
 torchvision
 torchdiffeq
+syss
 #torchmetricss

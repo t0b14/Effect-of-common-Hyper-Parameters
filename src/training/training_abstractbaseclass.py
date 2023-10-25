@@ -6,12 +6,14 @@ import math
 import torch
 import numpy as np
 import sys
+import wandb
 from src.training.data import dataset_creator
 from src.constants import MODEL_DIR
 
 # defines an abstract base class for training
 class ABCTrainingModule(ABC):
-    def __init__(self, model, optimizer, params) -> None:
+    def __init__(self, model, optimizer, config) -> None:
+        params = config["training"]
         self.model = model
         self.optimizer = optimizer
         self.batch_size = params.get("batch_size", 16)
@@ -21,6 +23,9 @@ class ABCTrainingModule(ABC):
         self.n_intervals = int(params["total_seq_length"] / params["seq_length"])
         self.seq_length = params["seq_length"]
         assert(self.total_seq_length % self.n_intervals == 0)
+
+        self.gradient_clipping = config["optimizer"]["apply_gradient_clipping"]
+        self.training_help = params["training_help"]
         
         self.hidden_dims = params["hidden_dims"]
 
@@ -35,7 +40,6 @@ class ABCTrainingModule(ABC):
         self.test_dataloader = torch.utils.data.DataLoader(
             self.test_dataset, batch_size=self.batch_size, shuffle=False
         )
-        # TODO validation data set (later)
 
         # Setup output directory
         self.output_path = Path(params["output_path"])
@@ -56,14 +60,21 @@ class ABCTrainingModule(ABC):
             self.epoch = cur_epoch
             running_loss = 0.0
             
+            # Help train initially
+            if(self.training_help > cur_epoch):
+                seq_l = 1
+            else:
+                seq_l = self.seq_length
+
+
             # splitting up training https://medium.com/mindboard/training-recurrent-neural-networks-on-long-sequences-b7a3f2079d49
             for i, (inputs, targets) in enumerate(self.train_dataloader):
                 h_1 = None
 
                 for j in range(self.n_intervals):
                     
-                    inter = j*self.seq_length
-                    val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
+                    inter = j*seq_l
+                    val = (j+1)*seq_l if j != (self.n_intervals-1) else None
 
                     partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
@@ -72,9 +83,10 @@ class ABCTrainingModule(ABC):
                     h_1 = h_1.detach()
 
                     running_loss += loss
-            
+            wandb.log({"loss": running_loss})
             if(cur_epoch % 10 == 0):
                 train_loss_history.append(loss)
+                
                 
             if(cur_epoch % num_epochs == num_epochs-1):  
                 print("--------------- Train ---------------")  
@@ -141,7 +153,8 @@ class ABCTrainingModule(ABC):
         if not eval:
             self.optimizer.zero_grad()
             loss.backward()
-            #torch.nn.utils.clip_grad_norm_(self.model.parameters(), 5.0)
+            if self.gradient_clipping:
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 2.0)
             self.optimizer.step()
 
         return out, step_loss, h_1
@@ -202,7 +215,7 @@ class ABCTrainingModule(ABC):
 
             whole_pred = out if whole_pred is None else torch.cat( (whole_pred, out), 0)
             whole_tar = targets if whole_tar is None else torch.cat( (whole_tar, targets), 0)
-            
+
         return whole_pred, whole_tar
 
     @abstractmethod

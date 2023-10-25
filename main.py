@@ -1,5 +1,4 @@
 import argparse
-
 from src.runner import run
 from src.utils import load_config, set_seed
 from src.constants import CONFIG_DIR

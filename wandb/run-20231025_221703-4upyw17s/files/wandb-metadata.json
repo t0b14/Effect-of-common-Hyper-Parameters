@@ -1,0 +1,48 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.11.5",
+    "heartbeatAt": "2023-10-25T20:17:04.318024",
+    "startedAt": "2023-10-25T20:17:03.464361",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--config",
+        "rnn.yaml"
+    ],
+    "state": "running",
+    "program": "/Users/simmler/Semester_project_Tobia_Simmler_rnn/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/t0b14/Semester_project_Tobia_Simmler_rnn.git",
+        "commit": "5d44bfa5f5296688cd063a56d25edd56a6ae0979"
+    },
+    "email": "98519105+t0b14@users.noreply.github.com",
+    "root": "/Users/simmler/Semester_project_Tobia_Simmler_rnn",
+    "host": "Tobias-MacBook-Pro.local",
+    "username": "simmler",
+    "executable": "/Users/simmler/opt/anaconda3/envs/semester/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 10,
+    "cpu_freq": {
+        "current": 2400,
+        "min": 2400,
+        "max": 2400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400,
+            "min": 2400,
+            "max": 2400
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1858.1917190551758,
+            "used": 8.332317352294922
+        }
+    },
+    "memory": {
+        "total": 32.0
+    }
+}

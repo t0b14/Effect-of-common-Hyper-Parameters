@@ -3,7 +3,8 @@ experiment:
   options:
     train_n_test: 1
     visualize: 1
-    show_plot: 1
+    show_plot: 0
+    use_wandb: 1
 
   model:
     network_name: rnn
@@ -13,21 +14,26 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 100
-    batch_size: 32
+    n_epochs: 50
+    batch_size: 16
     total_seq_length: 1400
-    seq_length: 1
+    seq_length: 1400
+    training_help: 15 # 0 to n_epochs (iterations)
     hidden_dims: 100
     n_trials: 5
-    with_inputnoise: 0
+    with_inputnoise: 1
+    noise_level: 2 # number from 1 to 10; requires with_inputnoise; 0.15 * noiselevel
+    coherency_intervals: "uniform" # "original" or "uniform"
     output_path: ./io/output/rnn1
 
   optimizer:
-    optimizer_name: adam
+    optimizer_name: SGD
     lr: 0.0001
     betas: [0.9, 0.999]
     eps: 1.e-7
-    weight_decay: 1.e-3
+    weight_decay: 1.e-4
     amsgrad: false
+    momentum: 0.9
+    apply_gradient_clipping: 1
 
   seed: 42

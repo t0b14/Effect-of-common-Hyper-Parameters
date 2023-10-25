@@ -6,6 +6,7 @@ matplotlib
 torch
 torchvision
 torchdiffeq
-syss
 matplotlib
+wandb
+#sys
 #torchmetricss

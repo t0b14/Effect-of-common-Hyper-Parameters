@@ -12,5 +12,11 @@ def optimizer_creator(weights, params):
             weight_decay=params.get("weight_decay", 0.0),
             amsgrad=params.get("amsgrad", False),
         )
+    elif params["optimizer_name"] == "SGD":
+        return optim.SGD(
+            weights, 
+            lr=float(params["lr"]), 
+            momentum=params["momentum"]
+            )
     else:
         raise ValueError("Invalid optimizer name")

@@ -11,20 +11,26 @@ from src.constants import INPUT_DIR
 # directly copied from https://gitlab.com/neuroinf/operativeDimensions/-/tree/master/code_python/utils/input_generation?ref_type=heads
 class InputGeneratorCtxt(object):
     # class to generate input/targets for context-dependent integration
-    def __init__(self):
+    def __init__(self, params):
         self.n_inputs = 4
         self.n_outputs = 1
         self.nIntegrators = 2
         self.maxBound = 1
         self.minBound = -1
         self.integrationTau = 5 * 0.01
+        self.noiseLevel = params["noise_level"]
+        assert 1. <= self.noiseLevel <= 10., " 1 <= noiseLevel <= 10" 
 
         self.burnLength = 0.650
         self.dt = 0.001
         self.tau = 0.01
         self.time = 0.75
-
-        self.all_coherencies = np.array([-0.5, -0.12, -0.03, 0.03, 0.12, 0.5]) * 0.3
+        if params["coherency_intervals"] == "original":
+            self.all_coherencies = np.array([-0.5, -0.12, -0.03, 0.03, 0.12, -0.5]) * 0.3
+        elif params["coherency_intervals"] == "uniform":
+            self.all_coherencies = np.linspace(-0.5, 0.5, num=11) * 0.3
+        else:
+            raise ValueError("Invalid coherency protocol")
 
     def get_ctxt_dep_integrator_inputOutputDataset(self, n_trials, with_inputnoise):
         # main method to generate input/outputs
@@ -41,7 +47,7 @@ class InputGeneratorCtxt(object):
         # noise settings
         input_noise = 0
         if with_inputnoise:
-            input_noise = 31.6228 * np.sqrt(self.dt)
+            input_noise = 31.6228 * np.sqrt(self.dt) * (self.noiseLevel * 0.15)
         noiseSigma = input_noise
 
         # generate inputs/targets
@@ -138,7 +144,7 @@ def dataset_creator(params):
     if params["dataset_name"] == "ctxt":
         n_trials, with_inputnoise = params["n_trials"], params["with_inputnoise"]
         # (2,60) (1,60) (4,1400,60) (1,1400,60)
-        [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt().get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
+        [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt(params).get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
         # according to coherencies_trial and conditionIds taking last quintile  
         # as test set is representative of train set
         n_total_trials = len(inputs[0,0,:]) 

@@ -13,6 +13,8 @@ def init_wandb(config):
         # set the wandb project where this run will be logged
         project=config["title"],
         
+        name="apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
+
         # track hyperparameters and run metadata
         config={
             "dataset_name": t_params["dataset_name"],
@@ -39,9 +41,14 @@ def init_wandb(config):
 # setup and run 
 def run(config):
 
+    
+    #for i in range(2):
+    #    config["optimizer"]["apply_gradient_clipping"] = i
+    
     params = config["model"]
 
-    init_wandb(config)
+    if config["options"]["use_wandb"]:
+        init_wandb(config)
 
     model = cRNN(input_s=params["in_dim"],
                 output_s=params["out_dim"],
@@ -60,4 +67,5 @@ def run(config):
     if config["options"]["visualize"]:
         plot_h(tm, config["options"])
 
-    wandb.finish()
+    if config["options"]["use_wandb"]:
+        wandb.finish()

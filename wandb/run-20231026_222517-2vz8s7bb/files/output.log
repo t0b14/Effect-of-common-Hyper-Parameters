@@ -1,0 +1,71 @@
+Using device: cpu
+--------------- Train ---------------
+0 	 -0.1821 	 0.0
+100 	 -0.3562 	 0.0
+200 	 -0.3562 	 0.0
+300 	 -0.3562 	 0.0
+400 	 -0.3562 	 0.0
+500 	 -0.3562 	 0.0
+600 	 -0.3562 	 0.0
+700 	 0.5945 	 -0.0028
+800 	 0.1187 	 -0.1512
+900 	 0.0813 	 -0.2903
+1000 	 -0.4049 	 -0.3007
+1100 	 0.3136 	 -0.2925
+1200 	 -0.1432 	 -0.3573
+1300 	 -0.1025 	 -0.5023
+-------------------------------------
+--------------- Example Test ---------------
+0 	 0.1078 	 0.0
+100 	 0.0948 	 0.0
+200 	 0.0948 	 0.0
+300 	 0.0948 	 0.0
+400 	 0.0948 	 0.0
+500 	 0.0948 	 0.0
+600 	 0.0948 	 0.0
+700 	 0.0955 	 -0.1919
+800 	 0.1095 	 -0.5212
+900 	 0.0921 	 -0.8281
+1000 	 0.1489 	 -1.0
+1100 	 0.1464 	 -1.0
+1200 	 0.067 	 -1.0
+1300 	 0.0886 	 -1.0
+-------------------------------------
+Model last
+{'test_loss': [4208.837890625]}
+Epoch[2/2], Loss: 8718.1201: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.25it/s]
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 66, in run
+    plot_h(tm, config["options"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\vizual.py", line 65, in plot_h
+    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params,  "move.pdf")
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\vizual.py", line 33, in custom_plot
+    wandb.log({"img": plt})
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 394, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 345, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 335, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 1751, in log
+    self._log(data=data, step=step, commit=commit)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 1532, in _log
+    self._partial_history_callback(data, step, commit)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\wandb_run.py", line 1402, in _partial_history_callback
+    self._backend.interface.publish_partial_history(
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\interface\interface.py", line 567, in publish_partial_history
+    data = history_dict_to_json(run, data, step=user_step, ignore_copy_err=True)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\data_types\utils.py", line 52, in history_dict_to_json
+    payload[key] = val_to_json(
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\data_types\utils.py", line 80, in val_to_json
+    val = Plotly.make_plot_media(val)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\data_types\plotly.py", line 48, in make_plot_media
+    val = util.matplotlib_to_plotly(val)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\util.py", line 455, in matplotlib_to_plotly
+    tools = get_module(
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\util.py", line 228, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`

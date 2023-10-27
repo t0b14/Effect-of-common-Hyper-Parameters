@@ -1,0 +1,1 @@
+{"max_grad_norm": 0.35063305497169495, "_timestamp": 1698359410.8691158, "_runtime": 22.231409788131714, "_step": 65, "histogram": {"_type": "plotly-file", "sha256": "f6f56e2307f42795ed9b985a0e54f14db708bdedfb01ab38e81709916bdafe87", "size": 10867, "path": "media/plotly/histogram_1_f6f56e2307f42795ed9b.plotly.json"}, "loss": 38236.26302301884, "_wandb": {"runtime": 21}}

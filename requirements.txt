@@ -8,5 +8,6 @@ torchvision
 torchdiffeq
 matplotlib
 wandb
+plotly
 #sys
 #torchmetricss

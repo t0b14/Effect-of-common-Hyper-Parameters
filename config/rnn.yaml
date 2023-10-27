@@ -1,6 +1,7 @@
 experiment:
   title: Single-Layer RNN
   options:
+    run_name: "wandbTestNoise"
     train_n_test: 1
     visualize: 1
     show_plot: 0
@@ -14,11 +15,11 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 50
+    n_epochs: 1000
     batch_size: 16
     total_seq_length: 1400
     seq_length: 1400
-    training_help: 15 # 0 to n_epochs (iterations)
+    training_help: 50 # 0 to n_epochs (iterations)
     hidden_dims: 100
     n_trials: 5
     with_inputnoise: 1

@@ -18,6 +18,8 @@ class cRNN(nn.Module):
         self.batchnorm = nn.BatchNorm1d(100)
         self.fc = nn.Linear(self.h_s, self.o_s)
 
+
+
     def forward(self, x, h_1=None):
 
         out, h_1 = self.rnn(x, h_1) if h_1 != None else self.rnn(x)

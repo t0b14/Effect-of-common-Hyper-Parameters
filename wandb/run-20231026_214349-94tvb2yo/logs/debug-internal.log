@@ -1,0 +1,1258 @@
+2023-10-26 21:43:50,585 INFO    StreamThr :24148 [internal.py:wandb_internal():86] W&B internal server running at pid: 24148, started at: 2023-10-26 21:43:50.584363
+2023-10-26 21:43:50,585 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status
+2023-10-26 21:43:50,586 INFO    WriterThread:24148 [datastore.py:open_for_write():85] open: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\run-94tvb2yo.wandb
+2023-10-26 21:43:50,587 DEBUG   SenderThread:24148 [sender.py:send():375] send: header
+2023-10-26 21:43:50,587 DEBUG   SenderThread:24148 [sender.py:send():375] send: run
+2023-10-26 21:43:51,132 INFO    SenderThread:24148 [dir_watcher.py:__init__():219] watching files in: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files
+2023-10-26 21:43:51,132 INFO    SenderThread:24148 [sender.py:_start_run_threads():1124] run started: 94tvb2yo with start time 1698349429.638064
+2023-10-26 21:43:51,132 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:51,133 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:51,133 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: check_version
+2023-10-26 21:43:51,133 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: check_version
+2023-10-26 21:43:51,345 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: run_start
+2023-10-26 21:43:51,350 DEBUG   HandlerThread:24148 [system_info.py:__init__():31] System info init
+2023-10-26 21:43:51,350 DEBUG   HandlerThread:24148 [system_info.py:__init__():46] System info init done
+2023-10-26 21:43:51,350 INFO    HandlerThread:24148 [system_monitor.py:start():181] Starting system monitor
+2023-10-26 21:43:51,350 INFO    SystemMonitor:24148 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-10-26 21:43:51,350 INFO    HandlerThread:24148 [system_monitor.py:probe():201] Collecting system info
+2023-10-26 21:43:51,354 INFO    SystemMonitor:24148 [interfaces.py:start():190] Started cpu monitoring
+2023-10-26 21:43:51,356 DEBUG   HandlerThread:24148 [system_info.py:probe():195] Probing system
+2023-10-26 21:43:51,356 DEBUG   HandlerThread:24148 [system_info.py:probe():240] Probing system done
+2023-10-26 21:43:51,356 INFO    SystemMonitor:24148 [interfaces.py:start():190] Started disk monitoring
+2023-10-26 21:43:51,356 DEBUG   HandlerThread:24148 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.11', 'heartbeatAt': '2023-10-26T19:43:51.356542', 'startedAt': '2023-10-26T19:43:49.634030', 'docker': None, 'cuda': None, 'args': ('--config', 'rnn.yaml'), 'state': 'running', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py', 'codePath': 'main.py', 'host': 'Aibot', 'username': 'tobia', 'executable': 'C:\\Users\\tobia\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3701.0, 'min': 0.0, 'max': 3701.0}, 'cpu_freq_per_core': [{'current': 3701.0, 'min': 0.0, 'max': 3701.0}], 'disk': {'total': 1417.9636306762695, 'used': 1285.3984031677246}, 'memory': {'total': 63.13705825805664}}
+2023-10-26 21:43:51,356 INFO    HandlerThread:24148 [system_monitor.py:probe():211] Finished collecting system info
+2023-10-26 21:43:51,359 INFO    HandlerThread:24148 [system_monitor.py:probe():214] Publishing system info
+2023-10-26 21:43:51,359 INFO    SystemMonitor:24148 [interfaces.py:start():190] Started memory monitoring
+2023-10-26 21:43:51,359 DEBUG   HandlerThread:24148 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-10-26 21:43:51,365 INFO    SystemMonitor:24148 [interfaces.py:start():190] Started network monitoring
+2023-10-26 21:43:51,365 DEBUG   HandlerThread:24148 [system_info.py:_save_pip():67] Saving pip packages done
+2023-10-26 21:43:51,366 INFO    HandlerThread:24148 [system_monitor.py:probe():216] Finished publishing system info
+2023-10-26 21:43:51,366 DEBUG   SenderThread:24148 [sender.py:send():375] send: files
+2023-10-26 21:43:51,366 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-10-26 21:43:51,370 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:43:51,371 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:43:51,620 DEBUG   SenderThread:24148 [sender.py:send():375] send: telemetry
+2023-10-26 21:43:52,139 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:43:52,139 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-metadata.json
+2023-10-26 21:43:52,139 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:52,139 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\requirements.txt
+2023-10-26 21:43:52,229 INFO    wandb-upload_0:24148 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmpmanr9t1iwandb\4mrfmhhr-wandb-metadata.json
+2023-10-26 21:43:52,366 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:52,366 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:52,367 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:52,367 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:53,151 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:53,161 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:53,161 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:53,161 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:53,162 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:53,939 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:53,940 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:53,940 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:53,940 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:54,166 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:43:54,166 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:54,720 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:54,720 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:54,720 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:54,721 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:55,167 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:55,553 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:55,554 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:55,554 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:55,555 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:56,178 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:43:56,178 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:56,325 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:56,326 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:56,326 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:56,326 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:43:56,326 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:57,121 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:57,122 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:57,122 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:57,123 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:57,180 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:57,903 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:57,903 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:57,903 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:57,904 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:58,182 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:43:58,182 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:58,691 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:58,692 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:58,692 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:58,692 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:43:59,191 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:43:59,479 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:43:59,479 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:43:59,479 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:43:59,480 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:00,192 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:00,192 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:00,272 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:00,273 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:00,273 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:00,273 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:01,100 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:01,101 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:01,101 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:01,102 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:01,203 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:01,882 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:01,885 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:01,885 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:01,885 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:01,886 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:02,216 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:02,216 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:02,652 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:02,653 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:02,653 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:02,653 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:03,219 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:03,432 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:03,433 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:03,433 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:03,434 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:04,191 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:04,192 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:04,192 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:04,192 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:04,225 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:04,225 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:04,988 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:04,988 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:04,989 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:04,989 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:05,235 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:05,777 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:05,778 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:05,778 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:05,778 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:06,248 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:06,248 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:06,385 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:44:06,386 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:44:06,630 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:06,630 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:06,630 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:06,631 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:07,258 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:07,398 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:07,399 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:07,399 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:07,399 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:07,399 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:08,192 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:08,194 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:08,194 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:08,195 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:08,268 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:08,268 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:08,980 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:08,980 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:08,980 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:08,981 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:09,270 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:09,785 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:09,785 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:09,786 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:09,786 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:10,279 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:10,279 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:10,546 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:10,546 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:10,546 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:10,547 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:11,287 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:11,326 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:11,327 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:11,327 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:11,328 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:12,158 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:12,159 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:12,159 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:12,160 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:12,296 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:12,296 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:12,936 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:12,937 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:12,937 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:12,937 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:12,938 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:13,302 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:13,690 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:13,691 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:13,691 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:13,691 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:14,305 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:14,305 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:14,452 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:14,453 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:14,453 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:14,453 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:15,247 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:15,247 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:15,248 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:15,248 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:15,317 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:16,012 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:16,013 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:16,013 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:16,014 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:16,329 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:16,329 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:16,842 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:16,842 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:16,843 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:16,843 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:17,331 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:17,622 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:17,623 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:17,623 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:17,624 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:18,333 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:18,333 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:18,412 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:18,413 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:18,413 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:18,413 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:18,414 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:19,194 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:19,195 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:19,195 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:19,196 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:19,345 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:20,011 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:20,012 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:20,012 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:20,012 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:20,360 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:20,360 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:20,820 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:20,821 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:20,821 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:20,821 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:21,370 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:21,386 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:44:21,386 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:44:21,587 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:21,588 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:21,588 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:21,589 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:22,382 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:22,382 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:22,419 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:22,420 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:22,420 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:22,421 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:23,243 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:23,243 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:23,244 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:23,244 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:23,391 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:24,001 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:24,002 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:24,004 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:24,216 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:24,216 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:24,406 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:24,406 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\config.yaml
+2023-10-26 21:44:24,407 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:24,766 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:24,767 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:24,767 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:24,767 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:25,408 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:25,553 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:25,553 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:25,553 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:25,553 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:26,404 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:26,405 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:26,406 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:26,406 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:26,413 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:26,413 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:27,223 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:27,223 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:27,223 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:27,224 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:27,427 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:28,107 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:28,107 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:28,108 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:28,108 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:28,431 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:28,431 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:28,958 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:28,959 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:28,959 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:28,959 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:29,433 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:29,750 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:29,751 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:29,751 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:29,751 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:29,752 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:30,448 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:30,448 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:30,542 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:30,543 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:30,543 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:30,544 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:31,365 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:31,366 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:31,366 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:31,367 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:31,463 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:32,159 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:32,160 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:32,160 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:32,160 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:32,473 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:32,473 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:32,955 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:32,955 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:32,955 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:32,956 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:33,486 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:33,741 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:33,741 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:33,741 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:33,742 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:34,490 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:34,490 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:34,503 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:34,503 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:34,503 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:34,505 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:35,254 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:35,255 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:35,255 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:35,255 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:35,255 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:35,499 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:36,037 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:36,038 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:36,038 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:36,039 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:36,400 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:44:36,401 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:44:36,508 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:36,508 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:36,857 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:36,858 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:36,858 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:36,858 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:37,523 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:37,715 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:37,716 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:37,716 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:37,716 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:38,528 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:38,529 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:38,529 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:38,529 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:38,531 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:38,531 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:39,316 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:39,317 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:39,317 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:39,318 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:39,543 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:40,153 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:40,154 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:40,154 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:40,155 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:40,550 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:40,550 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:40,989 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:40,990 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:40,991 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:40,991 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:40,991 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:41,560 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:41,817 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:41,818 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:41,818 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:41,819 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:42,561 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:42,561 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:42,644 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:42,646 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:42,646 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:42,646 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:43,514 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:43,514 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:43,514 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:43,514 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:43,568 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:44,319 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:44,319 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:44,319 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:44,320 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:44,570 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:44,570 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:45,096 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:45,097 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:45,097 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:45,098 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:45,574 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:45,878 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:45,879 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:45,879 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:45,879 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:46,583 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:46,583 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:46,654 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:46,655 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:46,655 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:46,655 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:46,656 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:47,463 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:47,465 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:47,465 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:47,465 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:47,587 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:48,313 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:48,314 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:48,314 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:48,315 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:48,599 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:48,599 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:49,148 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:49,149 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:49,149 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:49,149 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:49,604 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:49,955 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:49,956 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:49,956 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:49,957 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:50,612 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:50,612 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:50,749 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:50,750 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:50,750 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:50,751 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:51,367 DEBUG   SystemMonitor:24148 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-10-26 21:44:51,368 DEBUG   SenderThread:24148 [sender.py:send():375] send: stats
+2023-10-26 21:44:51,414 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:44:51,415 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:44:51,541 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:51,617 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:51,640 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:51,640 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:51,641 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:52,359 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:52,360 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:52,360 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:52,360 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:52,361 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:52,628 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:52,628 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:53,155 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:53,155 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:53,155 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:53,156 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:53,628 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:54,001 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:54,002 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:54,002 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:54,003 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:54,643 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:54,643 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:54,864 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:54,865 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:54,865 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:54,865 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:55,646 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:55,684 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:55,685 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:55,685 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:55,686 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:56,515 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:56,516 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:56,517 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:56,517 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:56,653 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:56,653 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:57,345 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:57,346 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:57,346 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:57,347 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:57,660 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:58,171 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:58,172 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:58,172 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:58,172 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:44:58,172 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:58,662 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:44:58,662 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:58,959 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:58,959 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:58,960 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:58,960 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:44:59,674 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:44:59,751 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:44:59,752 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:44:59,752 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:44:59,753 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:00,574 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:00,574 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:00,575 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:00,575 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:00,674 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:00,674 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:01,396 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:01,396 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:01,396 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:01,397 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:01,688 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:02,242 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:02,242 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:02,243 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:02,243 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:02,703 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:02,703 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:03,048 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:03,050 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:03,050 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:03,050 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:03,705 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:03,874 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:03,874 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:03,874 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:03,875 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:03,875 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:04,700 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:04,700 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:04,700 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:04,701 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:04,718 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:04,718 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:05,495 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:05,495 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:05,497 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:05,497 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:05,724 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:06,295 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:06,295 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:06,296 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:06,297 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:06,434 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:45:06,435 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:45:06,730 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:06,730 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:07,109 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:07,110 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:07,110 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:07,110 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:07,731 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:07,947 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:07,948 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:07,948 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:07,948 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:08,745 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:08,745 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:08,764 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:08,765 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:08,765 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:08,765 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:09,570 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:09,571 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:09,571 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:09,571 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:09,572 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:09,747 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:10,380 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:10,381 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:10,381 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:10,382 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:10,760 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:10,760 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:11,191 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:11,192 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:11,192 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:11,192 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:11,773 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:12,030 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:12,030 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:12,031 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:12,031 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:12,783 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:12,783 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:12,789 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:12,790 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:12,790 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:12,790 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:13,591 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:13,592 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:13,592 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:13,592 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:13,786 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:14,449 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:14,449 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:14,450 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:14,450 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:14,791 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:14,791 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:15,258 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:15,259 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:15,259 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:15,259 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:15,259 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:15,799 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:16,033 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:16,033 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:16,034 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:16,034 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:16,810 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:16,810 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:16,818 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:16,818 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:16,818 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:16,819 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:17,582 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:17,582 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:17,583 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:17,583 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:17,820 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:18,371 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:18,371 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:18,371 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:18,372 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:18,830 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:18,830 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:19,167 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:19,167 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:19,167 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:19,167 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:19,837 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:19,987 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:19,988 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:19,988 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:19,989 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:20,758 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:20,758 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:20,759 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:20,759 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:20,759 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:20,841 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:20,841 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:21,369 DEBUG   SenderThread:24148 [sender.py:send():375] send: stats
+2023-10-26 21:45:21,445 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:45:21,446 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:45:21,530 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:21,679 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:21,679 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:21,679 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:21,851 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:22,283 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:22,284 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:22,284 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:22,285 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:22,854 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:22,854 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:23,040 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:23,041 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:23,041 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:23,041 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:23,791 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:23,792 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:23,792 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:23,793 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:23,861 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:24,600 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:24,601 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:24,601 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:24,602 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:24,866 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:24,866 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:25,409 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:25,409 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:25,410 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:25,410 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:25,869 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:26,215 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:26,216 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:26,217 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:26,217 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:26,217 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:26,875 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:26,875 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:27,003 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:27,004 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:27,004 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:27,005 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:27,760 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:27,761 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:27,761 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:27,761 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:27,888 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:28,521 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:28,522 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:28,522 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:28,522 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:28,893 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:28,893 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:29,277 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:29,277 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:29,278 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:29,278 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:29,897 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:30,041 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:30,042 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:30,042 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:30,043 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:30,832 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:30,833 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:30,833 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:30,834 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:30,908 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:30,908 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:31,670 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:31,671 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:31,671 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:31,671 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:31,671 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:31,909 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:32,445 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:32,445 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:32,445 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:32,446 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:32,913 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:32,913 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:33,210 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:33,210 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:33,211 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:33,211 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:33,920 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:34,000 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:34,000 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:34,001 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:34,001 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:34,776 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:34,777 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:34,777 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:34,778 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:34,924 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:34,924 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:35,599 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:35,600 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:35,600 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:35,601 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:35,929 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:36,443 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:36,443 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:36,443 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:36,444 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:36,454 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:45:36,455 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:45:36,707 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:36,936 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:36,936 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:37,286 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:37,287 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:37,287 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:37,287 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:37,939 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:38,091 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:38,092 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:38,092 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:38,093 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:38,900 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:38,901 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:38,901 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:38,902 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:38,952 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:38,952 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:39,681 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:39,682 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:39,682 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:39,682 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:39,960 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:40,482 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:40,483 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:40,483 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:40,484 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:40,960 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:40,960 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:41,301 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:41,302 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:41,303 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:41,303 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:41,968 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:42,064 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:42,065 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:42,065 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:42,066 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:42,066 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:42,856 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:42,857 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:42,857 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:42,858 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:42,974 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:42,974 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:43,616 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:43,616 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:43,617 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:43,617 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:43,985 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:44,386 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:44,386 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:44,386 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:44,387 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:44,987 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:44,987 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:45,157 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:45,157 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:45,158 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:45,158 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:45,909 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:45,910 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:45,910 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:45,911 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:46,000 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:46,702 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:46,703 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:46,703 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:46,704 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:47,002 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:47,002 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:47,490 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:47,491 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:47,491 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:47,492 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:47,492 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:48,007 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:48,233 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:48,234 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:48,234 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:48,234 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:49,003 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:49,004 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:49,004 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:49,004 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:49,008 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:49,008 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:49,789 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:49,790 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:49,790 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:49,790 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:50,020 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:50,567 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:50,567 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:50,568 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:50,568 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:51,026 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:51,026 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:51,319 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:51,319 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:51,319 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:51,320 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:51,382 DEBUG   SenderThread:24148 [sender.py:send():375] send: stats
+2023-10-26 21:45:51,444 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:45:51,444 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:45:52,031 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:52,091 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:52,092 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:52,092 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:52,093 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:52,876 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:52,877 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:52,877 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:52,877 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:52,878 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:53,037 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:53,037 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:53,620 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:53,621 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:53,621 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:53,622 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:54,043 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:54,387 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:54,387 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:54,387 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:54,389 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:55,052 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:55,052 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:55,136 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:55,137 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:55,137 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:55,137 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:55,896 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:55,897 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:55,897 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:55,897 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:56,056 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:56,651 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:56,651 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:56,652 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:56,652 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:57,061 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:57,061 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:57,418 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:57,418 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:57,419 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:57,419 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:58,068 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:58,242 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:58,242 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:58,243 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:58,243 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:45:58,244 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:59,032 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:59,032 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:59,033 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:59,033 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:45:59,075 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:45:59,075 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:45:59,814 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:45:59,815 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:45:59,815 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:45:59,816 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:00,076 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:00,616 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:00,616 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:00,616 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:00,617 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:01,089 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:01,089 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:01,373 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:01,374 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:01,374 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:01,374 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:02,093 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:02,141 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:02,142 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:02,142 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:02,142 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:02,922 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:02,923 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:02,923 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:02,924 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:03,098 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:03,098 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:03,777 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:03,777 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:03,777 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:03,779 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:03,779 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:04,107 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:04,596 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:04,597 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:04,597 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:04,597 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:05,112 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:05,112 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:05,401 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:05,402 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:05,402 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:05,402 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:06,117 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:06,166 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:06,167 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:06,167 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:06,167 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:06,457 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:46:06,457 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:46:06,960 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:06,961 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:06,961 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:06,961 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:07,121 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:07,121 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:07,724 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:07,724 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:07,725 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:07,725 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:08,123 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:08,514 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:08,514 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:08,515 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:08,515 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:09,137 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:09,137 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:09,358 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:09,359 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:09,359 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:09,359 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:09,359 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:10,141 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:10,163 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:10,163 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:10,163 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:10,164 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:10,975 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:10,976 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:10,976 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:10,977 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:11,145 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:11,145 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:11,763 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:11,764 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:11,764 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:11,765 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:12,149 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:12,543 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:12,544 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:12,544 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:12,544 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:13,150 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:13,150 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:13,354 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:13,355 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:13,355 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:13,355 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:14,153 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:14,162 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:14,162 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:14,163 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:14,163 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:14,933 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:14,933 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:14,933 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:14,933 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:14,934 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:15,167 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:15,167 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:15,725 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:15,725 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:15,726 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:15,726 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:16,169 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:16,496 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:16,496 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:16,496 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:16,497 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:17,176 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:17,176 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:17,248 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:17,249 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:17,249 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:17,249 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:18,014 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:18,015 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:18,015 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:18,015 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:18,184 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:18,781 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:18,781 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:18,782 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:18,782 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:19,189 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:19,189 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:19,563 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:19,564 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:19,564 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:19,564 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:20,204 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:20,400 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:20,401 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:20,401 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:20,401 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:20,401 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:21,193 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:21,194 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:21,194 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:21,194 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:21,207 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:21,207 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:21,393 DEBUG   SenderThread:24148 [sender.py:send():375] send: stats
+2023-10-26 21:46:21,486 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-26 21:46:21,486 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: stop_status
+2023-10-26 21:46:22,000 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:22,001 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:22,001 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:22,002 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:22,210 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:22,806 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:22,806 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:22,806 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:22,807 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:23,219 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:23,219 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:23,622 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:23,623 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:23,623 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:23,623 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:24,229 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:24,467 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:24,468 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:24,468 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:24,468 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:25,229 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:25,229 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:25,287 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:25,288 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:25,288 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:25,288 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:26,064 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:26,065 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:26,065 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:26,065 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:26,065 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:26,240 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:26,807 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:26,807 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:26,807 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:26,808 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:27,255 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:27,255 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:27,560 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:27,560 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:27,560 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:27,561 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:28,261 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:28,306 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:28,306 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:28,306 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:28,307 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:29,107 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:29,108 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:29,108 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:29,108 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:29,261 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:29,261 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:29,872 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:29,873 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:29,873 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:29,873 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:30,274 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:30,702 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: partial_history
+2023-10-26 21:46:30,703 DEBUG   SenderThread:24148 [sender.py:send():375] send: history
+2023-10-26 21:46:30,703 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: summary_record
+2023-10-26 21:46:30,705 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:31,279 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:31,279 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:31,512 DEBUG   SenderThread:24148 [sender.py:send():375] send: telemetry
+2023-10-26 21:46:31,512 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:31,512 DEBUG   SenderThread:24148 [sender.py:send():375] send: exit
+2023-10-26 21:46:31,512 INFO    SenderThread:24148 [sender.py:send_exit():598] handling exit code: 0
+2023-10-26 21:46:31,512 INFO    SenderThread:24148 [sender.py:send_exit():600] handling runtime: 160
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:send_exit():606] send defer
+2023-10-26 21:46:31,513 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,513 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 0
+2023-10-26 21:46:31,513 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 1
+2023-10-26 21:46:31,513 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,513 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 1
+2023-10-26 21:46:31,513 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-10-26 21:46:31,513 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 2
+2023-10-26 21:46:31,513 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,513 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 2
+2023-10-26 21:46:31,514 INFO    HandlerThread:24148 [system_monitor.py:finish():190] Stopping system monitor
+2023-10-26 21:46:31,514 DEBUG   SystemMonitor:24148 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-10-26 21:46:31,514 INFO    HandlerThread:24148 [interfaces.py:finish():202] Joined cpu monitor
+2023-10-26 21:46:31,514 DEBUG   SystemMonitor:24148 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-10-26 21:46:31,514 INFO    HandlerThread:24148 [interfaces.py:finish():202] Joined disk monitor
+2023-10-26 21:46:31,514 INFO    HandlerThread:24148 [interfaces.py:finish():202] Joined memory monitor
+2023-10-26 21:46:31,514 INFO    HandlerThread:24148 [interfaces.py:finish():202] Joined network monitor
+2023-10-26 21:46:31,514 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,514 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-10-26 21:46:31,514 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 3
+2023-10-26 21:46:31,514 DEBUG   SenderThread:24148 [sender.py:send():375] send: stats
+2023-10-26 21:46:31,514 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,515 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 3
+2023-10-26 21:46:31,515 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,515 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-10-26 21:46:31,515 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 4
+2023-10-26 21:46:31,515 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,515 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 4
+2023-10-26 21:46:31,515 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,515 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-10-26 21:46:31,515 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 5
+2023-10-26 21:46:31,515 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,515 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 5
+2023-10-26 21:46:31,515 DEBUG   SenderThread:24148 [sender.py:send():375] send: summary
+2023-10-26 21:46:31,515 INFO    SenderThread:24148 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-26 21:46:31,516 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,516 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-10-26 21:46:31,516 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 6
+2023-10-26 21:46:31,516 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,516 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 6
+2023-10-26 21:46:31,516 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,516 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-10-26 21:46:31,517 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: status_report
+2023-10-26 21:46:31,756 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 7
+2023-10-26 21:46:31,756 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:31,756 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 7
+2023-10-26 21:46:31,756 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:31,756 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-10-26 21:46:32,280 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\config.yaml
+2023-10-26 21:46:32,281 INFO    Thread-37 :24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:32,526 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-26 21:46:32,679 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 8
+2023-10-26 21:46:32,680 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: poll_exit
+2023-10-26 21:46:32,680 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:32,680 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 8
+2023-10-26 21:46:32,680 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:32,680 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-10-26 21:46:32,680 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 9
+2023-10-26 21:46:32,680 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:32,680 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 9
+2023-10-26 21:46:32,681 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:32,681 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-10-26 21:46:32,681 INFO    SenderThread:24148 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-10-26 21:46:33,296 INFO    SenderThread:24148 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:33,296 INFO    SenderThread:24148 [dir_watcher.py:finish():395] scan: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files
+2023-10-26 21:46:33,296 INFO    SenderThread:24148 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\config.yaml config.yaml
+2023-10-26 21:46:33,296 INFO    SenderThread:24148 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log output.log
+2023-10-26 21:46:33,297 INFO    SenderThread:24148 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\requirements.txt requirements.txt
+2023-10-26 21:46:33,299 INFO    SenderThread:24148 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-metadata.json wandb-metadata.json
+2023-10-26 21:46:33,299 INFO    SenderThread:24148 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json wandb-summary.json
+2023-10-26 21:46:33,301 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 10
+2023-10-26 21:46:33,301 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:33,301 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 10
+2023-10-26 21:46:33,302 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:33,302 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-10-26 21:46:33,302 INFO    SenderThread:24148 [file_pusher.py:finish():167] shutting down file pusher
+2023-10-26 21:46:33,527 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-26 21:46:33,528 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: poll_exit
+2023-10-26 21:46:33,946 INFO    wandb-upload_0:24148 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\config.yaml
+2023-10-26 21:46:34,189 INFO    wandb-upload_1:24148 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\output.log
+2023-10-26 21:46:34,268 INFO    wandb-upload_3:24148 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\wandb-summary.json
+2023-10-26 21:46:34,282 INFO    wandb-upload_2:24148 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\files\requirements.txt
+2023-10-26 21:46:34,495 INFO    Thread-36 (_thread_body):24148 [sender.py:transition_state():626] send defer: 11
+2023-10-26 21:46:34,495 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:34,495 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 11
+2023-10-26 21:46:34,495 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:34,495 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-10-26 21:46:34,495 INFO    SenderThread:24148 [file_pusher.py:join():172] waiting for file pusher
+2023-10-26 21:46:34,495 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 12
+2023-10-26 21:46:34,496 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:34,496 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 12
+2023-10-26 21:46:34,496 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:34,496 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-10-26 21:46:34,541 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-26 21:46:35,128 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 13
+2023-10-26 21:46:35,128 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: poll_exit
+2023-10-26 21:46:35,128 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:35,128 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 13
+2023-10-26 21:46:35,128 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:35,128 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-10-26 21:46:35,128 INFO    SenderThread:24148 [sender.py:transition_state():626] send defer: 14
+2023-10-26 21:46:35,129 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: defer
+2023-10-26 21:46:35,129 DEBUG   SenderThread:24148 [sender.py:send():375] send: final
+2023-10-26 21:46:35,129 DEBUG   SenderThread:24148 [sender.py:send():375] send: footer
+2023-10-26 21:46:35,129 INFO    HandlerThread:24148 [handler.py:handle_request_defer():170] handle defer: 14
+2023-10-26 21:46:35,129 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: defer
+2023-10-26 21:46:35,129 INFO    SenderThread:24148 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-10-26 21:46:35,130 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-26 21:46:35,130 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: server_info
+2023-10-26 21:46:35,130 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: get_summary
+2023-10-26 21:46:35,130 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: poll_exit
+2023-10-26 21:46:35,130 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: sampled_history
+2023-10-26 21:46:35,131 DEBUG   SenderThread:24148 [sender.py:send_request():402] send_request: server_info
+2023-10-26 21:46:35,462 DEBUG   HandlerThread:24148 [handler.py:handle_request():144] handle_request: shutdown
+2023-10-26 21:46:35,462 INFO    HandlerThread:24148 [handler.py:finish():842] shutting down handler
+2023-10-26 21:46:36,132 INFO    WriterThread:24148 [datastore.py:close():298] close: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_214349-94tvb2yo\run-94tvb2yo.wandb
+2023-10-26 21:46:36,473 INFO    SenderThread:24148 [sender.py:finish():1550] shutting down sender
+2023-10-26 21:46:36,473 INFO    SenderThread:24148 [file_pusher.py:finish():167] shutting down file pusher
+2023-10-26 21:46:36,473 INFO    SenderThread:24148 [file_pusher.py:join():172] waiting for file pusher

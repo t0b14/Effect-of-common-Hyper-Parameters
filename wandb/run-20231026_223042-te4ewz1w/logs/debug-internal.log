@@ -1,0 +1,9 @@
+2023-10-26 22:30:42,266 INFO    StreamThr :23488 [internal.py:wandb_internal():86] W&B internal server running at pid: 23488, started at: 2023-10-26 22:30:42.266383
+2023-10-26 22:30:42,267 DEBUG   HandlerThread:23488 [handler.py:handle_request():144] handle_request: status
+2023-10-26 22:30:42,267 INFO    WriterThread:23488 [datastore.py:open_for_write():85] open: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_223042-te4ewz1w\run-te4ewz1w.wandb
+2023-10-26 22:30:42,268 DEBUG   SenderThread:23488 [sender.py:send():375] send: header
+2023-10-26 22:30:43,271 WARNING StreamThr :23488 [internal.py:is_dead():414] Internal process exiting, parent pid 25548 disappeared
+2023-10-26 22:30:43,272 ERROR   StreamThr :23488 [internal.py:wandb_internal():152] Internal process shutdown.
+2023-10-26 22:30:43,284 INFO    SenderThread:23488 [sender.py:finish():1550] shutting down sender
+2023-10-26 22:30:44,275 INFO    WriterThread:23488 [datastore.py:close():298] close: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231026_223042-te4ewz1w\run-te4ewz1w.wandb
+2023-10-26 22:30:44,275 INFO    HandlerThread:23488 [handler.py:finish():842] shutting down handler

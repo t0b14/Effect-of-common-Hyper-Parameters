@@ -1,0 +1,54 @@
+
+Using device: cpu
+
+Epoch[5/5], Loss: 5062.2489: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.25it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 66, in run
+    plot_h(tm, config["options"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\vizual.py", line 66, in plot_h
+    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params,  "move.pdf")
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\vizual.py", line 38, in custom_plot
+    im = plt.imread(path_to_img)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\pyplot.py", line 2195, in imread
+    return matplotlib.image.imread(fname, format)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\matplotlib\image.py", line 1563, in imread
+    with img_open(fname) as image:
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\PIL\Image.py", line 3298, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\io\\output\\rnn1\\move.pdf'
+--------------- Train ---------------
+0 	 0.0176 	 0.0
+100 	 -0.0361 	 0.0
+200 	 -0.0361 	 0.0
+300 	 -0.0361 	 0.0
+400 	 -0.0361 	 0.0
+500 	 -0.0361 	 0.0
+600 	 -0.0361 	 0.0
+700 	 0.3712 	 -0.0028
+800 	 0.1207 	 -0.1512
+900 	 0.0197 	 -0.2903
+1000 	 -0.1284 	 -0.3007
+1100 	 0.269 	 -0.2925
+1200 	 0.0081 	 -0.3573
+1300 	 -0.1571 	 -0.5023
+-------------------------------------
+--------------- Example Test ---------------
+0 	 0.1718 	 0.0
+100 	 0.118 	 0.0
+200 	 0.118 	 0.0
+300 	 0.118 	 0.0
+400 	 0.118 	 0.0
+500 	 0.118 	 0.0
+600 	 0.118 	 0.0
+700 	 0.0914 	 -0.1919
+800 	 0.1293 	 -0.5212
+900 	 0.1224 	 -0.8281
+1000 	 0.1726 	 -1.0
+1100 	 0.1945 	 -1.0
+1200 	 0.0416 	 -1.0
+1300 	 0.132 	 -1.0
+-------------------------------------
+Model last
+{'test_loss': [4219.7666015625]}

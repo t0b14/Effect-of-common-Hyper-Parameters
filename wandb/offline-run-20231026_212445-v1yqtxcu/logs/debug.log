@@ -1,0 +1,25 @@
+2023-10-26 21:24:45,559 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Current SDK version is 0.15.3
+2023-10-26 21:24:45,559 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Configure stats pid to 22784
+2023-10-26 21:24:45,559 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\.config\wandb\settings
+2023-10-26 21:24:45,559 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\settings
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py'}
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_setup.py:_flush():76] Applying login settings: {'mode': 'offline'}
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:_log_setup():507] Logging user logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\offline-run-20231026_212445-v1yqtxcu\logs\debug.log
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:_log_setup():508] Logging internal logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\offline-run-20231026_212445-v1yqtxcu\logs\debug-internal.log
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:init():547] calling init triggers
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'dataset_name': 'ctxt', 'n_epochs': 200, 'batch_size': 16, 'total_seq_length': 1400, 'seq_length': 1400, 'training_help': 15, 'hidden_dims': 100, 'n_trials': 5, 'with_inputnoise': 1, 'noise_level': 4, 'coherency_intervals': 'uniform', 'optimizer_name': 'SGD', 'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-07, 'weight_decay': 0.0001, 'amsgrad': False, 'momentum': 0.9, 'apply_gradient_clipping': 1}
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:init():596] starting backend
+2023-10-26 21:24:45,560 INFO    MainThread:22784 [wandb_init.py:init():600] setting up manager
+2023-10-26 21:24:45,562 INFO    MainThread:22784 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-10-26 21:24:45,564 INFO    MainThread:22784 [wandb_init.py:init():606] backend started and connected
+2023-10-26 21:24:45,564 INFO    MainThread:22784 [wandb_init.py:init():700] updated telemetry
+2023-10-26 21:24:45,565 INFO    MainThread:22784 [wandb_init.py:init():787] starting run threads in backend
+2023-10-26 21:24:45,605 INFO    MainThread:22784 [wandb_run.py:_console_start():2158] atexit reg
+2023-10-26 21:24:45,606 INFO    MainThread:22784 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2023-10-26 21:24:45,606 INFO    MainThread:22784 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2023-10-26 21:24:45,606 INFO    MainThread:22784 [wandb_run.py:_redirect():2103] Redirects installed.
+2023-10-26 21:24:45,606 INFO    MainThread:22784 [wandb_init.py:init():829] run started, returning control to user process
+2023-10-26 21:24:54,912 WARNING MsgRouterThr:22784 [router.py:message_loop():77] message_loop has been closed

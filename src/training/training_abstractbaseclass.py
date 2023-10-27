@@ -9,6 +9,7 @@ import sys
 import wandb
 from src.training.data import dataset_creator
 from src.constants import MODEL_DIR
+import matplotlib.pyplot as plt
 
 # defines an abstract base class for training
 class ABCTrainingModule(ABC):
@@ -18,6 +19,7 @@ class ABCTrainingModule(ABC):
         self.optimizer = optimizer
         self.batch_size = params.get("batch_size", 16)
         self.epoch = 0
+        self.use_wandb = config["options"]["use_wandb"]
 
         self.total_seq_length = params["total_seq_length"]
         self.n_intervals = int(params["total_seq_length"] / params["seq_length"])
@@ -28,6 +30,10 @@ class ABCTrainingModule(ABC):
         self.training_help = params["training_help"]
         
         self.hidden_dims = params["hidden_dims"]
+
+        self.clip_percentage = 0
+        self.firsthistogram = True
+        self.max_grad_norm = 20.
 
         # Load dataset
         # (input_shape, n_timesteps, n_trials)
@@ -59,10 +65,11 @@ class ABCTrainingModule(ABC):
         for cur_epoch in (pbar_epoch := tqdm(range(num_epochs))):
             self.epoch = cur_epoch
             running_loss = 0.0
+            gradients = [] # for gradient clipping
             
-            # Help train initially
+            # Help train initially by gradually increasing the seq_length
             if(self.training_help > cur_epoch):
-                seq_l = 1
+                seq_l = int(self.seq_length / self.training_help * cur_epoch)
             else:
                 seq_l = self.seq_length
 
@@ -79,11 +86,13 @@ class ABCTrainingModule(ABC):
                     partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
 
-                    out, loss, h_1 = self.step(partial_in, partial_tar, h_1)
+                    out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
                     h_1 = h_1.detach()
 
                     running_loss += loss
-            wandb.log({"loss": running_loss})
+
+            if self.use_wandb:
+                wandb.log({"loss": running_loss})
             if(cur_epoch % 10 == 0):
                 train_loss_history.append(loss)
                 
@@ -145,7 +154,7 @@ class ABCTrainingModule(ABC):
         print(f"Model {model_tag}")
         print(test_metrics)
 
-    def step(self, inputs, labels, h_1=None, eval=False):
+    def step(self, inputs, labels, h_1=None, gradients=None, eval=False):
         """Returns loss"""
         out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
         step_loss = loss.item()
@@ -153,11 +162,36 @@ class ABCTrainingModule(ABC):
         if not eval:
             self.optimizer.zero_grad()
             loss.backward()
+
+            self.plot_gradients(gradients)
             if self.gradient_clipping:
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 2.0)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.max_grad_norm)
             self.optimizer.step()
 
         return out, step_loss, h_1
+
+    def plot_gradients(self, gradients):
+        if self.gradient_clipping:
+            if not gradients: # is empty
+                if self.firsthistogram:
+                    for param in self.model.parameters():
+                        if param.grad is not None:
+                            gradients.append(param.grad.view(-1).detach().cpu().numpy())
+                    gradients = np.concatenate(gradients)
+                    if self.use_wandb:
+                        wandb.log({"max_grad_norm": self.max_grad_norm})
+                    
+                        plt.hist(gradients, bins=100, log=True) 
+                        plt.title("Gradient Histogram")
+                        plt.xlabel("Gradient Value")
+                        plt.ylabel("Frequency (log scale)")  
+                        plt.xlim(gradients.min(), gradients.max()) 
+                        plt.savefig(self.output_path / "histogram.png")
+                        if self.use_wandb:
+                            wandb.log({"histogram": plt})
+                        plt.close()
+                        plt.show()
+                        self.firsthistogram = False
 
     def save_model(self, tag: str = "last"):
         MODEL_DIR.mkdir(parents=True, exist_ok=True)

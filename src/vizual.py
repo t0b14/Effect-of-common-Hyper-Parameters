@@ -37,6 +37,7 @@ def custom_plot(possible_vals, pred_val_counter, total_val_counter, path, params
 
 
 def plot_h(tm, params, tag=None):
+    # load coherency and conditionIds from files
     _, coh_trial, condIds = tm.get_output_paths()
     coherency = np.load(coh_trial)
     conditionIds = np.load(condIds)
@@ -60,20 +61,22 @@ def plot_h(tm, params, tag=None):
 
     # plot move 
     total_move_val_counter, pred_move_val_counter, possible_move_vals = calculate(coherency[0,:], chose_right, cond_motion_ind)
-    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params,  "move.pdf")
+    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params,  "move.png")
     
     # plot color
     total_col_val_counter, pred_col_val_counter, possible_col_vals = calculate(coherency[1,:], chose_right, cond_col_ind)
-    custom_plot(possible_col_vals, pred_col_val_counter, total_col_val_counter, path, params, "color.pdf")
+    custom_plot(possible_col_vals, pred_col_val_counter, total_col_val_counter, path, params, "color.png")
 
 
     total_move_val_counter, pred_move_val_counter, possible_move_vals = calculate(coherency[1,:], chose_right, cond_motion_ind)
-    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params, "move2.pdf")
+    custom_plot(possible_move_vals, pred_move_val_counter, total_move_val_counter, path, params, "move2.png")
 
 
     total_col_val_counter, pred_col_val_counter, possible_col_vals = calculate(coherency[0,:], chose_right, cond_col_ind)
-    custom_plot(possible_col_vals, pred_col_val_counter, total_col_val_counter, path, params, "color2.pdf")
+    custom_plot(possible_col_vals, pred_col_val_counter, total_col_val_counter, path, params, "color2.png")
 
+
+    
 
  
     

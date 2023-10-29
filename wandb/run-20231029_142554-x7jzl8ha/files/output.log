@@ -1,0 +1,22 @@
+  0%|                                                                                                                                                                                              | 0/1000 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 63, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 91, in fit
+    out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 161, in step
+    out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_rnn_ext1.py", line 10, in compute_loss
+    out, h_1 = self.model(inputs, h_1)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 26, in forward
+    out, h_1 = self.rnn(x, h_1) if h_1 != None else self.rnn(x)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\rnn.py", line 509, in forward
+    result = _VF.rnn_tanh(input, hx, self._flat_weights, self.bias, self.num_layers,
+RuntimeError: Expected sequence length to be larger than 0 in RNN
+Using device: cpu

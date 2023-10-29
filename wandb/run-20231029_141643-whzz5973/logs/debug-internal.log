@@ -1,0 +1,170 @@
+2023-10-29 14:16:43,380 INFO    StreamThr :3044 [internal.py:wandb_internal():86] W&B internal server running at pid: 3044, started at: 2023-10-29 14:16:43.380417
+2023-10-29 14:16:43,381 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: status
+2023-10-29 14:16:43,381 INFO    WriterThread:3044 [datastore.py:open_for_write():85] open: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\run-whzz5973.wandb
+2023-10-29 14:16:43,383 DEBUG   SenderThread:3044 [sender.py:send():375] send: header
+2023-10-29 14:16:43,504 DEBUG   SenderThread:3044 [sender.py:send():375] send: run
+2023-10-29 14:16:44,026 INFO    SenderThread:3044 [dir_watcher.py:__init__():219] watching files in: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files
+2023-10-29 14:16:44,026 INFO    SenderThread:3044 [sender.py:_start_run_threads():1124] run started: whzz5973 with start time 1698585403.380416
+2023-10-29 14:16:44,027 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: summary_record
+2023-10-29 14:16:44,027 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: check_version
+2023-10-29 14:16:44,027 INFO    SenderThread:3044 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-29 14:16:44,027 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: check_version
+2023-10-29 14:16:44,251 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: run_start
+2023-10-29 14:16:44,259 DEBUG   HandlerThread:3044 [system_info.py:__init__():31] System info init
+2023-10-29 14:16:44,259 DEBUG   HandlerThread:3044 [system_info.py:__init__():46] System info init done
+2023-10-29 14:16:44,259 INFO    HandlerThread:3044 [system_monitor.py:start():181] Starting system monitor
+2023-10-29 14:16:44,259 INFO    SystemMonitor:3044 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-10-29 14:16:44,259 INFO    HandlerThread:3044 [system_monitor.py:probe():201] Collecting system info
+2023-10-29 14:16:44,263 INFO    SystemMonitor:3044 [interfaces.py:start():190] Started cpu monitoring
+2023-10-29 14:16:44,266 DEBUG   HandlerThread:3044 [system_info.py:probe():195] Probing system
+2023-10-29 14:16:44,266 INFO    SystemMonitor:3044 [interfaces.py:start():190] Started disk monitoring
+2023-10-29 14:16:44,270 INFO    SystemMonitor:3044 [interfaces.py:start():190] Started memory monitoring
+2023-10-29 14:16:44,277 INFO    SystemMonitor:3044 [interfaces.py:start():190] Started network monitoring
+2023-10-29 14:16:44,277 DEBUG   HandlerThread:3044 [system_info.py:_probe_git():180] Probing git
+2023-10-29 14:16:44,317 DEBUG   HandlerThread:3044 [system_info.py:_probe_git():188] Probing git done
+2023-10-29 14:16:44,317 DEBUG   HandlerThread:3044 [system_info.py:probe():240] Probing system done
+2023-10-29 14:16:44,317 DEBUG   HandlerThread:3044 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.11', 'heartbeatAt': '2023-10-29T13:16:44.266258', 'startedAt': '2023-10-29T13:16:43.375417', 'docker': None, 'cuda': None, 'args': ('--config', 'rnn.yaml'), 'state': 'running', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/t0b14/Semester_project_Tobia_Simmler_rnn.git', 'commit': '36cbddb76d8de18999896b8e3a3cb41bd1d44641'}, 'email': 'simmlert@student.ethz.ch', 'root': 'C:/Users/tobia/Documents/GitHub/RNN_Tobia_Simmler', 'host': 'Aibot', 'username': 'tobia', 'executable': 'C:\\Users\\tobia\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3701.0, 'min': 0.0, 'max': 3701.0}, 'cpu_freq_per_core': [{'current': 3701.0, 'min': 0.0, 'max': 3701.0}], 'disk': {'total': 1417.9636306762695, 'used': 1287.4495849609375}, 'memory': {'total': 63.13705825805664}}
+2023-10-29 14:16:44,317 INFO    HandlerThread:3044 [system_monitor.py:probe():211] Finished collecting system info
+2023-10-29 14:16:44,317 INFO    HandlerThread:3044 [system_monitor.py:probe():214] Publishing system info
+2023-10-29 14:16:44,317 DEBUG   HandlerThread:3044 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-10-29 14:16:44,317 DEBUG   HandlerThread:3044 [system_info.py:_save_pip():67] Saving pip packages done
+2023-10-29 14:16:44,318 INFO    HandlerThread:3044 [system_monitor.py:probe():216] Finished publishing system info
+2023-10-29 14:16:44,323 DEBUG   SenderThread:3044 [sender.py:send():375] send: files
+2023-10-29 14:16:44,323 INFO    SenderThread:3044 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-10-29 14:16:44,327 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: stop_status
+2023-10-29 14:16:44,327 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: stop_status
+2023-10-29 14:16:44,507 DEBUG   SenderThread:3044 [sender.py:send():375] send: telemetry
+2023-10-29 14:16:44,621 DEBUG   SenderThread:3044 [sender.py:send():375] send: exit
+2023-10-29 14:16:44,621 INFO    SenderThread:3044 [sender.py:send_exit():598] handling exit code: 1
+2023-10-29 14:16:44,621 INFO    SenderThread:3044 [sender.py:send_exit():600] handling runtime: 0
+2023-10-29 14:16:44,621 INFO    SenderThread:3044 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-29 14:16:44,622 INFO    SenderThread:3044 [sender.py:send_exit():606] send defer
+2023-10-29 14:16:44,622 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,622 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 0
+2023-10-29 14:16:44,622 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,622 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-10-29 14:16:44,622 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 1
+2023-10-29 14:16:44,622 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,622 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 1
+2023-10-29 14:16:44,622 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,622 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-10-29 14:16:44,622 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 2
+2023-10-29 14:16:44,622 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,622 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 2
+2023-10-29 14:16:44,622 INFO    HandlerThread:3044 [system_monitor.py:finish():190] Stopping system monitor
+2023-10-29 14:16:44,623 INFO    HandlerThread:3044 [interfaces.py:finish():202] Joined cpu monitor
+2023-10-29 14:16:44,623 DEBUG   SystemMonitor:3044 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-10-29 14:16:44,623 INFO    HandlerThread:3044 [interfaces.py:finish():202] Joined disk monitor
+2023-10-29 14:16:44,623 DEBUG   SystemMonitor:3044 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-10-29 14:16:44,623 INFO    HandlerThread:3044 [interfaces.py:finish():202] Joined memory monitor
+2023-10-29 14:16:44,623 DEBUG   SystemMonitor:3044 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-10-29 14:16:44,623 INFO    HandlerThread:3044 [interfaces.py:finish():202] Joined network monitor
+2023-10-29 14:16:44,624 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,624 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-10-29 14:16:44,624 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 3
+2023-10-29 14:16:44,624 DEBUG   SenderThread:3044 [sender.py:send():375] send: stats
+2023-10-29 14:16:44,624 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,624 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 3
+2023-10-29 14:16:44,624 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,624 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-10-29 14:16:44,625 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 4
+2023-10-29 14:16:44,625 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,625 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 4
+2023-10-29 14:16:44,625 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,625 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-10-29 14:16:44,625 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 5
+2023-10-29 14:16:44,625 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,625 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 5
+2023-10-29 14:16:44,625 DEBUG   SenderThread:3044 [sender.py:send():375] send: summary
+2023-10-29 14:16:44,626 INFO    SenderThread:3044 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-29 14:16:44,626 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,626 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-10-29 14:16:44,626 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 6
+2023-10-29 14:16:44,626 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,626 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 6
+2023-10-29 14:16:44,626 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,626 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-10-29 14:16:44,628 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: status_report
+2023-10-29 14:16:44,869 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 7
+2023-10-29 14:16:44,869 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:44,869 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 7
+2023-10-29 14:16:44,869 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:44,869 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-10-29 14:16:45,036 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\config.yaml
+2023-10-29 14:16:45,037 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\output.log
+2023-10-29 14:16:45,037 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\wandb-metadata.json
+2023-10-29 14:16:45,037 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\requirements.txt
+2023-10-29 14:16:45,037 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\wandb-summary.json
+2023-10-29 14:16:45,194 INFO    wandb-upload_0:3044 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmposz7uw1zwandb\g5tept1o-wandb-metadata.json
+2023-10-29 14:16:45,637 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-29 14:16:47,058 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\output.log
+2023-10-29 14:16:48,548 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 8
+2023-10-29 14:16:48,548 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: poll_exit
+2023-10-29 14:16:48,548 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:48,548 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 8
+2023-10-29 14:16:48,549 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:48,549 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-10-29 14:16:48,562 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 9
+2023-10-29 14:16:48,562 DEBUG   SenderThread:3044 [sender.py:send():375] send: artifact
+2023-10-29 14:16:48,562 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:48,563 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 9
+2023-10-29 14:16:49,085 INFO    Thread-16 :3044 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\output.log
+2023-10-29 14:16:49,504 INFO    SenderThread:3044 [sender.py:send_artifact():1474] sent artifact job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py - {'id': 'QXJ0aWZhY3Q6NjIxMDQzNjY4', 'digest': '07c59351388140934be69cf75cd4af3d', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py', 'alias': 'v2'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwOTkyMjMyMg==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NjIxMDc1MjA4', 'versionIndex': 7}}, 'version': 'v2'}
+2023-10-29 14:16:49,504 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:49,504 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-10-29 14:16:49,504 INFO    SenderThread:3044 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-10-29 14:16:50,093 INFO    SenderThread:3044 [dir_watcher.py:finish():395] scan: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files
+2023-10-29 14:16:50,093 INFO    SenderThread:3044 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\config.yaml config.yaml
+2023-10-29 14:16:50,093 INFO    SenderThread:3044 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\output.log output.log
+2023-10-29 14:16:50,094 INFO    SenderThread:3044 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\requirements.txt requirements.txt
+2023-10-29 14:16:50,095 INFO    SenderThread:3044 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\wandb-metadata.json wandb-metadata.json
+2023-10-29 14:16:50,095 INFO    SenderThread:3044 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\wandb-summary.json wandb-summary.json
+2023-10-29 14:16:50,097 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 10
+2023-10-29 14:16:50,098 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:50,098 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 10
+2023-10-29 14:16:50,099 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:50,099 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-10-29 14:16:50,099 INFO    SenderThread:3044 [file_pusher.py:finish():167] shutting down file pusher
+2023-10-29 14:16:50,678 INFO    wandb-upload_0:3044 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\config.yaml
+2023-10-29 14:16:50,694 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: keepalive
+2023-10-29 14:16:50,892 INFO    wandb-upload_1:3044 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\output.log
+2023-10-29 14:16:50,963 INFO    wandb-upload_2:3044 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\requirements.txt
+2023-10-29 14:16:51,031 INFO    wandb-upload_3:3044 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\files\wandb-summary.json
+2023-10-29 14:16:51,246 INFO    Thread-15 (_thread_body):3044 [sender.py:transition_state():626] send defer: 11
+2023-10-29 14:16:51,246 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:51,246 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 11
+2023-10-29 14:16:51,246 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:51,246 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-10-29 14:16:51,246 INFO    SenderThread:3044 [file_pusher.py:join():172] waiting for file pusher
+2023-10-29 14:16:51,247 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 12
+2023-10-29 14:16:51,247 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:51,247 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 12
+2023-10-29 14:16:51,247 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:51,247 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-10-29 14:16:51,440 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 13
+2023-10-29 14:16:51,440 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:51,440 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 13
+2023-10-29 14:16:51,440 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:51,440 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-10-29 14:16:51,440 INFO    SenderThread:3044 [sender.py:transition_state():626] send defer: 14
+2023-10-29 14:16:51,441 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: defer
+2023-10-29 14:16:51,441 DEBUG   SenderThread:3044 [sender.py:send():375] send: final
+2023-10-29 14:16:51,441 INFO    HandlerThread:3044 [handler.py:handle_request_defer():170] handle defer: 14
+2023-10-29 14:16:51,441 DEBUG   SenderThread:3044 [sender.py:send():375] send: footer
+2023-10-29 14:16:51,441 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: defer
+2023-10-29 14:16:51,441 INFO    SenderThread:3044 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-10-29 14:16:51,441 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: poll_exit
+2023-10-29 14:16:51,441 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: server_info
+2023-10-29 14:16:51,441 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: get_summary
+2023-10-29 14:16:51,441 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: poll_exit
+2023-10-29 14:16:51,441 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: sampled_history
+2023-10-29 14:16:51,441 DEBUG   SenderThread:3044 [sender.py:send_request():402] send_request: server_info
+2023-10-29 14:16:51,608 INFO    MainThread:3044 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-10-29 14:16:51,608 INFO    MainThread:3044 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-10-29 14:16:51,608 INFO    MainThread:3044 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2023-10-29 14:16:51,608 DEBUG   HandlerThread:3044 [handler.py:handle_request():144] handle_request: shutdown
+2023-10-29 14:16:51,608 INFO    HandlerThread:3044 [handler.py:finish():842] shutting down handler
+2023-10-29 14:16:52,451 INFO    WriterThread:3044 [datastore.py:close():298] close: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231029_141643-whzz5973\run-whzz5973.wandb
+2023-10-29 14:16:52,609 INFO    SenderThread:3044 [sender.py:finish():1550] shutting down sender
+2023-10-29 14:16:52,609 INFO    SenderThread:3044 [file_pusher.py:finish():167] shutting down file pusher
+2023-10-29 14:16:52,609 INFO    SenderThread:3044 [file_pusher.py:join():172] waiting for file pusher

@@ -1,0 +1,23 @@
+Using device: cpu
+-------------------------- io\output\rnn1\histograms\histogram_w_in_1.png
+-------------------------- io\output\rnn1\histograms\histogram_w_rr_1.png
+-------------------------- io\output\rnn1\histograms\histogram_w_out_1.png
+  0%|                                                                                                                                                                                                | 0/10 [00:00<?, ?it/s]
+
+Epoch[4/10], Loss: 3851.6556:  40%|█████████████████████████████████████████████████████████████▌                                                                                            | 4/10 [00:04<00:07,  1.22s/it]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 63, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 95, in fit
+    out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 170, in step
+    loss.backward()
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\autograd\__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+-------------------------- io\output\rnn1\histograms\histogram_w_rr_4.png
+-------------------------- io\output\rnn1\histograms\histogram_w_out_4.png

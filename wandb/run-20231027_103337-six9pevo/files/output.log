@@ -1,0 +1,26 @@
+  0%|                                                                                                                                                                                              | 0/1000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 63, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 89, in fit
+    out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 159, in step
+    out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_rnn_ext1.py", line 10, in compute_loss
+    out, h_1 = self.model(inputs, h_1)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 34, in forward
+    out, h_1 = self.rnn(out, h_1) if h_1 != None else self.rnn(x)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\rnn.py", line 505, in forward
+    self.check_forward_args(input, hx, batch_sizes)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\rnn.py", line 253, in check_forward_args
+    self.check_input(input, batch_sizes)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\rnn.py", line 218, in check_input
+    raise RuntimeError(
+RuntimeError: input.size(-1) must be equal to input_size. Expected 100, got 4
+Using device: cpu

@@ -1,0 +1,15 @@
+
+Using device: cpu
+  0%|                                                                                                                                                                                                | 0/10 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 63, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 77, in fit
+    self.create_weights_histogram(cur_epoch, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 269, in create_weights_histogram
+    self.save_weight_histogram(w_in, "w_in", cur_epoch + 1, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 275, in save_weight_histogram
+    plt.hist(weights.view(-1), bins=50)
+TypeError: Cannot interpret '-1' as a data type

@@ -1,0 +1,14 @@
+  0%|                                                                                                                                                                                                | 0/10 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 63, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 77, in fit
+    self.create_weights_histogram(cur_epoch, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 269, in create_weights_histogram
+    self.save_weight_histogram(w_in, "w_in", cur_epoch + 1, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 276, in save_weight_histogram
+    ax.title("%s Histogram at %0.0f epoch of %0.0f total epochs"%(name, cur_epoch, num_epochs))
+TypeError: 'Text' object is not callable
+Using device: cpu

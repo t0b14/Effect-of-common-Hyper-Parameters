@@ -1,0 +1,1 @@
+{"img": {"_type": "images/separated", "width": 640, "height": 480, "format": "png", "count": 1, "filenames": ["media/images/img_17_70a3feabc675603eaa88.png"], "captions": ["plot_name"]}, "_timestamp": 1698585601.836906, "_runtime": 9.170964002609253, "_step": 18, "loss": 33891.48022270203, "_wandb": {"runtime": 8}}

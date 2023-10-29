@@ -13,7 +13,7 @@ def init_wandb(config):
         # set the wandb project where this run will be logged
         project=config["title"],
         
-        name="apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
+        name= config["title"],#"apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
 
         # track hyperparameters and run metadata
         config={

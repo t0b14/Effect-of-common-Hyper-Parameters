@@ -20,6 +20,7 @@ class ABCTrainingModule(ABC):
         self.batch_size = params.get("batch_size", 16)
         self.epoch = 0
         self.use_wandb = config["options"]["use_wandb"]
+        self.make_gradients_plot = config["options"]["make_gradients_plot"]
 
         self.total_seq_length = params["total_seq_length"]
         self.n_intervals = int(params["total_seq_length"] / params["seq_length"])
@@ -34,6 +35,10 @@ class ABCTrainingModule(ABC):
         self.clip_percentage = 0
         self.firsthistogram = True
         self.max_grad_norm = 20.
+
+        self.make_weights_histograms = config["options"]["make_weights_histograms"]
+        self.n_weight_histograms = 4
+        self.cur_weight_hist = 0
 
         # Load dataset
         # (input_shape, n_timesteps, n_trials)
@@ -51,13 +56,16 @@ class ABCTrainingModule(ABC):
         self.output_path = Path(params["output_path"])
         self.output_path.mkdir(parents=True, exist_ok=True)
 
+        # Setup output directory
+        self.output_path_plots = Path(params["output_path_plots"])
+        self.output_path_plots.mkdir(parents=True, exist_ok=True)
+
         self.device = torch.device("cpu")
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
 
         print("Using device:", self.device)
         self.model.to(self.device)
-
 
     def fit(self, num_epochs: int = 100):
         self.model.train()
@@ -66,13 +74,11 @@ class ABCTrainingModule(ABC):
             self.epoch = cur_epoch
             running_loss = 0.0
             gradients = [] # for gradient clipping
-            
-            # Help train initially by gradually increasing the seq_length
-            if(self.training_help > cur_epoch):
-                seq_l = int(self.seq_length / self.training_help * cur_epoch)
-            else:
-                seq_l = self.seq_length
 
+            seq_l = self.train_help(cur_epoch)
+
+            if(self.make_weights_histograms):
+                self.create_weights_histogram(cur_epoch, num_epochs)
 
             # splitting up training https://medium.com/mindboard/training-recurrent-neural-networks-on-long-sequences-b7a3f2079d49
             for i, (inputs, targets) in enumerate(self.train_dataloader):
@@ -178,7 +184,7 @@ class ABCTrainingModule(ABC):
                         if param.grad is not None:
                             gradients.append(param.grad.view(-1).detach().cpu().numpy())
                     gradients = np.concatenate(gradients)
-                    if self.use_wandb:
+                    if self.use_wandb and self.make_gradients_plot:
                         wandb.log({"max_grad_norm": self.max_grad_norm})
                     
                         plt.hist(gradients, bins=100, log=True) 
@@ -186,9 +192,11 @@ class ABCTrainingModule(ABC):
                         plt.xlabel("Gradient Value")
                         plt.ylabel("Frequency (log scale)")  
                         plt.xlim(gradients.min(), gradients.max()) 
-                        plt.savefig(self.output_path / "histogram.png")
+                        plt.savefig(self.output_path_plots  / "histogram_gradient.png")
                         if self.use_wandb:
-                            wandb.log({"histogram": plt})
+                            plot_name = "histogram_%s"%"gradient"
+                            im = plt.imread(self.output_path_plots  / "histogram_gradient.png")
+                            wandb.log({"hist_gradient": [wandb.Image(im, caption=plot_name)]})
                         plt.close()
                         plt.show()
                         self.firsthistogram = False
@@ -230,7 +238,7 @@ class ABCTrainingModule(ABC):
         self.model.load_state_dict(
             torch.load(self.output_path / f"{model_tag}_model.pt")
         )
-        return self.output_path
+        return self.output_path_plots
 
     def output_whole_dataset(self):
         whole_pred = None
@@ -252,6 +260,38 @@ class ABCTrainingModule(ABC):
 
         return whole_pred, whole_tar
 
+    def train_help(self,cur_epoch):
+        # Help train initially by gradually increasing the seq_length
+        if(self.training_help > cur_epoch):
+            seq_l = int(self.seq_length / self.training_help * (cur_epoch+1))
+        else:
+            seq_l = self.seq_length
+        return seq_l
+    
+    def create_weights_histogram(self, cur_epoch, num_epochs):
+        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_weight_hist):
+            self.cur_weight_hist += 1
+            w_in, w_rr, w_out = self.model.get_weight_matrices()
+            self.save_weight_histogram(w_in, "w_in", cur_epoch + 1, num_epochs)
+            self.save_weight_histogram(w_rr, "w_rr", cur_epoch + 1, num_epochs)
+            self.save_weight_histogram(w_out, "w_out", cur_epoch + 1, num_epochs)
+       
+    def save_weight_histogram(self, weights, name, cur_epoch, num_epochs):
+        plt.hist(weights, bins=50) 
+        plt.title("%s Histogram at epoch %0.0f of %0.0f total epochs"%(name, cur_epoch, num_epochs))
+        plt.xlabel("weight size")
+        plt.ylabel("Frequency")  
+        plt.xlim(min(-1,weights.min()), max(1,weights.max())) 
+        filepath_name = "histogram_%s_%0.0f.png"%(name,cur_epoch)
+        plt.savefig(self.output_path_plots  / filepath_name)
+        if self.use_wandb:
+            plot_name = "histogram_%s_%0.0f"%(name,cur_epoch)
+            im = plt.imread(self.output_path_plots  / filepath_name)
+            wandb.log({"img_%s"%name: [wandb.Image(im, caption=plot_name)]})
+        plt.close()
+        plt.show()
+
+            
     @abstractmethod
     def compute_loss(self, inputs, labels):
         """Returns loss"""

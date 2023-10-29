@@ -8,7 +8,7 @@ experiment:
     use_wandb: 1
     make_weights_histograms: 1
     make_gradients_plot: 1
-    make_hidden_layer_plot: 1
+    make_hidden_state_plot: 1
 
   model:
     network_name: rnn
@@ -18,7 +18,7 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 10
+    n_epochs: 10000
     batch_size: 16
     total_seq_length: 1400
     seq_length: 200
@@ -36,7 +36,7 @@ experiment:
     lr: 0.001
     betas: [0.9, 0.999]
     eps: 1.e-7
-    weight_decay: 1.e-4
+    weight_decay: 1.e-5
     amsgrad: false
     momentum: 0.9
     apply_gradient_clipping: 1

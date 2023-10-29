@@ -40,6 +40,10 @@ class ABCTrainingModule(ABC):
         self.n_weight_histograms = 4
         self.cur_weight_hist = 0
 
+        self.make_hidden_state_plot = config["options"]["make_hidden_state_plot"]
+        self.n_hidden_state_histograms = 3
+        self.cur_hidden_state_hist = 0
+
         # Load dataset
         # (input_shape, n_timesteps, n_trials)
         self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(params)
@@ -79,6 +83,8 @@ class ABCTrainingModule(ABC):
 
             if(self.make_weights_histograms):
                 self.create_weights_histogram(cur_epoch, num_epochs)
+            if(self.make_hidden_state_plot):
+                self.create_hidden_state_plot(cur_epoch, num_epochs)
 
             # splitting up training https://medium.com/mindboard/training-recurrent-neural-networks-on-long-sequences-b7a3f2079d49
             for i, (inputs, targets) in enumerate(self.train_dataloader):
@@ -115,7 +121,7 @@ class ABCTrainingModule(ABC):
 
         self.save_history_coherency_conditionIds(train_loss_history)
 
-        self.save_model("last") # TODO expand saving capabilities
+        self.save_model("last") 
 
     def test(self, model_tag="last"):
         """Test the model and save the results"""
@@ -269,12 +275,25 @@ class ABCTrainingModule(ABC):
         return seq_l
     
     def create_weights_histogram(self, cur_epoch, num_epochs):
-        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_weight_hist):
-            self.cur_weight_hist += 1
-            w_in, w_rr, w_out = self.model.get_weight_matrices()
-            self.save_weight_histogram(w_in, "w_in", cur_epoch + 1, num_epochs)
-            self.save_weight_histogram(w_rr, "w_rr", cur_epoch + 1, num_epochs)
-            self.save_weight_histogram(w_out, "w_out", cur_epoch + 1, num_epochs)
+        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_hidden_state_hist):
+            self.cur_hidden_state_hist += 1
+            start_h_1_container = torch.empty(0)
+            mid_h_1_container = torch.empty(0)
+            end_h_1_container = torch.empty(0)
+            for i, (inputs, _) in enumerate(self.train_dataloader):
+                all_h_1, _ = self.model.forward(inputs)
+                start_h_1 = all_h_1[:,0,:].view(-1)
+                mid_h_1 = all_h_1[:,700,:].view(-1)
+                end_h_1 = all_h_1[:,-1,:].view(-1)
+
+                start_h_1_container = torch.concat((start_h_1_container,start_h_1))
+                mid_h_1_container = torch.concat((mid_h_1_container,mid_h_1))
+                end_h_1_container = torch.concat((end_h_1_container,end_h_1))
+
+
+            self.save_weight_histogram(start_h_1_container.view(-1).detach().numpy(), "t_1_hidden_state", cur_epoch + 1, num_epochs)
+            self.save_weight_histogram(mid_h_1_container.view(-1).detach().numpy(), "t_700_hidden_state", cur_epoch + 1, num_epochs)
+            self.save_weight_histogram(end_h_1_container.view(-1).detach().numpy(), "t_1400_hidden_state", cur_epoch + 1, num_epochs)
        
     def save_weight_histogram(self, weights, name, cur_epoch, num_epochs):
         plt.hist(weights, bins=50) 
@@ -291,7 +310,9 @@ class ABCTrainingModule(ABC):
         plt.close()
         plt.show()
 
-            
+    def create_hidden_state_plot(self, cur_epoch, num_epochs):
+        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_hidden_state_histograms-1) * self.cur_weight_hist):
+            self.cur_weight_hist += 1
     @abstractmethod
     def compute_loss(self, inputs, labels):
         """Returns loss"""

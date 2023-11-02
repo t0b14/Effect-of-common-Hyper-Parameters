@@ -1,7 +1,7 @@
 experiment:
   title: Single-Layer RNN
   options:
-    run_name: "test_weights_histo"
+    run_name: "Noise_level_runs_no_noise"
     train_n_test: 1
     visualize: 1
     show_plot: 0
@@ -18,21 +18,21 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 10000
+    n_epochs: 2500
     batch_size: 16
     total_seq_length: 1400
-    seq_length: 200
+    seq_length: 350
     training_help: 20 # 0 to n_epochs (iterations)
     hidden_dims: 100
     n_trials: 5
-    with_inputnoise: 1
+    with_inputnoise: 0
     noise_level: 1 # number from 1 to 10; requires with_inputnoise; 0.15 * noiselevel
     coherency_intervals: "uniform" # "original" or "uniform"
     output_path: ./io/output/rnn1
     output_path_plots: ./io/output/rnn1/histograms_and_plots
 
   optimizer:
-    optimizer_name: adam
+    optimizer_name: SGD
     lr: 0.001
     betas: [0.9, 0.999]
     eps: 1.e-7

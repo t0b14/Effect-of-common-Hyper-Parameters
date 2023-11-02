@@ -47,7 +47,7 @@ class InputGeneratorCtxt(object):
         # noise settings
         input_noise = 0
         if with_inputnoise:
-            input_noise = 31.6228 * np.sqrt(self.dt) * (self.noiseLevel * 0.15)
+            input_noise = 31.6228 * np.sqrt(self.dt) * (self.noiseLevel * 0.1)
         noiseSigma = input_noise
 
         # generate inputs/targets

@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.10.11",
+    "heartbeatAt": "2023-10-30T08:20:12.975599",
+    "startedAt": "2023-10-30T08:20:12.031451",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--config",
+        "rnn.yaml"
+    ],
+    "state": "running",
+    "program": "C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/t0b14/Semester_project_Tobia_Simmler_rnn.git",
+        "commit": "b97d2bf588febd717bbec13391aa29cfe3f15bf3"
+    },
+    "email": "simmlert@student.ethz.ch",
+    "root": "C:/Users/tobia/Documents/GitHub/RNN_Tobia_Simmler",
+    "host": "Aibot",
+    "username": "tobia",
+    "executable": "C:\\Users\\tobia\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 12,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 3701.0,
+        "min": 0.0,
+        "max": 3701.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3701.0,
+            "min": 0.0,
+            "max": 3701.0
+        }
+    ],
+    "disk": {
+        "total": 1417.9636306762695,
+        "used": 1287.340129852295
+    },
+    "memory": {
+        "total": 63.13705825805664
+    }
+}

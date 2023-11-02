@@ -13,7 +13,7 @@ def init_wandb(config):
         # set the wandb project where this run will be logged
         project=config["title"],
         
-        name= config["title"],#"apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
+        name= str(config["training"]["noise_level"]),#config["title"],"apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
 
         # track hyperparameters and run metadata
         config={
@@ -41,10 +41,9 @@ def init_wandb(config):
 # setup and run 
 def run(config):
 
-    
-    #for i in range(2):
-    #    config["optimizer"]["apply_gradient_clipping"] = i
-    
+    #for i in range(1,11):
+    #    config["training"]["noise_level"] = i
+
     params = config["model"]
 
     if config["options"]["use_wandb"]:
@@ -57,13 +56,13 @@ def run(config):
     optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
     tm = RNNTrainingModule1(model, optimizer, config)
-    
+
     if config["options"]["train_n_test"]:
         #train
         tm.fit(num_epochs=config["training"]["n_epochs"])
         #test
         tm.test()
-    
+
     if config["options"]["visualize"]:
         plot_h(tm, config["options"])
 

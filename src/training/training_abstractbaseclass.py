@@ -275,27 +275,14 @@ class ABCTrainingModule(ABC):
         return seq_l
     
     def create_weights_histogram(self, cur_epoch, num_epochs):
-        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_hidden_state_hist):
-            self.cur_hidden_state_hist += 1
-            start_h_1_container = torch.empty(0)
-            mid_h_1_container = torch.empty(0)
-            end_h_1_container = torch.empty(0)
-            for i, (inputs, _) in enumerate(self.train_dataloader):
-                all_h_1, _ = self.model.forward(inputs)
-                start_h_1 = all_h_1[:,0,:].view(-1)
-                mid_h_1 = all_h_1[:,700,:].view(-1)
-                end_h_1 = all_h_1[:,-1,:].view(-1)
-
-                start_h_1_container = torch.concat((start_h_1_container,start_h_1))
-                mid_h_1_container = torch.concat((mid_h_1_container,mid_h_1))
-                end_h_1_container = torch.concat((end_h_1_container,end_h_1))
-
-
-            self.save_weight_histogram(start_h_1_container.view(-1).detach().numpy(), "t_1_hidden_state", cur_epoch + 1, num_epochs)
-            self.save_weight_histogram(mid_h_1_container.view(-1).detach().numpy(), "t_700_hidden_state", cur_epoch + 1, num_epochs)
-            self.save_weight_histogram(end_h_1_container.view(-1).detach().numpy(), "t_1400_hidden_state", cur_epoch + 1, num_epochs)
+        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_weight_hist):
+            self.cur_weight_hist += 1
+            w_in, w_rr, w_out = self.model.get_weight_matrices()
+            self.save_histogram(w_in, "w_in", cur_epoch + 1, num_epochs)
+            self.save_histogram(w_rr, "w_rr", cur_epoch + 1, num_epochs)
+            self.save_histogram(w_out, "w_out", cur_epoch + 1, num_epochs)
        
-    def save_weight_histogram(self, weights, name, cur_epoch, num_epochs):
+    def save_histogram(self, weights, name, cur_epoch, num_epochs):
         plt.hist(weights, bins=50) 
         plt.title("%s Histogram at epoch %0.0f of %0.0f total epochs"%(name, cur_epoch, num_epochs))
         plt.xlabel("weight size")
@@ -311,8 +298,25 @@ class ABCTrainingModule(ABC):
         plt.show()
 
     def create_hidden_state_plot(self, cur_epoch, num_epochs):
-        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_hidden_state_histograms-1) * self.cur_weight_hist):
-            self.cur_weight_hist += 1
+        if(1. * (cur_epoch+1) / num_epochs >= 1. / (self.n_weight_histograms-1) * self.cur_hidden_state_hist):
+            self.cur_hidden_state_hist += 1
+            start_h_1_container = torch.empty(0)
+            mid_h_1_container = torch.empty(0)
+            end_h_1_container = torch.empty(0)
+            for i, (inputs, _) in enumerate(self.train_dataloader):
+                all_h_1, _ = self.model.forward(inputs)
+                start_h_1 = all_h_1[:,0,:].view(-1)
+                mid_h_1 = all_h_1[:,700,:].view(-1)
+                end_h_1 = all_h_1[:,-1,:].view(-1)
+
+                start_h_1_container = torch.concat((start_h_1_container,start_h_1))
+                mid_h_1_container = torch.concat((mid_h_1_container,mid_h_1))
+                end_h_1_container = torch.concat((end_h_1_container,end_h_1))
+
+            self.save_histogram(start_h_1_container.view(-1).detach().numpy(), "t_1_hidden_state", cur_epoch + 1, num_epochs)
+            self.save_histogram(mid_h_1_container.view(-1).detach().numpy(), "t_700_hidden_state", cur_epoch + 1, num_epochs)
+            self.save_histogram(end_h_1_container.view(-1).detach().numpy(), "t_1400_hidden_state", cur_epoch + 1, num_epochs)
+
     @abstractmethod
     def compute_loss(self, inputs, labels):
         """Returns loss"""

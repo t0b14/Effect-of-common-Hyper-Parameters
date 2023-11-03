@@ -99,6 +99,7 @@ class ABCTrainingModule(ABC):
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
 
                     out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
+                    
                     h_1 = h_1.detach()
 
                     running_loss += loss

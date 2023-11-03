@@ -5,7 +5,7 @@ experiment:
     train_n_test: 1
     visualize: 1
     show_plot: 0
-    use_wandb: 1
+    use_wandb: 0
     make_weights_histograms: 1
     make_gradients_plot: 1
     make_hidden_state_plot: 1
@@ -18,11 +18,11 @@ experiment:
   
   training:
     dataset_name: ctxt
-    n_epochs: 2500
+    n_epochs: 25
     batch_size: 16
     total_seq_length: 1400
     seq_length: 350
-    training_help: 20 # 0 to n_epochs (iterations)
+    training_help: 0 # 0 to n_epochs (iterations)
     hidden_dims: 100
     n_trials: 5
     with_inputnoise: 0

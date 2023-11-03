@@ -18,5 +18,6 @@ def optimizer_creator(weights, params):
             lr=float(params["lr"]), 
             momentum=params["momentum"]
             )
+    # TODO: https://pytorch.org/docs/stable/generated/torch.optim.Adagrad.html
     else:
         raise ValueError("Invalid optimizer name")

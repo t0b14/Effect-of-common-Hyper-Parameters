@@ -36,35 +36,40 @@ def init_wandb(config):
             "amsgrad": opt_params["amsgrad"],
             "momentum": opt_params["momentum"],
             "apply_gradient_clipping": opt_params["apply_gradient_clipping"],
+            "tau": config["model"]["tau"],
         }
     )
 # setup and run 
 def run(config):
 
-    #for i in range(1,11):
-    #    config["training"]["noise_level"] = i
+    for tau in [2.,5.,10.,25.]:
+        print(tau)
+        config["model"]["tau"] = tau
 
-    params = config["model"]
+        params = config["model"]
 
-    if config["options"]["use_wandb"]:
-        init_wandb(config)
+        if config["options"]["use_wandb"]:
+            init_wandb(config)
 
-    model = cRNN(input_s=params["in_dim"],
-                output_s=params["out_dim"],
-                hidden_s=params["hidden_dims"],)
+        model = cRNN(
+                    config["model"],
+                    input_s=params["in_dim"],
+                    output_s=params["out_dim"],
+                    hidden_s=params["hidden_dims"],
+                    )
 
-    optimizer = optimizer_creator(model.parameters(), config["optimizer"])
+        optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
-    tm = RNNTrainingModule1(model, optimizer, config)
+        tm = RNNTrainingModule1(model, optimizer, config)
 
-    if config["options"]["train_n_test"]:
-        #train
-        tm.fit(num_epochs=config["training"]["n_epochs"])
-        #test
-        tm.test()
+        if config["options"]["train_n_test"]:
+            #train
+            tm.fit(num_epochs=config["training"]["n_epochs"])
+            #test
+            tm.test()
 
-    if config["options"]["visualize"]:
-        plot_h(tm, config["options"])
+        if config["options"]["visualize"]:
+            plot_h(tm, config["options"])
 
-    if config["options"]["use_wandb"]:
-        wandb.finish()
+        if config["options"]["use_wandb"]:
+            wandb.finish()

@@ -22,8 +22,10 @@ def optimizer_creator(weights, params):
         return optim.Adagrad(
             weights,
             lr=float(params["lr"]), 
-            lr_decay = params["lr_decay"],
+            lr_decay = 0,
+            weight_decay = 0,
+            initial_accumulator_value = 0,
+            eps = 1e-10
             )
-    # TODO: https://pytorch.org/docs/stable/generated/torch.optim.Adagrad.html
     else:
         raise ValueError("Invalid optimizer name")

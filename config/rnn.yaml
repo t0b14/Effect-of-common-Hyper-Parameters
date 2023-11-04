@@ -5,7 +5,7 @@ experiment:
     train_n_test: 1
     visualize: 1
     show_plot: 0
-    use_wandb: 0
+    use_wandb: 1
     make_weights_histograms: 1
     make_gradients_plot: 1
     make_hidden_state_plot: 1
@@ -15,6 +15,7 @@ experiment:
     in_dim: 4
     hidden_dims: 100
     out_dim: 1
+    tau: 10
   
   training:
     dataset_name: ctxt
@@ -37,7 +38,7 @@ experiment:
     betas: [0.9, 0.999]
     eps: 1.e-7
     lr_decay: 1.e-4
-    weight_decay: 1.e-5
+    weight_decay: 1.e-6
     amsgrad: false
     momentum: 0.9
     apply_gradient_clipping: 1

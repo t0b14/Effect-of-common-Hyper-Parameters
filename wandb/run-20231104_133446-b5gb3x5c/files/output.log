@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 54, in run
+    model = cRNN(
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 80, in __init__
+    self.rnn = RNNlayer(tau=params["tau"])
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\jit\_script.py", line 306, in init_then_script
+    ] = torch.jit._recursive.create_script_module(self, make_stubs, share_types=not added_methods_in_init)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\jit\_recursive.py", line 480, in create_script_module
+    return create_script_module_impl(nn_module, concrete_type, stubs_fn)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\jit\_recursive.py", line 546, in create_script_module_impl
+    create_methods_and_properties_from_stubs(concrete_type, method_stubs, property_stubs)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\jit\_recursive.py", line 397, in create_methods_and_properties_from_stubs
+    concrete_type._create_methods_and_properties(property_defs, property_rcbs, method_defs, method_rcbs, method_defaults)
+RuntimeError:
+Arguments for call are not valid.
+The following variants are available:
+  aten::eq.Tensor(Tensor self, Tensor other) -> Tensor:
+  Expected a value of type 'Tensor' for argument 'other' but instead found type 'NoneType'.
+  aten::eq.Scalar(Tensor self, Scalar other) -> Tensor:
+  Expected a value of type 'number' for argument 'other' but instead found type 'NoneType'.
+  aten::eq.Scalar_out(Tensor self, Scalar other, *, Tensor(a!) out) -> Tensor(a!):
+  Expected a value of type 'number' for argument 'other' but instead found type 'NoneType'.
+  aten::eq.Tensor_out(Tensor self, Tensor other, *, Tensor(a!) out) -> Tensor(a!):
+  Expected a value of type 'Tensor' for argument 'other' but instead found type 'NoneType'.
+  aten::eq.int_list(int[] a, int[] b) -> bool:
+  Expected a value of type 'List[int]' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.device(Device a, Device b) -> bool:
+  Expected a value of type 'Device' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.bool(bool a, bool b) -> bool:
+  Expected a value of type 'bool' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.enum(AnyEnumType a, AnyEnumType b) -> bool:
+  Expected a value of type 'AnyEnumType' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.int(int a, int b) -> bool:
+  Expected a value of type 'int' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.complex(complex a, complex b) -> bool:
+  Expected a value of type 'complex' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.float(float a, float b) -> bool:
+  Expected a value of type 'float' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.int_float(int a, float b) -> bool:
+  Expected a value of type 'float' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.float_int(float a, int b) -> bool:
+  Expected a value of type 'int' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.float_complex(float a, complex b) -> bool:
+  Expected a value of type 'complex' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.complex_float(complex a, float b) -> bool:
+  Expected a value of type 'float' for argument 'b' but instead found type 'NoneType'.
+  aten::eq(Scalar a, Scalar b) -> bool:
+  Expected a value of type 'number' for argument 'b' but instead found type 'NoneType'.
+  aten::eq.str(str a, str b) -> bool:
+  Expected a value of type 'str' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.float_list(float[] a, float[] b) -> bool:
+  Expected a value of type 'List[float]' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.Tensor_list(Tensor[] a, Tensor[] b) -> bool:
+  Expected a value of type 'List[Tensor]' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.bool_list(bool[] a, bool[] b) -> bool:
+  Expected a value of type 'List[bool]' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  aten::eq.str_list(str[] a, str[] b) -> bool:
+  Expected a value of type 'List[str]' for argument 'a' but instead found type 'Tensor (inferred)'.
+  Inferred the value for argument 'a' to be of type 'Tensor' because it was not annotated with an explicit type.
+  eq(float a, Tensor b) -> Tensor:
+  Expected a value of type 'Tensor' for argument 'b' but instead found type 'NoneType'.
+  eq(int a, Tensor b) -> Tensor:
+  Expected a value of type 'Tensor' for argument 'b' but instead found type 'NoneType'.
+  eq(complex a, Tensor b) -> Tensor:
+  Expected a value of type 'Tensor' for argument 'b' but instead found type 'NoneType'.
+The original call is:
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 30
+        out = torch.zeros((batch_size, timesteps, self.out_size))
+        if(h_0 == None):
+           ~~~~~~~~~~~ <--- HERE
+            h_0 = torch.zeros((batch_size, self.out_size))

@@ -1,5 +1,9 @@
 import torch.nn as nn
 import torch
+import cython
+from time import time
+import numpy as np
+import torch.multiprocessing as mp
 
 class RNNlayer(nn.Module):
     def __init__(self, input_size=4, hidden_size=100, bias=False, dt=1, tau = 10, noise_var = 0.1):
@@ -17,32 +21,54 @@ class RNNlayer(nn.Module):
         self.bias = bias
         self.bias_hidden = None
         if(self.bias):
-            self.bias_hidden = nn.Parameter(torch.Tensor(self.hidden_size))
-        
+            self.bias_hidden = nn.Parameter(torch.zeros(self.hidden_size))
+    
     def forward(self, x, h_0 = None):
+
         batch_size = x.shape[0]
         timesteps = x.shape[1] 
 
         out = torch.zeros((batch_size, timesteps, self.out_size))
 
         if(h_0 == None):
-            h_0 = torch.zeros((batch_size, self.out_size)) 
+            h_0 = torch.zeros((batch_size, self.out_size), dtype=torch.float)
         
+        # improves performance; commented version is correct
         sigma_all = torch.normal(torch.zeros((batch_size, timesteps, self.out_size)), torch.ones((batch_size, timesteps, self.out_size))*self.noise_var)# (16,time,100)
+        #sigma_all = torch.normal(torch.zeros((batch_size, self.out_size)), torch.ones((batch_size, self.out_size))*self.noise_var)
 
-        for t in range(timesteps-1):
-            sigma_t = sigma_all[:,t,:] 
+        w_input = torch.matmul(x, self.W_in) 
 
-            w_input = torch.mm(x[:,t,:], self.W_in) 
-            w_h = torch.mm(h_0, self.W_hidden) 
-            if self.bias:
-                h_0 = (1.0 - (self.dt / self.tau)) * out[:,t,:] + (self.dt / self.tau) * (w_input + w_h + self.bias_hidden + sigma_t)
-            else:
-                h_0 = (1.0 - (self.dt / self.tau)) * out[:,t,:] + (self.dt / self.tau) * (w_input + w_h + sigma_t)
+        c_1 = np.float32(1.0 - (self.dt / self.tau))
+        c_2 = np.float32(self.dt / self.tau) 
+        w_h = torch.mm(h_0, self.W_hidden)
 
-            out[:,t+1,:] = torch.tanh(h_0)
-        
+        if self.bias:
+            out, h_0 = self.compute_foward_with(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
+        else:
+            out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
+
         return out, h_0
+
+
+    def compute_foward_with(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps):
+        for t in range(timesteps-1):
+            w_h = torch.mm(h_0, self.W_hidden) 
+            #h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + self.bias_hidden + sigma_all[:,t,:])
+            h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + self.bias_hidden + sigma_all[:,t,:])
+            out[:,t+1,:] = torch.tanh(h_0)
+
+        return out, h_0
+
+    def compute_foward_no(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps): 
+        for t in range(timesteps-1):
+            w_h = torch.mm(h_0, self.W_hidden) 
+            #h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + sigma_all[:,t,:])
+            h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + sigma_all[:,t,:])
+            out[:,t+1,:] = torch.tanh(h_0)
+
+        return out, h_0
+
     
     def init_W_hidden(self, weights):
         rows = weights.shape[0]
@@ -57,12 +83,13 @@ class RNNlayer(nn.Module):
         cols = weights.shape[1]
 
         for i in range(rows):
-            idxs = torch.ceil( (cols - 1) * torch.rand( size=(cols, 1) ) ).to(torch.int).reshape(-1)
+            idxs = torch.ceil( (cols - 1) * torch.rand( size=(cols, ) ) ).to(torch.int)
             weights[i, idxs] = torch.randn(cols)
             n = torch.norm(weights[i, :], p=2)
             weights[i, idxs] = weights[i, idxs] / n
         
         return nn.Parameter(weights)
+
 
 class cRNN(nn.Module):
     def __init__(self, params, input_s=4, output_s=1, hidden_s=100, batch_first=True):

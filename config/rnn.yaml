@@ -15,14 +15,15 @@ experiment:
     in_dim: 4
     hidden_dims: 100
     out_dim: 1
-    tau: 10
+    tau: 10.
+    num_processes: 1
   
   training:
     dataset_name: ctxt
-    n_epochs: 100
+    n_epochs: 1000
     batch_size: 16
     total_seq_length: 1400
-    seq_length: 1400
+    seq_length: 100 # larger lengths won't fit well into cpu memory
     training_help: 0 # 0 to n_epochs (iterations)
     hidden_dims: 100
     n_trials: 5
@@ -41,6 +42,6 @@ experiment:
     weight_decay: 1.e-6
     amsgrad: false
     momentum: 0.9
-    apply_gradient_clipping: 1
+    apply_gradient_clipping: 0
 
   seed: 42

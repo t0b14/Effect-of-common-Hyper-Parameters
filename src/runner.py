@@ -42,7 +42,7 @@ def init_wandb(config):
 # setup and run 
 def run(config):
 
-    for tau in [2.,5.,10.,25.]:
+    for tau in [3.,6.,10.,15.,20.,35.]:
         print(tau)
         config["model"]["tau"] = tau
 

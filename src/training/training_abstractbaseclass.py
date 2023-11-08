@@ -10,6 +10,8 @@ import wandb
 from src.training.data import dataset_creator
 from src.constants import MODEL_DIR
 import matplotlib.pyplot as plt
+from time import time
+import torch.multiprocessing as mp
 
 # defines an abstract base class for training
 class ABCTrainingModule(ABC):
@@ -44,6 +46,8 @@ class ABCTrainingModule(ABC):
         self.n_hidden_state_histograms = 3
         self.cur_hidden_state_hist = 0
 
+        self.num_processes = config["model"]["num_processes"]
+
         # Load dataset
         # (input_shape, n_timesteps, n_trials)
         self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(params)
@@ -74,9 +78,14 @@ class ABCTrainingModule(ABC):
     def fit(self, num_epochs: int = 100):
         self.model.train()
         train_loss_history = []
+
+        # multiprocessing
+        self.model.share_memory()
+        processes = []
+        #
         for cur_epoch in (pbar_epoch := tqdm(range(num_epochs))):
             self.epoch = cur_epoch
-            running_loss = 0.0
+            self.running_loss = 0.0
             gradients = [] # for gradient clipping
 
             seq_l = self.train_help(cur_epoch)
@@ -87,42 +96,63 @@ class ABCTrainingModule(ABC):
                 self.create_hidden_state_plot(cur_epoch, num_epochs)
 
             # splitting up training https://medium.com/mindboard/training-recurrent-neural-networks-on-long-sequences-b7a3f2079d49
-            for i, (inputs, targets) in enumerate(self.train_dataloader):
-                h_1 = None
 
-                for j in range(self.n_intervals):
-                    
-                    inter = j*seq_l
-                    val = (j+1)*seq_l if j != (self.n_intervals-1) else None
-
-                    partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
-                    partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
-
-                    out, loss, h_1 = self.step(partial_in, partial_tar, h_1, gradients=gradients)
-                    
-                    h_1 = h_1.detach()
-
-                    running_loss += loss
+            #t3 = time()
+            # multiprocessing
+            """
+            q = mp.Queue()
+            for rank in range(self.num_processes):
+                p = mp.Process(target=self.train, args=(gradients, self.n_intervals,self.device, self.train_dataloader, q, self.step))
+                p.start()
+                processes.append(p)
+                self.running_loss += q.get()
+            for p in processes:
+                p.join()
+            """
+            #
+            self.train(gradients, seq_l, self.n_intervals,self.device, self.train_dataloader, self.step)
+            #t4 = time()
+            #print("-------- time of one iteration: ", t4-t3)
 
             if self.use_wandb:
-                wandb.log({"loss": running_loss})
+                wandb.log({"loss": self.running_loss})
             if(cur_epoch % 10 == 0):
-                train_loss_history.append(loss)
+                train_loss_history.append(self.running_loss)
                 
                 
-            if(cur_epoch % num_epochs == num_epochs-1):  
-                print("--------------- Train ---------------")  
-                for i in range(len(out[0,:,0])):
-                    if(i % 100 == 0):
-                        print(i, "\t", round(out[0,i,0].item(), 4), "\t", round(targets[0,i,0].item(),4))
-                print("-------------------------------------")
+            #if(cur_epoch % num_epochs == num_epochs-1):  
+            #    print("--------------- Train ---------------")  
+            #    for i in range(len(out[0,:,0])):
+            #        if(i % 100 == 0):
+            #            print(i, "\t", round(out[0,i,0].item(), 4), "\t", round(targets[0,i,0].item(),4))
+            #    print("-------------------------------------")
 
-            pbar_description = f"Epoch[{cur_epoch + 1}/{num_epochs}], Loss: {running_loss / len(self.train_dataloader):.4f}"
+            pbar_description = f"Epoch[{cur_epoch + 1}/{num_epochs}], Loss: {self.running_loss / len(self.train_dataloader):.4f}"
             pbar_epoch.set_description(pbar_description)
 
         self.save_history_coherency_conditionIds(train_loss_history)
 
         self.save_model("last") 
+    
+    def train(self, gradients, seq_l, n_intervals,device, t_loader, f):
+        for i, (inputs, targets) in enumerate(t_loader):
+            h_1 = None
+            for j in range(n_intervals):
+            
+                inter = j*seq_l
+                val = (j+1)*seq_l if j != (self.n_intervals-1) else None
+
+                partial_in, partial_tar = inputs[:,inter:val,:], targets[:,inter:val,:]
+                partial_in, partial_tar = partial_in.to(device), partial_tar.to(device)
+                
+                out, loss, h_1 = f(partial_in, partial_tar, h_1, gradients=gradients)
+                h_1 = h_1.detach()
+
+                #q.put(loss)
+                self.running_loss += loss
+
+                
+
 
     def test(self, model_tag="last"):
         """Test the model and save the results"""
@@ -169,18 +199,19 @@ class ABCTrainingModule(ABC):
 
     def step(self, inputs, labels, h_1=None, gradients=None, eval=False):
         """Returns loss"""
+        
         out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
+        
         step_loss = loss.item()
-
+        
         if not eval:
             self.optimizer.zero_grad()
             loss.backward()
-
-            self.plot_gradients(gradients)
+            
             if self.gradient_clipping:
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.max_grad_norm)
+                self.plot_gradients(gradients)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 2.) # changed to 2 clip
             self.optimizer.step()
-
         return out, step_loss, h_1
 
     def plot_gradients(self, gradients):

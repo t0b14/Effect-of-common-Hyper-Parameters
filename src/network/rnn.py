@@ -87,7 +87,7 @@ class RNNlayer(nn.Module):
 
 
 class cRNN(nn.Module):
-    def __init__(self, params, input_s=4, output_s=1, hidden_s=100, batch_first=True):
+    def __init__(self, params, input_s=4, output_s=1, hidden_s=100, hidden_noise=0):
         super(cRNN, self).__init__()
         self.i_s = input_s
         self.h_s = hidden_s
@@ -97,7 +97,7 @@ class cRNN(nn.Module):
         if torch.cuda.is_available():
             self.dev = torch.device("cuda")
 
-        self.rnn = RNNlayer(tau=params["tau"])
+        self.rnn = RNNlayer(tau=params["tau"], noise_var=hidden_noise)
         
         self.batchnorm = nn.BatchNorm1d(100)
         self.fc_out = nn.Linear(self.h_s, self.o_s)

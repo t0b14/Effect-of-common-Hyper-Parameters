@@ -150,6 +150,7 @@ class ABCTrainingModule(ABC):
 
                 #q.put(loss)
                 self.running_loss += loss
+                # stop after training doesn't improve
 
                 
 

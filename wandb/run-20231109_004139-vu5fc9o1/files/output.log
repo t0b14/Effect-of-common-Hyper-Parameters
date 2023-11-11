@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 62, in run
+    tm = RNNTrainingModule1(model, optimizer, config)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_rnn_ext1.py", line 6, in __init__
+    super().__init__(model, optimizer, params)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 53, in __init__
+    self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(config)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\data.py", line 153, in dataset_creator
+    inputs[:,:,:] = inputs[:,skip_l:,:]
+ValueError: could not broadcast input array from shape (4,1300,110) into shape (4,1400,110)

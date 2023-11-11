@@ -25,3 +25,10 @@ config: {'dataset_name': 'ctxt', 'n_epochs': 1000, 'batch_size': 16, 'total_seq_
 2023-11-08 21:03:54,842 INFO    MainThread:26192 [wandb_run.py:_redirect():2078] Wrapping output streams.
 2023-11-08 21:03:54,842 INFO    MainThread:26192 [wandb_run.py:_redirect():2103] Redirects installed.
 2023-11-08 21:03:54,842 INFO    MainThread:26192 [wandb_init.py:init():829] run started, returning control to user process
+2023-11-08 21:36:07,959 INFO    MainThread:26192 [wandb_run.py:_finish():1893] finishing run benchmarksforgnn/Single-Layer RNN/ikd8ijb5
+2023-11-08 21:36:07,959 INFO    MainThread:26192 [wandb_run.py:_atexit_cleanup():2127] got exitcode: 0
+2023-11-08 21:36:07,959 INFO    MainThread:26192 [wandb_run.py:_restore():2110] restore
+2023-11-08 21:36:07,959 INFO    MainThread:26192 [wandb_run.py:_restore():2116] restore done
+2023-11-08 21:36:17,155 INFO    MainThread:26192 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-11-08 21:36:17,155 INFO    MainThread:26192 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-11-08 21:36:17,157 INFO    MainThread:26192 [wandb_run.py:_footer_sync_info():3428] logging synced files

@@ -140,15 +140,22 @@ class CustomDataset(Dataset):
         
         return trial_input, trial_output
     
-def dataset_creator(params):
+def dataset_creator(config):
+    params = config["training"]
     if params["dataset_name"] == "ctxt":
         n_trials, with_inputnoise = params["n_trials"], params["with_inputnoise"]
         # (2,60) (1,60) (4,1400,60) (1,1400,60)
         [coherencies_trial, conditionIds, inputs, targets] = InputGeneratorCtxt(params).get_ctxt_dep_integrator_inputOutputDataset(n_trials, with_inputnoise)  
         # according to coherencies_trial and conditionIds taking last quintile  
         # as test set is representative of train set
+        skip_l = config["options"]["length_skipped_in_data"]
+        if skip_l > 0:
+            inputs = inputs[:,skip_l:,:]
+            targets = targets[:,skip_l:,:]
+
         n_total_trials = len(inputs[0,0,:]) 
         n_train_trials = round(n_total_trials * 0.9)
+
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
         test_inputs, test_targets = inputs[:,:,n_train_trials:], targets[:,:,n_train_trials:] 
 

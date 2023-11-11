@@ -13,7 +13,8 @@ def init_wandb(config):
         # set the wandb project where this run will be logged
         project=config["title"],
         
-        name= str(config["training"]["noise_level"]),#config["title"],"apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
+        name= "lenskip_hidden_data " + str(config["options"]["length_skipped_in_data"]) + " "+ str(config["model"]["hidden_noise"]) + " "+ str(config["training"]["with_inputnoise"]),
+        #config["title"],"apply_gradient_clipping " + str(config["optimizer"]["apply_gradient_clipping"]),#config["options"]["run_name"], #str(config["training"]["noise_level"]),
 
         # track hyperparameters and run metadata
         config={
@@ -37,39 +38,43 @@ def init_wandb(config):
             "momentum": opt_params["momentum"],
             "apply_gradient_clipping": opt_params["apply_gradient_clipping"],
             "tau": config["model"]["tau"],
+            "length_skipped_in_data": config["options"]["length_skipped_in_data"],
+            "hidden_noise": config["model"]["hidden_noise"]
         }
     )
 # setup and run 
 def run(config):
+    for with_input_noise in [ 1]:
+        for hidden_noise in [ 0.1]:
+            for skip_length in [100,200,300,400,500,600]:
+                config["options"]["length_skipped_in_data"] = skip_length
+                config["model"]["hidden_noise"] = hidden_noise
+                config["training"]["with_inputnoise"] = with_input_noise
+                params = config["model"]
 
-    for tau in [3.,6.,10.,15.,20.,35.]:
-        print(tau)
-        config["model"]["tau"] = tau
+                if config["options"]["use_wandb"]:
+                    init_wandb(config)
 
-        params = config["model"]
+                model = cRNN(
+                            config["model"],
+                            input_s=params["in_dim"],
+                            output_s=params["out_dim"],
+                            hidden_s=params["hidden_dims"],
+                            hidden_noise=params["hidden_noise"]
+                            )
 
-        if config["options"]["use_wandb"]:
-            init_wandb(config)
+                optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
-        model = cRNN(
-                    config["model"],
-                    input_s=params["in_dim"],
-                    output_s=params["out_dim"],
-                    hidden_s=params["hidden_dims"],
-                    )
+                tm = RNNTrainingModule1(model, optimizer, config)
 
-        optimizer = optimizer_creator(model.parameters(), config["optimizer"])
+                if config["options"]["train_n_test"]:
+                    #train
+                    tm.fit(num_epochs=config["training"]["n_epochs"])
+                    #test
+                    tm.test()
 
-        tm = RNNTrainingModule1(model, optimizer, config)
+                if config["options"]["visualize"]:
+                    plot_h(tm, config["options"])
 
-        if config["options"]["train_n_test"]:
-            #train
-            tm.fit(num_epochs=config["training"]["n_epochs"])
-            #test
-            tm.test()
-
-        if config["options"]["visualize"]:
-            plot_h(tm, config["options"])
-
-        if config["options"]["use_wandb"]:
-            wandb.finish()
+                if config["options"]["use_wandb"]:
+                    wandb.finish()

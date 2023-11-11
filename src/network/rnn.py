@@ -34,14 +34,13 @@ class RNNlayer(nn.Module):
             h_0 = torch.zeros((batch_size, self.out_size), dtype=torch.float)
         
         # improves performance; commented version is correct
-        sigma_all = torch.normal(torch.zeros((batch_size, timesteps, self.out_size)), torch.ones((batch_size, timesteps, self.out_size))*self.noise_var)# (16,time,100)
-        #sigma_all = torch.normal(torch.zeros((batch_size, self.out_size)), torch.ones((batch_size, self.out_size))*self.noise_var)
+        #sigma_all = torch.normal(torch.zeros((batch_size, timesteps, self.out_size)), torch.ones((batch_size, timesteps, self.out_size))*self.noise_var)# (16,time,100)
+        sigma_all = torch.normal(torch.zeros((batch_size, self.out_size)), torch.ones((batch_size, self.out_size))*self.noise_var)
 
         w_input = torch.matmul(x, self.W_in) 
 
         c_1 = np.float32(1.0 - (self.dt / self.tau))
         c_2 = np.float32(self.dt / self.tau) 
-        w_h = torch.mm(h_0, self.W_hidden)
 
         if self.bias:
             out, h_0 = self.compute_foward_with(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
@@ -53,19 +52,19 @@ class RNNlayer(nn.Module):
 
     def compute_foward_with(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps):
         for t in range(timesteps-1):
-            w_h = torch.mm(h_0, self.W_hidden) 
+            w_h = torch.mm(torch.tanh(h_0), self.W_hidden) 
             #h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + self.bias_hidden + sigma_all[:,t,:])
-            h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + self.bias_hidden + sigma_all[:,t,:])
-            out[:,t+1,:] = torch.tanh(h_0)
+            h_0 =  c_1 * h_0 + c_2 * (w_input[:,t,:] + w_h) + self.bias_hidden + sigma_all[:,t,:]
+            out[:,t+1,:] = h_0
 
         return out, h_0
 
     def compute_foward_no(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps): 
         for t in range(timesteps-1):
-            w_h = torch.mm(h_0, self.W_hidden) 
-            #h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + sigma_all[:,t,:])
-            h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + sigma_all[:,t,:])
-            out[:,t+1,:] = torch.tanh(h_0)
+            w_h = torch.mm(torch.tanh(h_0), self.W_hidden) 
+            #h_0 =  c_1 * h_0 + c_2 * (w_input[:,t,:] + w_h)  + sigma_all
+            h_0 =  c_1 * h_0 + c_2 * (w_input[:,t,:] + w_h)  + sigma_all
+            out[:,t+1,:] = h_0
 
         return out, h_0
 
@@ -92,7 +91,7 @@ class RNNlayer(nn.Module):
 
 
 class cRNN(nn.Module):
-    def __init__(self, params, input_s=4, output_s=1, hidden_s=100, batch_first=True):
+    def __init__(self, params, input_s=4, output_s=1, hidden_s=100, hidden_noise=0):
         super(cRNN, self).__init__()
         self.i_s = input_s
         self.h_s = hidden_s
@@ -102,7 +101,7 @@ class cRNN(nn.Module):
         if torch.cuda.is_available():
             self.dev = torch.device("cuda")
 
-        self.rnn = RNNlayer(tau=params["tau"])
+        self.rnn = RNNlayer(tau=params["tau"], noise_var=hidden_noise)
         
         self.batchnorm = nn.BatchNorm1d(100)
         self.fc_out = nn.Linear(self.h_s, self.o_s)

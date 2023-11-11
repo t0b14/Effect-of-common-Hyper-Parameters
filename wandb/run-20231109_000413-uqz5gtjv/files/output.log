@@ -1,0 +1,20 @@
+  0%|                                                                                                                                                                                               | 0/500 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 62, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 96, in fit
+    self.create_hidden_state_plot(cur_epoch, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 339, in create_hidden_state_plot
+    all_h_1, _ = self.model.forward(inputs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 114, in forward
+    out, h_1 = self.rnn(x, h_1)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 49, in forward
+    out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 66, in compute_foward_no
+    h_0 =  c_1 * out[:,t,:] + c_2 * (w_input[:,t,:] + w_h + sigma_all[:,t,:])
+IndexError: too many indices for tensor of dimension 2
+Using device: cpu

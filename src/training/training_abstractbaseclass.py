@@ -25,9 +25,9 @@ class ABCTrainingModule(ABC):
         self.make_gradients_plot = config["options"]["make_gradients_plot"]
 
         self.total_seq_length = params["total_seq_length"]
-        self.n_intervals = int(params["total_seq_length"] / params["seq_length"])
+        self.n_intervals = int((params["total_seq_length"] - config["options"]["length_skipped_in_data"]) / params["seq_length"])
         self.seq_length = params["seq_length"]
-        assert(self.total_seq_length % self.n_intervals == 0)
+        assert((params["total_seq_length"] - config["options"]["length_skipped_in_data"]) % self.n_intervals == 0)
 
         self.gradient_clipping = config["optimizer"]["apply_gradient_clipping"]
         self.training_help = params["training_help"]
@@ -50,7 +50,7 @@ class ABCTrainingModule(ABC):
 
         # Load dataset
         # (input_shape, n_timesteps, n_trials)
-        self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(params)
+        self.coherencies_trial, self.conditionIds, self.train_dataset, self.test_dataset = dataset_creator(config)
 
         self.train_dataloader = torch.utils.data.DataLoader(
             self.train_dataset, batch_size=self.batch_size, shuffle=False
@@ -176,6 +176,7 @@ class ABCTrainingModule(ABC):
                     partial_in, partial_tar = partial_in.to(self.device), partial_tar.to(self.device)
 
                     out, loss, h_1 = self.step(partial_in, partial_tar, h_1, eval=True)
+
                     h_1 = h_1.detach()
                     
                     running_test_loss += loss
@@ -183,12 +184,11 @@ class ABCTrainingModule(ABC):
 
                 test_predictions.append(whole_seq_out)
                 test_labels.append(targets)
-
         print("--------------- Example Test ---------------")  
         for i in range(len(out[0,:,0])):
-            if(i % 100 == 0):
+            if(i % 20 == 0):
                 print(i, "\t", round(out[0,i,0].item(), 4), "\t", round(targets[0,i,0].item(), 4))
-        print("-------------------------------------")
+        print("-------------------------------------------")
         
         test_metrics = self.compute_metrics(
             test_predictions, test_labels

@@ -44,37 +44,32 @@ def init_wandb(config):
     )
 # setup and run 
 def run(config):
-    for with_input_noise in [ 1]:
-        for hidden_noise in [ 0.1]:
-            for skip_length in [100,200,300,400,500,600]:
-                config["options"]["length_skipped_in_data"] = skip_length
-                config["model"]["hidden_noise"] = hidden_noise
-                config["training"]["with_inputnoise"] = with_input_noise
-                params = config["model"]
 
-                if config["options"]["use_wandb"]:
-                    init_wandb(config)
+    params = config["model"]
 
-                model = cRNN(
-                            config["model"],
-                            input_s=params["in_dim"],
-                            output_s=params["out_dim"],
-                            hidden_s=params["hidden_dims"],
-                            hidden_noise=params["hidden_noise"]
-                            )
+    if config["options"]["use_wandb"]:
+        init_wandb(config)
 
-                optimizer = optimizer_creator(model.parameters(), config["optimizer"])
+    model = cRNN(
+                config["model"],
+                input_s=params["in_dim"],
+                output_s=params["out_dim"],
+                hidden_s=params["hidden_dims"],
+                hidden_noise=params["hidden_noise"]
+                )
 
-                tm = RNNTrainingModule1(model, optimizer, config)
+    optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
-                if config["options"]["train_n_test"]:
-                    #train
-                    tm.fit(num_epochs=config["training"]["n_epochs"])
-                    #test
-                    tm.test()
+    tm = RNNTrainingModule1(model, optimizer, config)
 
-                if config["options"]["visualize"]:
-                    plot_h(tm, config["options"])
+    if config["options"]["train_n_test"]:
+        #train
+        tm.fit(num_epochs=config["training"]["n_epochs"])
+        #test
+        tm.test()
 
-                if config["options"]["use_wandb"]:
-                    wandb.finish()
+    if config["options"]["visualize"]:
+        plot_h(tm, config["options"])
+
+    if config["options"]["use_wandb"]:
+        wandb.finish()

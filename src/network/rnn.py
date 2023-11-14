@@ -9,8 +9,8 @@ class RNNlayer(nn.Module):
     def __init__(self, input_size=4, hidden_size=100, bias=False, dt=1, tau = 10, noise_var = 0.1):
         super().__init__()
         self.input_size, self.hidden_size, self.out_size = input_size, hidden_size, hidden_size
-        self.W_in = torch.Tensor(self.input_size, self.hidden_size)
-        self.W_hidden = torch.Tensor(self.hidden_size, self.out_size)
+        self.W_in = torch.zeros(self.input_size, self.hidden_size)
+        self.W_hidden = torch.zeros(self.hidden_size, self.out_size)
         self.W_in = self.init_W_in(self.W_in)
         self.W_hidden = self.init_W_hidden(self.W_hidden)
 
@@ -44,23 +44,22 @@ class RNNlayer(nn.Module):
             out, h_0 = self.compute_foward_with(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
         else:
             out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
-
         return out, h_0
 
 
     def compute_foward_with(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps):
-        for t in range(timesteps-1):
+        for t in range(timesteps):
             w_h = torch.mm(torch.tanh(h_0), self.W_hidden) 
             h_0 =  c_1 * h_0 + c_2 * (w_input[:,t,:] + w_h) + self.bias_hidden + sigma_all[:,t,:]
-            out[:,t+1,:] = h_0
+            out[:,t,:] = h_0
 
         return out, h_0
 
     def compute_foward_no(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps): 
-        for t in range(timesteps-1):
+        for t in range(timesteps):
             w_h = torch.mm(torch.tanh(h_0), self.W_hidden) 
             h_0 =  c_1 * h_0 + c_2 * (w_input[:,t,:] + w_h) + sigma_all[:,t,:]
-            out[:,t+1,:] = h_0
+            out[:,t,:] = h_0
 
         return out, h_0
 
@@ -78,7 +77,7 @@ class RNNlayer(nn.Module):
         cols = weights.shape[1]
 
         for i in range(rows):
-            idxs = torch.ceil( (cols - 1) * torch.rand( size=(cols, ) ) ).to(torch.int)
+            idxs = torch.ceil( (cols - 1) * torch.rand( size=(cols, 1) ) ).to(torch.int).reshape(-1)
             weights[i, idxs] = torch.randn(cols)
             n = torch.norm(weights[i, :], p=2)
             weights[i, idxs] = weights[i, idxs] / n
@@ -104,15 +103,18 @@ class cRNN(nn.Module):
         with torch.no_grad():
             self.fc_out.weight.copy_(self.init_W_out(self.fc_out.weight)) 
 
-    def forward(self, x, h_1=None):
+    def forward(self, x, h_0=None):
 
-        out, h_1 = self.rnn(x, h_1) 
+        out, h_0 = self.rnn(x, h_0) 
+
         # batchnorm wants (batch, channels, timestep) instead of (batch,timestep,channels)
-        #out = self.batchnorm(out.permute(0,2,1)).permute(0,2,1)
-        out = nn.tanh(out)
+        out = self.batchnorm(out.permute(0,2,1)).permute(0,2,1)
+
+        out = torch.tanh(out)
+
         out = self.fc_out(out)
 
-        return out, h_1
+        return out, h_0
     
     def get_weight_matrices(self):
         w_in = self.rnn.W_in.view(-1).detach().cpu().numpy()

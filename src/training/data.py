@@ -154,13 +154,17 @@ def dataset_creator(config):
             targets = targets[:,skip_l:,:]
 
         n_total_trials = len(inputs[0,0,:]) 
-        n_train_trials = round(n_total_trials * 0.9)
+        n_train_trials = round(n_total_trials * 0.8)
+        n_test_trials = round(n_total_trials * 0.9)
 
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
-        test_inputs, test_targets = inputs[:,:,n_train_trials:], targets[:,:,n_train_trials:] 
+        test_inputs, test_targets = inputs[:,:,n_train_trials:n_test_trials], targets[:,:,n_train_trials:n_test_trials] 
+        val_inputs, val_targets = inputs[:,:,n_test_trials:], targets[:,:,n_test_trials:] 
 
         train_dataset = CustomDataset(train_inputs, train_targets)
         test_dataset = CustomDataset(test_inputs, test_targets)
-        return [coherencies_trial, conditionIds, train_dataset, test_dataset]
+        val_dataset = CustomDataset(val_inputs, val_targets)
+
+        return [coherencies_trial, conditionIds, train_dataset, test_dataset, val_dataset]
     else:
         raise ValueError("Invalid dataset name")

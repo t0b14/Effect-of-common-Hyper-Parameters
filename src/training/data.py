@@ -124,7 +124,7 @@ class InputGeneratorCtxt(object):
 class CustomDataset(Dataset):
     def __init__(self, inputs, target):
         super().__init__()
-        self.inputs = torch.nn.functional.normalize(torch.tensor(inputs).to(torch.float32), dim=2)
+        self.inputs = torch.tensor(inputs).to(torch.float32) #torch.nn.functional.normalize(torch.tensor(inputs).to(torch.float32), dim=2)
         self.target = torch.tensor(target).to(torch.float32)
 
     def __len__(self):
@@ -154,9 +154,23 @@ def dataset_creator(config):
             targets = targets[:,skip_l:,:]
 
         n_total_trials = len(inputs[0,0,:]) 
-        n_train_trials = round(n_total_trials * 0.8)
-        n_test_trials = round(n_total_trials * 0.9)
+        n_train_trials = round(n_total_trials * 0.75)
+        n_test_trials = round(n_total_trials * 0.8)
 
+        #correct_direction_right = (np.mean(targets[:,-10:,:], axis=1) > 0.)
+        #cond_motion_indexes = (conditionIds == 1)[0,:]
+        
+        # print accuracy of taking last 10 median values
+        #print("---", ((coherencies_trial[0,np.array(cond_motion_indexes)] > 0.) == correct_direction_right[0,np.array(cond_motion_indexes)]).mean())
+        
+        
+        # shuffle
+        indexes = torch.randperm(inputs.shape[2])
+        inputs = inputs[:,:,indexes]
+        coherencies_trial = coherencies_trial[:,indexes]
+        conditionIds = conditionIds[:,indexes]
+        targets = targets[:,:,indexes]
+        
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
         test_inputs, test_targets = inputs[:,:,n_train_trials:n_test_trials], targets[:,:,n_train_trials:n_test_trials] 
         val_inputs, val_targets = inputs[:,:,n_test_trials:], targets[:,:,n_test_trials:] 

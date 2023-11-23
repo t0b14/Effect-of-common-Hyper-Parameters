@@ -1,0 +1,16 @@
+
+Using device: cpu
+
+
+
+
+
+Epoch[5/100], Loss: 0.3389, Val_L: 0.4943 , EStop:[2/10]:   5%| | 5
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 73, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 120, in fit
+    self.train(gradients, self.n_intervals,self.device, self.train_dataloader, self.step, (self.training_help>cur_epoch) )
+KeyboardInterrupt

@@ -44,32 +44,39 @@ def init_wandb(config):
     )
 # setup and run 
 def run(config):
+    """"
+    for hidden_noise in [0,0.1]:
+        for with_inputnoise in [0,1]:
+            config["model"]["hidden_noise"] = hidden_noise
+            config["training"]["with_inputnoise"] = with_inputnoise
+    """
+    for tag in ["one","two","third"]:
+        config["options"]["saving_tag"] = tag
+        params = config["model"]
 
-    params = config["model"]
+        if config["options"]["use_wandb"]:
+            init_wandb(config)
 
-    if config["options"]["use_wandb"]:
-        init_wandb(config)
+        model = cRNN(
+                    config["model"],
+                    input_s=params["in_dim"],
+                    output_s=params["out_dim"],
+                    hidden_s=params["hidden_dims"],
+                    hidden_noise=params["hidden_noise"]
+                    )
 
-    model = cRNN(
-                config["model"],
-                input_s=params["in_dim"],
-                output_s=params["out_dim"],
-                hidden_s=params["hidden_dims"],
-                hidden_noise=params["hidden_noise"]
-                )
+        optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
-    optimizer = optimizer_creator(model.parameters(), config["optimizer"])
+        tm = RNNTrainingModule1(model, optimizer, config)
 
-    tm = RNNTrainingModule1(model, optimizer, config)
+        if config["options"]["train_n_test"]:
+            #train
+            tm.fit(num_epochs=config["training"]["n_epochs"])
+            #test
+            tm.test(config["options"]["saving_tag"])
 
-    if config["options"]["train_n_test"]:
-        #train
-        tm.fit(num_epochs=config["training"]["n_epochs"])
-        #test
-        tm.test()
+        if config["options"]["visualize"]:
+            plot_h(tm, config["options"], config["options"]["saving_tag"])
 
-    if config["options"]["visualize"]:
-        plot_h(tm, config["options"])
-
-    if config["options"]["use_wandb"]:
-        wandb.finish()
+        if config["options"]["use_wandb"]:
+            wandb.finish()

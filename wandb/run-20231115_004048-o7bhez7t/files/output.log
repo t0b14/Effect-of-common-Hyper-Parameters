@@ -1,0 +1,29 @@
+
+Using device: cpu
+
+
+Epoch[2/500], Loss: 11049.9768, Val_L: 10630.1332 , EStop:[0/10]:   0%|▍                                                                                                                 | 2/500 [02:30<10:23:23, 75.11s/it]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 67, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 118, in fit
+    self.train(gradients, self.n_intervals,self.device, self.train_dataloader, self.step, (self.training_help>cur_epoch) )
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 169, in train
+    out, loss, h_1, trial_loss = f(partial_in, partial_tar, train_help, h_1, gradients=gradients, backprop=do_backprop, trial_loss=trial_loss)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 225, in step
+    out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_rnn_ext1.py", line 10, in compute_loss
+    out, h_1 = self.model(inputs, h_1)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 108, in forward
+    out, h_0 = self.rnn(x, h_0)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 46, in forward
+    out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 62, in compute_foward_no
+    out[:,t,:] = h_0
+KeyboardInterrupt

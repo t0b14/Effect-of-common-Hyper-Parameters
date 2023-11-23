@@ -70,7 +70,7 @@ class RNNlayer(nn.Module):
         weights = torch.randn(size=(rows, cols)) / torch.sqrt(torch.tensor([rows]))
         weights = weights / torch.max(torch.abs(torch.linalg.eigvals(weights)))
             
-        return weights
+        return nn.Parameter(weights)
     
     def init_W_in(self, weights):
         rows = weights.shape[0]

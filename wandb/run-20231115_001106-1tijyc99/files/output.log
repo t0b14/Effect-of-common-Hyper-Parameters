@@ -1,0 +1,63 @@
+
+Using device: cpu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch[34/500], Loss: 5299.7696, Val_L: 5023.2800 , EStop:[1/10]:   7%|███████▊                                                                                                           | 34/500 [29:21<6:42:29, 51.82s/it]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 67, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 122, in fit
+    self.train(gradients, self.n_intervals, self.device, self.val_dataloader, self.step, (self.training_help>cur_epoch) )
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 156, in train
+    for i, (inputs, targets) in enumerate(t_loader):
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\dataloader.py", line 677, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\collate.py", line 265, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\utils\data\_utils\collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+KeyboardInterrupt

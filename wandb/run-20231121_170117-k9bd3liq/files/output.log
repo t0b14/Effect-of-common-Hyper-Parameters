@@ -1,0 +1,38 @@
+
+Using device: cpu
+
+Epoch[1/2], Loss: 7106.6721, Val_L: 5280.0922 , EStop:[0/10]:  50%|█████████████████████████████████████████████████████████████▌                                                             | 1/2 [01:26<01:26, 86.22s/it]
+--------------- Example Test ---------------
+0 	 -0.0407 	 0.0
+20 	 0.3665 	 0.0
+40 	 -0.1017 	 0.0
+60 	 -0.279 	 0.0
+80 	 0.0856 	 0.0
+-------------------------------------------
+Model last
+
+Epoch[2/2], Loss: 5708.9511, Val_L: 4813.0221 , EStop:[0/10]: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [02:54<00:00, 87.38s/it]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 77, in run
+    plot_h(tm, config["options"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\vizual.py", line 53, in plot_h
+    pred, tar = tm.output_whole_dataset()
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 335, in output_whole_dataset
+    out, _, _, _ = self.step(inputs, targets, eval=True)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 247, in step
+    out, loss, h_1 = self.compute_loss(inputs, labels, h_1)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_rnn_ext1.py", line 10, in compute_loss
+    out, h_1 = self.model(inputs, h_1)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 108, in forward
+    out, h_0 = self.rnn(x, h_0)
+  File "C:\Users\tobia\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 46, in forward
+    out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 60, in compute_foward_no
+    w_h = torch.mm(torch.tanh(h_0), self.W_hidden)
+KeyboardInterrupt

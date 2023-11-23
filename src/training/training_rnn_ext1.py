@@ -4,7 +4,7 @@ from src.training.training_abstractbaseclass import ABCTrainingModule
 class RNNTrainingModule1(ABCTrainingModule):
     def __init__(self, model, optimizer, params) -> None:
         super().__init__(model, optimizer, params)
-        self.loss = torch.nn.MSELoss(reduction='sum')
+        self.loss = torch.nn.MSELoss()
 
     def compute_loss(self, inputs, labels, h_1):
         out, h_1 = self.model(inputs, h_1)

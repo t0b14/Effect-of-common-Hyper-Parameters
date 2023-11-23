@@ -1,0 +1,410 @@
+2023-11-22 01:42:07,989 INFO    StreamThr :24396 [internal.py:wandb_internal():86] W&B internal server running at pid: 24396, started at: 2023-11-22 01:42:07.988953
+2023-11-22 01:42:07,990 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status
+2023-11-22 01:42:07,991 INFO    WriterThread:24396 [datastore.py:open_for_write():85] open: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\run-g1efxq6c.wandb
+2023-11-22 01:42:07,993 DEBUG   SenderThread:24396 [sender.py:send():375] send: header
+2023-11-22 01:42:08,149 DEBUG   SenderThread:24396 [sender.py:send():375] send: run
+2023-11-22 01:42:08,604 INFO    SenderThread:24396 [dir_watcher.py:__init__():219] watching files in: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files
+2023-11-22 01:42:08,604 INFO    SenderThread:24396 [sender.py:_start_run_threads():1124] run started: g1efxq6c with start time 1700613727.988953
+2023-11-22 01:42:08,605 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: check_version
+2023-11-22 01:42:08,605 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:08,605 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:08,605 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: check_version
+2023-11-22 01:42:08,734 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: run_start
+2023-11-22 01:42:08,739 DEBUG   HandlerThread:24396 [system_info.py:__init__():31] System info init
+2023-11-22 01:42:08,739 DEBUG   HandlerThread:24396 [system_info.py:__init__():46] System info init done
+2023-11-22 01:42:08,739 INFO    HandlerThread:24396 [system_monitor.py:start():181] Starting system monitor
+2023-11-22 01:42:08,739 INFO    SystemMonitor:24396 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-11-22 01:42:08,739 INFO    HandlerThread:24396 [system_monitor.py:probe():201] Collecting system info
+2023-11-22 01:42:08,744 INFO    SystemMonitor:24396 [interfaces.py:start():190] Started cpu monitoring
+2023-11-22 01:42:08,748 DEBUG   HandlerThread:24396 [system_info.py:probe():195] Probing system
+2023-11-22 01:42:08,748 INFO    SystemMonitor:24396 [interfaces.py:start():190] Started disk monitoring
+2023-11-22 01:42:08,754 INFO    SystemMonitor:24396 [interfaces.py:start():190] Started memory monitoring
+2023-11-22 01:42:08,758 INFO    SystemMonitor:24396 [interfaces.py:start():190] Started network monitoring
+2023-11-22 01:42:08,759 DEBUG   HandlerThread:24396 [system_info.py:_probe_git():180] Probing git
+2023-11-22 01:42:08,804 DEBUG   HandlerThread:24396 [system_info.py:_probe_git():188] Probing git done
+2023-11-22 01:42:08,804 DEBUG   HandlerThread:24396 [system_info.py:probe():240] Probing system done
+2023-11-22 01:42:08,804 DEBUG   HandlerThread:24396 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.10.11', 'heartbeatAt': '2023-11-22T00:42:08.748463', 'startedAt': '2023-11-22T00:42:07.983952', 'docker': None, 'cuda': None, 'args': ('--config', 'rnn.yaml'), 'state': 'running', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/t0b14/Semester_project_Tobia_Simmler_rnn.git', 'commit': '36feaa7bf9547cb5462e48912d09987951c48363'}, 'email': 'simmlert@student.ethz.ch', 'root': 'C:/Users/tobia/Documents/GitHub/RNN_Tobia_Simmler', 'host': 'Aibot', 'username': 'tobia', 'executable': 'C:\\Users\\tobia\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 3701.0, 'min': 0.0, 'max': 3701.0}, 'cpu_freq_per_core': [{'current': 3701.0, 'min': 0.0, 'max': 3701.0}], 'disk': {'total': 1417.9636306762695, 'used': 1368.0946197509766}, 'memory': {'total': 63.13705825805664}}
+2023-11-22 01:42:08,804 INFO    HandlerThread:24396 [system_monitor.py:probe():211] Finished collecting system info
+2023-11-22 01:42:08,804 INFO    HandlerThread:24396 [system_monitor.py:probe():214] Publishing system info
+2023-11-22 01:42:08,804 DEBUG   HandlerThread:24396 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-11-22 01:42:08,804 DEBUG   HandlerThread:24396 [system_info.py:_save_pip():67] Saving pip packages done
+2023-11-22 01:42:08,805 INFO    HandlerThread:24396 [system_monitor.py:probe():216] Finished publishing system info
+2023-11-22 01:42:08,813 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:42:08,813 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-11-22 01:42:08,818 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:42:08,818 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:42:09,006 DEBUG   SenderThread:24396 [sender.py:send():375] send: telemetry
+2023-11-22 01:42:09,354 INFO    wandb-upload_0:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\t0mwv475-wandb-metadata.json
+2023-11-22 01:42:09,606 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-metadata.json
+2023-11-22 01:42:09,606 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:42:09,606 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\requirements.txt
+2023-11-22 01:42:13,028 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:16,641 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:42:18,410 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:18,659 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:42:23,436 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:23,829 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:42:23,830 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:42:29,129 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:34,177 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:38,838 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:42:38,838 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:42:40,083 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:40,798 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\config.yaml
+2023-11-22 01:42:44,438 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:42:44,438 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_t_start_hidden_state_0_17bbb3f4c80396c96227.png with policy now
+2023-11-22 01:42:44,442 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:42:44,443 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:42:44,443 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:44,443 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:44,581 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:42:44,581 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_t_mid_hidden_state_1_b0813795f250a7457b2a.png with policy now
+2023-11-22 01:42:44,584 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:42:44,585 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:42:44,585 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:44,585 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:44,708 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:42:44,708 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_t_end_hidden_state_2_d6413a851a16ef7c7fab.png with policy now
+2023-11-22 01:42:44,712 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:42:44,712 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:42:44,712 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:44,713 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:44,815 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:42:44,816 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_mid_hidden_state_1_b0813795f250a7457b2a.png
+2023-11-22 01:42:44,816 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_end_hidden_state_2_d6413a851a16ef7c7fab.png
+2023-11-22 01:42:44,816 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_start_hidden_state_0_17bbb3f4c80396c96227.png
+2023-11-22 01:42:44,816 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media
+2023-11-22 01:42:44,816 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images
+2023-11-22 01:42:44,935 INFO    wandb-upload_0:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\44pt9avi-media/images/img_t_start_hidden_state_0_17bbb3f4c80396c96227.png
+2023-11-22 01:42:45,185 INFO    wandb-upload_1:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\0etazvcs-media/images/img_t_mid_hidden_state_1_b0813795f250a7457b2a.png
+2023-11-22 01:42:45,395 INFO    wandb-upload_2:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\ryrahkcv-media/images/img_t_end_hidden_state_2_d6413a851a16ef7c7fab.png
+2023-11-22 01:42:45,729 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:46,840 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:42:46,840 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:42:46,840 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:46,841 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:47,060 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:42:47,060 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\hist_gradient_4_70c4e3954fb99ffacd78.png with policy now
+2023-11-22 01:42:47,064 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:42:47,064 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:42:47,064 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:42:47,064 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:42:47,597 INFO    wandb-upload_0:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\nohmsjvn-media/images/hist_gradient_4_70c4e3954fb99ffacd78.png
+2023-11-22 01:42:47,844 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:42:47,845 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\hist_gradient_4_70c4e3954fb99ffacd78.png
+2023-11-22 01:42:47,845 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images
+2023-11-22 01:42:51,091 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:42:53,833 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:42:53,833 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:42:57,059 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:02,092 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:07,133 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:08,769 DEBUG   SystemMonitor:24396 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-11-22 01:43:08,769 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:43:08,848 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:43:08,848 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:43:13,064 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:18,096 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:23,123 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:23,864 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:43:23,864 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:43:28,310 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:33,336 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:38,370 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:38,777 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:43:38,872 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:43:38,872 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:43:44,101 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:49,133 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:43:49,133 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:43:49,133 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:43:49,134 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:43:49,134 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:43:49,258 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:43:49,258 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_w_in_6_f7a2c694bba03bfa60ea.png with policy now
+2023-11-22 01:43:49,262 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:43:49,263 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:43:49,263 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:43:49,263 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:43:49,266 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:43:49,266 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_in_6_f7a2c694bba03bfa60ea.png
+2023-11-22 01:43:49,267 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images
+2023-11-22 01:43:49,389 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:43:49,389 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_w_rr_7_d6aaaff5beded338ba93.png with policy now
+2023-11-22 01:43:49,395 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:43:49,395 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:43:49,395 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:43:49,396 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:43:49,512 DEBUG   SenderThread:24396 [sender.py:send():375] send: files
+2023-11-22 01:43:49,512 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file media\images\img_w_out_8_b68747b28e08b41b2a9b.png with policy now
+2023-11-22 01:43:49,515 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:43:49,517 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:43:49,517 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:43:49,517 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:43:49,749 INFO    wandb-upload_2:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\j02lgpy4-media/images/img_w_in_6_f7a2c694bba03bfa60ea.png
+2023-11-22 01:43:49,917 INFO    wandb-upload_0:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\noae9r5n-media/images/img_w_rr_7_d6aaaff5beded338ba93.png
+2023-11-22 01:43:50,166 INFO    wandb-upload_1:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\AppData\Local\Temp\tmplrnsq_brwandb\t0gyl8es-media/images/img_w_out_8_b68747b28e08b41b2a9b.png
+2023-11-22 01:43:50,274 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:43:50,275 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_out_8_b68747b28e08b41b2a9b.png
+2023-11-22 01:43:50,275 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_rr_7_d6aaaff5beded338ba93.png
+2023-11-22 01:43:50,275 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images
+2023-11-22 01:43:51,281 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:43:53,875 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:43:53,875 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:43:55,102 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:00,130 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:05,160 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:08,789 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:44:08,867 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:44:08,868 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:44:11,070 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:16,094 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:21,124 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:23,875 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:44:23,876 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:44:27,085 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:32,120 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:37,167 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:38,801 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:44:38,880 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:44:38,880 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:44:43,108 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:46,933 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:44:46,934 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:44:46,935 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:44:46,935 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:44:47,638 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:44:47,638 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:44:48,956 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:53,888 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:44:53,888 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:44:54,111 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:44:59,135 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:04,168 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:08,808 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:45:08,901 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:45:08,902 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:45:10,095 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:15,139 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:20,173 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:23,900 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:45:23,900 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:45:26,093 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:31,115 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:36,150 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:38,817 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:45:38,912 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:45:38,912 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:45:41,164 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:44,535 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:45:44,536 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:45:44,536 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:45:44,537 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:45:44,988 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:45:45,994 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:45:46,547 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:51,585 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:45:53,923 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:45:53,923 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:45:57,163 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:02,188 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:07,220 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:08,832 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:46:08,910 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:46:08,910 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:46:13,195 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:18,224 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:23,254 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:23,915 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:46:23,915 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:46:29,135 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:34,167 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:38,836 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:46:38,930 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:46:38,930 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:46:40,157 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:43,365 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:46:43,365 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:46:43,365 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:46:43,366 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:46:44,367 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:46:44,367 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:46:45,389 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:50,419 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:46:53,939 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:46:53,939 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:46:56,114 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:01,144 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:06,182 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:08,842 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:47:08,952 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:47:08,952 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:47:11,217 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:16,252 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:21,278 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:23,945 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:47:23,945 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:47:27,215 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:32,247 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:37,282 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:38,851 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:47:38,944 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:47:38,944 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:47:42,210 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: partial_history
+2023-11-22 01:47:42,211 DEBUG   SenderThread:24396 [sender.py:send():375] send: history
+2023-11-22 01:47:42,211 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: summary_record
+2023-11-22 01:47:42,212 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:47:42,736 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:47:43,225 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:44,756 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:47:48,260 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:53,294 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:47:53,951 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:47:53,951 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:47:59,167 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:04,196 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:08,866 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:48:08,959 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:48:08,959 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:48:10,197 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:15,229 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:20,254 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:23,968 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: stop_status
+2023-11-22 01:48:23,968 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: stop_status
+2023-11-22 01:48:26,184 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:31,211 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:34,635 DEBUG   SenderThread:24396 [sender.py:send():375] send: exit
+2023-11-22 01:48:34,635 INFO    SenderThread:24396 [sender.py:send_exit():598] handling exit code: 255
+2023-11-22 01:48:34,636 INFO    SenderThread:24396 [sender.py:send_exit():600] handling runtime: 385
+2023-11-22 01:48:34,636 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:48:34,636 INFO    SenderThread:24396 [sender.py:send_exit():606] send defer
+2023-11-22 01:48:34,637 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,637 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 0
+2023-11-22 01:48:34,637 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,637 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-11-22 01:48:34,637 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 1
+2023-11-22 01:48:34,637 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,637 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 1
+2023-11-22 01:48:34,637 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,637 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-11-22 01:48:34,637 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 2
+2023-11-22 01:48:34,637 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,637 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 2
+2023-11-22 01:48:34,638 INFO    HandlerThread:24396 [system_monitor.py:finish():190] Stopping system monitor
+2023-11-22 01:48:34,638 INFO    HandlerThread:24396 [interfaces.py:finish():202] Joined cpu monitor
+2023-11-22 01:48:34,638 DEBUG   SystemMonitor:24396 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-11-22 01:48:34,638 INFO    HandlerThread:24396 [interfaces.py:finish():202] Joined disk monitor
+2023-11-22 01:48:34,638 DEBUG   SystemMonitor:24396 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-11-22 01:48:34,638 INFO    HandlerThread:24396 [interfaces.py:finish():202] Joined memory monitor
+2023-11-22 01:48:34,639 INFO    HandlerThread:24396 [interfaces.py:finish():202] Joined network monitor
+2023-11-22 01:48:34,639 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,639 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-11-22 01:48:34,639 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 3
+2023-11-22 01:48:34,639 DEBUG   SenderThread:24396 [sender.py:send():375] send: stats
+2023-11-22 01:48:34,639 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,640 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 3
+2023-11-22 01:48:34,640 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,640 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-11-22 01:48:34,640 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 4
+2023-11-22 01:48:34,640 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,640 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 4
+2023-11-22 01:48:34,640 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,640 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-11-22 01:48:34,641 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 5
+2023-11-22 01:48:34,641 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,641 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 5
+2023-11-22 01:48:34,641 DEBUG   SenderThread:24396 [sender.py:send():375] send: summary
+2023-11-22 01:48:34,642 INFO    SenderThread:24396 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-11-22 01:48:34,642 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,642 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-11-22 01:48:34,642 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 6
+2023-11-22 01:48:34,642 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,642 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 6
+2023-11-22 01:48:34,642 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,643 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-11-22 01:48:34,643 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 7
+2023-11-22 01:48:34,643 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: status_report
+2023-11-22 01:48:34,643 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:34,643 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 7
+2023-11-22 01:48:34,643 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:34,643 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-11-22 01:48:35,066 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:48:35,650 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: poll_exit
+2023-11-22 01:48:37,079 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:48:38,328 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 8
+2023-11-22 01:48:38,328 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: poll_exit
+2023-11-22 01:48:38,328 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:38,328 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 8
+2023-11-22 01:48:38,328 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:38,328 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-11-22 01:48:38,341 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 9
+2023-11-22 01:48:38,341 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:38,341 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 9
+2023-11-22 01:48:38,341 DEBUG   SenderThread:24396 [sender.py:send():375] send: artifact
+2023-11-22 01:48:39,100 INFO    Thread-16 :24396 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:48:39,298 INFO    SenderThread:24396 [sender.py:send_artifact():1474] sent artifact job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py - {'id': 'QXJ0aWZhY3Q6NjM4NTAyNjk5', 'digest': '3f76a55a5f7cf836a673bec73cc314af', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_t0b14_Semester_project_Tobia_Simmler_rnn.git_main.py', 'alias': 'v41'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEwOTkyMjMyMg==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NjQ0ODc3Mjk3', 'versionIndex': 43}}, 'version': 'v41'}
+2023-11-22 01:48:39,299 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:39,299 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-11-22 01:48:39,299 INFO    SenderThread:24396 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-11-22 01:48:40,109 INFO    SenderThread:24396 [dir_watcher.py:finish():395] scan: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files
+2023-11-22 01:48:40,109 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\config.yaml config.yaml
+2023-11-22 01:48:40,109 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log output.log
+2023-11-22 01:48:40,110 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\requirements.txt requirements.txt
+2023-11-22 01:48:40,111 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-metadata.json wandb-metadata.json
+2023-11-22 01:48:40,111 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json wandb-summary.json
+2023-11-22 01:48:40,113 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\hist_gradient_4_70c4e3954fb99ffacd78.png media\images\hist_gradient_4_70c4e3954fb99ffacd78.png
+2023-11-22 01:48:40,113 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_end_hidden_state_2_d6413a851a16ef7c7fab.png media\images\img_t_end_hidden_state_2_d6413a851a16ef7c7fab.png
+2023-11-22 01:48:40,113 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_mid_hidden_state_1_b0813795f250a7457b2a.png media\images\img_t_mid_hidden_state_1_b0813795f250a7457b2a.png
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_t_start_hidden_state_0_17bbb3f4c80396c96227.png media\images\img_t_start_hidden_state_0_17bbb3f4c80396c96227.png
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_in_6_f7a2c694bba03bfa60ea.png media\images\img_w_in_6_f7a2c694bba03bfa60ea.png
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_out_8_b68747b28e08b41b2a9b.png media\images\img_w_out_8_b68747b28e08b41b2a9b.png
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [dir_watcher.py:finish():409] scan save: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\media\images\img_w_rr_7_d6aaaff5beded338ba93.png media\images\img_w_rr_7_d6aaaff5beded338ba93.png
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 10
+2023-11-22 01:48:40,114 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:40,114 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 10
+2023-11-22 01:48:40,114 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-11-22 01:48:40,114 INFO    SenderThread:24396 [file_pusher.py:finish():167] shutting down file pusher
+2023-11-22 01:48:40,666 INFO    wandb-upload_1:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\output.log
+2023-11-22 01:48:40,692 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: keepalive
+2023-11-22 01:48:41,132 INFO    wandb-upload_2:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\config.yaml
+2023-11-22 01:48:41,148 INFO    wandb-upload_0:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\requirements.txt
+2023-11-22 01:48:41,190 INFO    wandb-upload_3:24396 [upload_job.py:push():137] Uploaded file C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\files\wandb-summary.json
+2023-11-22 01:48:41,398 INFO    Thread-15 (_thread_body):24396 [sender.py:transition_state():626] send defer: 11
+2023-11-22 01:48:41,398 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:41,398 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 11
+2023-11-22 01:48:41,398 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:41,398 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-11-22 01:48:41,398 INFO    SenderThread:24396 [file_pusher.py:join():172] waiting for file pusher
+2023-11-22 01:48:41,398 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 12
+2023-11-22 01:48:41,398 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:41,398 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 12
+2023-11-22 01:48:41,399 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:41,399 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-11-22 01:48:41,610 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 13
+2023-11-22 01:48:41,610 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:41,610 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 13
+2023-11-22 01:48:41,610 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:41,610 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-11-22 01:48:41,610 INFO    SenderThread:24396 [sender.py:transition_state():626] send defer: 14
+2023-11-22 01:48:41,610 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: defer
+2023-11-22 01:48:41,610 DEBUG   SenderThread:24396 [sender.py:send():375] send: final
+2023-11-22 01:48:41,610 INFO    HandlerThread:24396 [handler.py:handle_request_defer():170] handle defer: 14
+2023-11-22 01:48:41,610 DEBUG   SenderThread:24396 [sender.py:send():375] send: footer
+2023-11-22 01:48:41,611 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: defer
+2023-11-22 01:48:41,611 INFO    SenderThread:24396 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-11-22 01:48:41,611 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: poll_exit
+2023-11-22 01:48:41,611 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: server_info
+2023-11-22 01:48:41,611 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: get_summary
+2023-11-22 01:48:41,611 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: poll_exit
+2023-11-22 01:48:41,611 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: sampled_history
+2023-11-22 01:48:41,611 DEBUG   SenderThread:24396 [sender.py:send_request():402] send_request: server_info
+2023-11-22 01:48:41,769 INFO    MainThread:24396 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-11-22 01:48:41,769 INFO    MainThread:24396 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-11-22 01:48:41,770 INFO    MainThread:24396 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2023-11-22 01:48:41,770 DEBUG   HandlerThread:24396 [handler.py:handle_request():144] handle_request: shutdown
+2023-11-22 01:48:41,770 INFO    HandlerThread:24396 [handler.py:finish():842] shutting down handler
+2023-11-22 01:48:42,624 INFO    WriterThread:24396 [datastore.py:close():298] close: C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231122_014207-g1efxq6c\run-g1efxq6c.wandb
+2023-11-22 01:48:42,783 INFO    SenderThread:24396 [sender.py:finish():1550] shutting down sender
+2023-11-22 01:48:42,783 INFO    SenderThread:24396 [file_pusher.py:finish():167] shutting down file pusher
+2023-11-22 01:48:42,783 INFO    SenderThread:24396 [file_pusher.py:join():172] waiting for file pusher

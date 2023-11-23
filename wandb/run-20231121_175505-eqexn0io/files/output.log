@@ -1,0 +1,12 @@
+
+  0%|                                                                                                                                                                                                | 0/1 [00:00<?, ?it/s]
+Using device: cpu
+Epoch[1/1], Loss: 1370.0972, Val_L: 869.7380 , EStop:[0/10]: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [01:22<00:00, 82.74s/it]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 74, in run
+    tm.test()
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 227, in test
+    whole_seq_out = out if whole_seq_out is None else torch.cat( (whole_seq_out, out), 1)
+IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)

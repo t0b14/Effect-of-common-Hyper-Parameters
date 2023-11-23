@@ -25,3 +25,4 @@ config: {'dataset_name': 'ctxt', 'n_epochs': 100, 'batch_size': 16, 'total_seq_l
 2023-11-14 15:21:30,155 INFO    MainThread:22800 [wandb_run.py:_redirect():2078] Wrapping output streams.
 2023-11-14 15:21:30,155 INFO    MainThread:22800 [wandb_run.py:_redirect():2103] Redirects installed.
 2023-11-14 15:21:30,155 INFO    MainThread:22800 [wandb_init.py:init():829] run started, returning control to user process
+2023-11-14 15:26:26,781 WARNING MsgRouterThr:22800 [router.py:message_loop():77] message_loop has been closed

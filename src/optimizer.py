@@ -21,8 +21,8 @@ def optimizer_creator(weights, params):
         return optim.Adagrad(
             weights,
             lr=float(params["lr"]), 
-            lr_decay = 0,
-            weight_decay = 0,
+            lr_decay = 1e-5,
+            weight_decay = 1e-5,
             initial_accumulator_value = 0,
             eps = 1e-10
             )

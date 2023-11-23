@@ -1,0 +1,27 @@
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Current SDK version is 0.15.3
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Configure stats pid to 13084
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\.config\wandb\settings
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\settings
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-11-15 01:08:52,077 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py'}
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:_log_setup():507] Logging user logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231115_010852-upn10lif\logs\debug.log
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:_log_setup():508] Logging internal logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20231115_010852-upn10lif\logs\debug-internal.log
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:init():547] calling init triggers
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'dataset_name': 'ctxt', 'n_epochs': 500, 'batch_size': 16, 'total_seq_length': 1400, 'seq_length': 100, 'training_help': 3, 'hidden_dims': 100, 'n_trials': 200, 'with_inputnoise': 0, 'noise_level': 1, 'coherency_intervals': 'uniform', 'optimizer_name': 'adagrad', 'lr': 0.001, 'betas': [0.9, 0.999], 'eps': 1e-07, 'weight_decay': 1e-09, 'amsgrad': False, 'momentum': 0.9, 'apply_gradient_clipping': 1, 'tau': 10.0, 'length_skipped_in_data': 400, 'hidden_noise': 0}
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:init():596] starting backend
+2023-11-15 01:08:52,078 INFO    MainThread:13084 [wandb_init.py:init():600] setting up manager
+2023-11-15 01:08:52,080 INFO    MainThread:13084 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-11-15 01:08:52,081 INFO    MainThread:13084 [wandb_init.py:init():606] backend started and connected
+2023-11-15 01:08:52,082 INFO    MainThread:13084 [wandb_init.py:init():700] updated telemetry
+2023-11-15 01:08:52,221 INFO    MainThread:13084 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-11-15 01:08:52,773 INFO    MainThread:13084 [wandb_run.py:_on_init():2177] communicating current version
+2023-11-15 01:08:52,982 INFO    MainThread:13084 [wandb_run.py:_on_init():2186] got version response upgrade_message: "wandb version 0.16.0 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-11-15 01:08:52,982 INFO    MainThread:13084 [wandb_init.py:init():787] starting run threads in backend
+2023-11-15 01:08:53,059 INFO    MainThread:13084 [wandb_run.py:_console_start():2158] atexit reg
+2023-11-15 01:08:53,059 INFO    MainThread:13084 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2023-11-15 01:08:53,059 INFO    MainThread:13084 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2023-11-15 01:08:53,059 INFO    MainThread:13084 [wandb_run.py:_redirect():2103] Redirects installed.
+2023-11-15 01:08:53,059 INFO    MainThread:13084 [wandb_init.py:init():829] run started, returning control to user process

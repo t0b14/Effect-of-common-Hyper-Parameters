@@ -5,6 +5,10 @@ from utilsopdims import UtilsOpDims
 from matplotlib import pyplot as plt
 from make_unit_length import make_unit_length
 from get_neg_deltaFF import get_neg_deltaFF
+from sklearn.decomposition import PCA
+from remove_dimension_from_weight_matrix import remove_dimension_from_weight_matrix
+from get_state_distance_between_trajs import get_state_distance_between_trajs
+from get_mse import get_mse
 import torch
 import argparse
 import sys
@@ -137,6 +141,53 @@ def retrieve_op_dimensions(config, weights=None, path=None, model=None, optimize
 
     print("--- end of retrieve op")
 
+def plot_dimensionality_network_activity(config, weights=None, path=None):
+    w_in, w_hidden, w_out = get_weights(weights, path)
+    model, optimizer = None, None
+    tm, optimizer = setup_environment(config, path, model, optimizer)
+    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
+    activity = torch.permute(activity, (2, 1, 0)).detach().numpy()
+    n_units = 100
+    UPlt = UtilsPlotting()
+    activity = activity[:,:,0] #? maybe only one trial?
+
+    # plot dimensionality of network activities
+    net_activities = np.reshape(activity, [n_units, -1])
+    pca = PCA(n_components=n_units)
+    pca.fit(net_activities.T)  # [n_samples, n_features]
+    [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), pca.explained_variance_ratio_, "Dimensionality X", "PC(X)$_i$", "variance explained (%)")
+    fig.savefig('dim_network_activity.png')
+
+    # maybe separate
+    plot_removing_dimensionality(w_in, w_hidden, w_out,100,UPlt,activity,tm)
+
+def plot_removing_dimensionality(w_in, w_hidden, w_out,n_units,UPlt, full_rank_activity,tm):
+    n_Wrr_n = w_hidden
+    # get high-variance dimensions
+    [U, _, _] = np.linalg.svd(n_Wrr_n)
+
+    # run network with reduced-rank W and collect performance measures
+    # ( = mean squared error (mse) & State distance between full-rank and reduced-rank network trajectories)
+    n_high_var_dims   = n_units
+    mses              = np.full([n_high_var_dims, 1], np.nan)
+    statedists_to_org = np.full([n_high_var_dims, 1], np.nan)
+    for dim_nr in range(n_high_var_dims):
+        
+        # modify W
+        n_Wrr_n_modified = remove_dimension_from_weight_matrix(n_Wrr_n, U[:,dim_nr+1:n_units], 'columns')
+
+        # run modified network
+        activity = tm.run_one_forwardPass(w_in, w_hidden, w_out, )
+        forwardPass = run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n, n_x0_c, n_bx_1, m_bz_1, inputs, conditionIds, seed_run, net_noise)
+
+        # get performance measures
+        mses[dim_nr, 0] = get_mse(forwardPass["m_z_t"], targets, 'all')
+        statedists_to_org[dim_nr, 0] = get_state_distance_between_trajs(forwardPass["n_x_t"], full_rank_activity)
+
+    # plot
+    [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), mses, "network output cost for reduced-rank W", "rank(W$^{PC}_k$)", "cost")
+    [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), statedists_to_org, "state distance to trajectory of full-rank W", "rank($W^{PC}_k$)", "state distance (a.u.)")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -148,4 +199,6 @@ if __name__ == "__main__":
     set_seed(config["experiment"]["seed"])
 
     path = r"..\..\io\output\rnn1\one_model.pt"
-    retrieve_op_dimensions(config["experiment"], path=path)
+    #retrieve_op_dimensions(config["experiment"], path=path)
+
+    plot_dimensionality_network_activity(config["experiment"], path=path)

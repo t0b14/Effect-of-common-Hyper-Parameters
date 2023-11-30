@@ -311,14 +311,16 @@ class ABCTrainingModule(ABC):
 
 
         out, h_1 = self.model.get_activity(inputs, h_1)
+        forwardPass['n_x_t'], forwardPass['n_x0_1'] = out.detach().numpy(), h_1.detach().numpy()
 
         # revert
         self.model.set_hidden_noise(original_hidden_noise)
         self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
-
-        forwardPass['n_x_t'], forwardPass['n_x0_1'] = out.detach().numpy(), h_1.detach().numpy()
+        
         return forwardPass
     
+    #def 
+
     def plot_gradients(self, gradients):
         if self.gradient_clipping:
             if not gradients: # is empty

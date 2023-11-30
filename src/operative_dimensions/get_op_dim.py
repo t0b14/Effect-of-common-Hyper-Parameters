@@ -3,6 +3,8 @@ from utilsio import UtilsIO
 from utilsplotting import UtilsPlotting
 from utilsopdims import UtilsOpDims
 from matplotlib import pyplot as plt
+from make_unit_length import make_unit_length
+from get_neg_deltaFF import get_neg_deltaFF
 import torch
 import argparse
 import sys
@@ -11,7 +13,7 @@ import numpy as np
 sys.path.append('../../')
 from src.runner import run
 from src.utils import load_config, set_seed
-from src.constants import CONFIG_DIR, DATA_DIR
+from src.constants import CONFIG_DIR, PROJECT_ROOT
 from src.optimizer import optimizer_creator
 from src.network.rnn import cRNN
 from src.training.training_rnn_ext1 import RNNTrainingModule1
@@ -32,13 +34,13 @@ def get_weights(weights=None, path=None):
         [w_in, w_hidden, w_out] = weights 
     return w_in, w_hidden, w_out
 
-def calc_operative_dimensions(sampling_locs, sampling_loc_props, n_units, USL, UOD, UIO):
+def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_Wrr_n, m_Wzr_n, n_units, USL, UOD, UIO):
 
     time_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    outputfilename = os.path.join(DATA_DIR, 'local_operative_dimensions', 'localOpDims_'+time_stamp+'.h5')
+    outputfilename = os.path.join(os.getcwd(), 'local_operative_dimensions', 'localOpDims_'+time_stamp+'.h5')
 
-    n_dims_to_find  = 100
-    n_inputs=4
+    n_dims_to_find = 100
+    n_inputs = 4
     n_sampling_locs = np.size(sampling_loc_props["t_start_pt_per_loc"]);
     for loc_nr in range(n_sampling_locs):
         samplingLocParams = {}
@@ -66,19 +68,20 @@ def calc_operative_dimensions(sampling_locs, sampling_loc_props, n_units, USL, U
         conditionIds_relax = np.reshape(np.asarray([ctxt_id, ctxt_id]), [1,2])
         # init_n_x0_c = np.reshape(np.asarray([samplingLocParams.sampling_loc; samplingLocParams.sampling_loc]), [n_units, 2])
         init_n_x0_c = np.concatenate([samplingLocParams["sampling_loc"], samplingLocParams["sampling_loc"]], axis=1)
-        
+
         net_noise_trajs = 0
-        forwardPass_modified = run_one_forwardPass(n_Wru_v, n_Wrr_n, m_Wzr_n, init_n_x0_c, n_bx_1, m_bz_1, inputs_relax, conditionIds_relax, seed_run, net_noise_trajs)
+
+        forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n, m_Wzr_n, init_n_x0_c, net_noise_trajs, torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1), conditionIds_relax)
         
-        # add first step separately and then all the other steps
-        samplingLocParams["all_trajs_org"][:, 0] = np.reshape(forwardPass_modified["n_x0_1"][:, 0], [n_units, ])
+        # add first step separately and then all the other steps    
+        samplingLocParams["all_trajs_org"][:, 0] = np.reshape(forwardPass_modified["n_x0_1"], [n_units, ])
         samplingLocParams["all_trajs_org"][:, 1] = np.reshape(forwardPass_modified["n_x_t"], [n_units, ])
 
         # always columns type
-        samplingLocParams["local_op_dims"][0, :] = make_unit_length(np.matmul(n_Wrr_n, np.tanh(samplingLocParams["sampling_loc"]))).T
+        samplingLocParams["local_op_dims"][0, :] = make_unit_length(np.matmul(n_Wrr_n, np.tanh(samplingLocParams["sampling_loc"]))).T # transpose n_Wrr_n?
 
         dims_to_be_orth = np.zeros([100,0])
-        fval = get_neg_deltaFF(samplingLocParams["local_op_dims"][0, :].T, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, m_Wzr_n, n_bx_1, m_bz_1, dim_type, network_type)
+        fval = get_neg_deltaFF(tm, samplingLocParams["local_op_dims"][0, :].T, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, m_Wzr_n, dim_type="columns", network_type= "ctxt")
         samplingLocParams["all_fvals"] = np.full([n_units, 1], np.nan)
         samplingLocParams["all_fvals"][0, 0] = fval
     
@@ -114,7 +117,7 @@ def retrieve_op_dimensions(config, weights=None, path=None, model=None, optimize
     tm, optimizer = setup_environment(config, path, model, optimizer)
 
     # run 
-    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension()
+    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
 
     activity = torch.permute(activity, (2, 1, 0)).detach().numpy()
 
@@ -130,8 +133,7 @@ def retrieve_op_dimensions(config, weights=None, path=None, model=None, optimize
     
     fig.savefig('op_dim_PC.png')
     
-    calc_operative_dimensions(sampling_locs, sampling_locs_props, 100, usl, uod, uio)
-
+    calc_operative_dimensions(tm, sampling_locs, sampling_locs_props, w_in, w_hidden, w_out, 100, usl, uod, uio)
 
     print("--- end of retrieve op")
 

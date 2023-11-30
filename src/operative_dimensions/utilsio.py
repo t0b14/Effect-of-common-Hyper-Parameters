@@ -13,8 +13,6 @@ class UtilsIO(object):
         # n_Wrr_n: [n_units, n_units], recurrent weights
         # m_Wzr_n: [n_outputs, n_inputs], output weights
         # n_x0_c: [n_units, n_contexts], initial conditions per context
-        # n_bx_1: [n_units, 1], bias of hidden units
-        # m_bz_1: [n_outputs, 1], bias of output units
 
         name_dataset = '/NetNr' + str(net_id) + '/final'
 
@@ -23,11 +21,9 @@ class UtilsIO(object):
         n_Wrr_n = np.asarray(f[name_dataset + '/n_Wrr_n']).T
         m_Wzr_n = np.asarray(f[name_dataset + '/m_Wzr_n']).T
         n_x0_c = np.asarray(f[name_dataset + '/n_x0_c']).T
-        n_bx_1 = np.asarray(f[name_dataset + '/n_bx_1']).T
-        m_bz_1 = np.asarray(f[name_dataset + '/m_bz_1']).T
         f.close()
 
-        return n_Wru_v, n_Wrr_n, m_Wzr_n, n_x0_c, n_bx_1, m_bz_1
+        return n_Wru_v, n_Wrr_n, m_Wzr_n, n_x0_c
 
     def save_to_hdf5(self, outputfilename, group_name, my_data):
         # save all fields of data structure my_data to hdf5
@@ -37,7 +33,7 @@ class UtilsIO(object):
 
         with h5py.File(outputfilename, "a") as f:
             for key, value in my_data.items():
-                if key == 'local_op_dims':  # flip s.t. consitent with h5-matlab version
+                if key == 'local_op_dims':  # flip s.t. consistent with h5-matlab version
                     value = value.T
                 dset = f.create_dataset(group_name + '/' + key,
                                         data=np.asarray(value))

@@ -83,6 +83,10 @@ class RNNlayer(nn.Module):
         
         return nn.Parameter(weights)
 
+    def set_weights(self, w_in, w_rr):
+        self.W_in.weight = nn.Parameter(w_in)
+        self.W_hidden.weight = nn.Parameter(w_rr)
+
 
 class cRNN(nn.Module):
     def __init__(self, params, input_s=4, output_s=1, hidden_s=100, hidden_noise=0):
@@ -126,6 +130,21 @@ class cRNN(nn.Module):
         out, h_0 = self.rnn(x, h_0) 
         return out, h_0
     
+    def set_weight_matrices(self, w_in, w_rr, w_out):
+        if not torch.is_tensor(w_rr):
+            w_rr = torch.tensor(w_rr, dtype=torch.float32, requires_grad=True)
+
+        with torch.no_grad():
+            self.fc_out.weight = nn.Parameter(w_in)
+            self.rnn.set_weights(w_rr,w_out)
+    
+    def get_all_weight_matrices(self):
+        w_in = self.rnn.W_in
+        w_rr = self.rnn.W_hidden
+        w_out = self.fc_out.weight.data
+        
+        return w_in, w_rr, w_out
+    
     def init_W_out(self, weights):
         rows = weights.shape[0]
         cols = weights.shape[1]
@@ -138,3 +157,8 @@ class cRNN(nn.Module):
         
         return nn.Parameter(weights)
         
+    def get_hidden_noise(self):
+        return self.rnn.noise_var
+    
+    def set_hidden_noise(self, val):
+        self.rnn.noise_var = val

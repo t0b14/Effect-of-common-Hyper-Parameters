@@ -264,16 +264,20 @@ class ABCTrainingModule(ABC):
             self.optimizer.step()
         return out, step_loss, h_1, trial_loss   
     
-    def get_activity_and_data_for_op_dimension(self):
+    def get_activity_and_data_for_op_dimension(self, new_weights=None, revert_weights_at_end=False):
         n_total_trials = self.coherencies_trial.shape[1]
         n_train_trials = round(n_total_trials * 0.75)
         n_test_trials = round(n_total_trials * 0.8)
 
+        if new_weights:
+            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+            self.model.set_weight_matrices(new_weights[0], new_weights[1], new_weights[2])
+
         all_activities = torch.empty((0))
         for i, (inputs, targets) in enumerate(self.val_dataloader):
             h_1 = None
-
             activity = torch.empty((0))
+            
             for j in range(self.n_intervals):
                 inter = j*self.seq_length
                 val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
@@ -282,11 +286,39 @@ class ABCTrainingModule(ABC):
                 partial_in = partial_in.to(self.device)
                 
                 out, h_1,  = self.model.get_activity(partial_in, h_1)
+
                 activity = torch.cat((activity, out), dim=1)
             all_activities = torch.cat((all_activities, activity), dim=0)
 
+        if revert_weights_at_end:
+            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+
         return all_activities, self.coherencies_trial[:,n_test_trials:], self.conditionIds[:,n_test_trials:]
 
+    def run_one_forwardPass(self, n_Wru_v, n_Wrr_n, m_Wzr_n, n_bx0_c, noise_sigma, inputs, conditionIds):
+        forwardPass = {};
+
+        n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+        self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
+        
+        original_hidden_noise = self.model.get_hidden_noise()
+        self.model.set_hidden_noise(noise_sigma)
+
+        # computations
+        trials_per_batch = inputs.shape[0]
+        h_1 = torch.tensor(n_bx0_c[:,0], dtype=torch.float32).reshape(1,-1)
+        h_1 = torch.broadcast_to(h_1, (trials_per_batch, h_1.shape[1]))
+
+
+        out, h_1 = self.model.get_activity(inputs, h_1)
+
+        # revert
+        self.model.set_hidden_noise(original_hidden_noise)
+        self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+
+        forwardPass['n_x_t'], forwardPass['n_x0_1'] = out.detach().numpy(), h_1.detach().numpy()
+        return forwardPass
+    
     def plot_gradients(self, gradients):
         if self.gradient_clipping:
             if not gradients: # is empty

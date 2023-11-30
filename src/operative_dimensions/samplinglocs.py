@@ -78,7 +78,7 @@ class UtilsSamplingLocs(object):
             Added optionality to reduce n timesteps
             """
             skip_first_many_timesteps = np.argwhere(sampling_loc_props["t_start_pt_per_loc"] > (1400 - skip_l))
-            sampling_loc_props["t_start_pt_per_loc"] = np.delete(sampling_loc_props["t_start_pt_per_loc"], skip_first_many_timesteps)
+            sampling_loc_props["t_start_pt_per_loc"] = np.delete(sampling_loc_props["t_start_pt_per_loc"], skip_first_many_timesteps).reshape(1,-1)
 
         else:
             raise Exception("Network type unknown, please set network_type to 'ctxt'")

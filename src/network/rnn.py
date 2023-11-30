@@ -46,7 +46,6 @@ class RNNlayer(nn.Module):
             out, h_0 = self.compute_foward_no(out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps)
         return out, h_0
 
-
     def compute_foward_with(self,out,x,h_0,sigma_all,w_input,c_1,c_2,timesteps):
         for t in range(timesteps):
             w_h = torch.mm(torch.tanh(h_0), self.W_hidden) 
@@ -122,6 +121,10 @@ class cRNN(nn.Module):
         w_out = self.fc_out.weight.data.view(-1).detach().cpu().numpy()
         
         return w_in, w_rr, w_out
+
+    def get_activity(self, x, h_0=None):
+        out, h_0 = self.rnn(x, h_0) 
+        return out, h_0
     
     def init_W_out(self, weights):
         rows = weights.shape[0]

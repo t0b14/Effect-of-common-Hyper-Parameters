@@ -264,6 +264,29 @@ class ABCTrainingModule(ABC):
             self.optimizer.step()
         return out, step_loss, h_1, trial_loss   
     
+    def get_activity_and_data_for_op_dimension(self):
+        n_total_trials = self.coherencies_trial.shape[1]
+        n_train_trials = round(n_total_trials * 0.75)
+        n_test_trials = round(n_total_trials * 0.8)
+
+        all_activities = torch.empty((0))
+        for i, (inputs, targets) in enumerate(self.val_dataloader):
+            h_1 = None
+
+            activity = torch.empty((0))
+            for j in range(self.n_intervals):
+                inter = j*self.seq_length
+                val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
+
+                partial_in = inputs[:,inter:val,:]
+                partial_in = partial_in.to(self.device)
+                
+                out, h_1,  = self.model.get_activity(partial_in, h_1)
+                activity = torch.cat((activity, out), dim=1)
+            all_activities = torch.cat((all_activities, activity), dim=0)
+
+        return all_activities, self.coherencies_trial[:,n_test_trials:], self.conditionIds[:,n_test_trials:]
+
     def plot_gradients(self, gradients):
         if self.gradient_clipping:
             if not gradients: # is empty
@@ -380,7 +403,7 @@ class ABCTrainingModule(ABC):
             mid_h_1_container = torch.empty(0)
             end_h_1_container = torch.empty(0)
             for i, (inputs, _) in enumerate(self.train_dataloader):
-                all_h_1, _ = self.model.forward(inputs)
+                all_h_1, _ = self.model.get_activity(inputs, h_0=None)
                 mid_point = int(len(all_h_1[0,:,0]) / 2)
                 start_h_1 = all_h_1[:,0,:].view(-1)
                 mid_h_1 = all_h_1[:,mid_point,:].view(-1)

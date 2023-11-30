@@ -7,16 +7,15 @@ import numpy as np
 class UtilsSamplingLocs(object):
     # class to collect helper function to collect sampling locations
 
-    def get_sampling_location_properties(self, network_type = "ctxt"):
+    def get_sampling_location_properties(self, network_type = "ctxt", skip_l=0):
         # get properties of sampling locations,
         # here sampling locations defined along condition average
-        # trajectories, equally sampled in time (ctxt: 1:100:14000, swg: 1:50:500)
-        # network_type: (str), 'swg' or 'ctxt'
+        # trajectories, equally sampled in time ctxt: 1:100:14000
+        # network_type: (str), 'ctxt'
 
         # sampling_loc_props: (dict) with properties of all sampling locations
         # t_start_pt_per_loc: (list), t along trial in condition average trajectory of all sampling locations
-        # freq_idx_per_loc: (list), frequency ID of all sampling locations ([] for ctxt network)
-        # ctxt_per_loc: (list), context ID all sampling locations ([] for swg network)
+        # ctxt_per_loc: (list), context ID all sampling locations 
         # signCoh1_per_loc: (list), sign of sensory input 1 of all sampling locations ([] for swg network)
         # signCoh2_per_loc: (list), sign of sensory input 2 of all sampling locations ([] for swg network)
         # t_sampling_locs_per_cond: (list), t along trial in condition average trajectory per input conditions
@@ -40,7 +39,7 @@ class UtilsSamplingLocs(object):
             sampling_loc_props["signCoh2_per_inpCond"] = [1, -1, -1, 1, 1, 1, -1, -1]
             nInpConds_ctx = len(sampling_loc_props["ctxt_per_inpCond"])
             sampling_loc_props["t_sampling_locs_per_cond"] = np.concatenate(
-                [[1], np.arange(100, 1400 + 1, 100)], axis=0)
+                [[1], np.arange(100, 1400 + 1 - skip_l, 100)], axis=0)
             nT_per_cond = np.size(sampling_loc_props["t_sampling_locs_per_cond"]);
 
             sampling_loc_props["t_start_pt_per_loc"] = np.reshape(
@@ -74,6 +73,12 @@ class UtilsSamplingLocs(object):
                  np.ones([1, int(nInpConds_ctx / 4 * nT_per_cond)]),
                  np.ones([1, int(nInpConds_ctx / 4 * nT_per_cond)]) * -1],
                 axis=1)
+
+            """
+            Added optionality to reduce n timesteps
+            """
+            skip_first_many_timesteps = np.argwhere(sampling_loc_props["t_start_pt_per_loc"] > (1400 - skip_l))
+            sampling_loc_props["t_start_pt_per_loc"] = np.delete(sampling_loc_props["t_start_pt_per_loc"], skip_first_many_timesteps)
 
         else:
             raise Exception("Network type unknown, please set network_type to 'ctxt'")
@@ -115,40 +120,7 @@ class UtilsSamplingLocs(object):
             sampling_loc_props["t_sampling_locs_per_cond"]) - 1]
 
         return sampling_locs
-
-    def get_sampling_locs_on_condAvgTrajs_swg(self, network_activity,
-                                              sampling_loc_props,
-                                              all_freq_ids):
-        # find sampling locations as network activitiy vectors from
-        # network activity based on defined properties of sampling
-        # locations - SINE WAVE GENERATION NETWORK
-
-        # network_activity: [n_units, n_timesteps, n_trials], network activity x_t over t and trials
-        # sampling_loc_props: (dict) with properties of all sampling locations
-        # all_freq_ids: [n_trials, 1], all frequency IDs of each trial
-        # sampling_locs: [n_inpConds, n_units, n_sampling_locs], sampling locations sorted by input conditions
-
-        # constants
-        n_inpConds = len(sampling_loc_props["freq_idx_per_inpCond"])
-        n_units = np.shape(network_activity)[0]
-        n_timesteps_total = np.shape(network_activity)[1]
-
-        mean_traj_per_inpCond = np.full(
-            [n_inpConds, n_units, n_timesteps_total], np.nan)
-        for inpCond_nr in range(n_inpConds):
-            valid_trial_ids = all_freq_ids[:, 0] == \
-                              sampling_loc_props["freq_idx_per_inpCond"][inpCond_nr]
-            if sum(valid_trial_ids) < 1:
-                raise Exception("not enough trials per inpCond. Increase n_trials.")
-            mean_traj_per_inpCond[inpCond_nr, :, :] = np.mean(
-                network_activity[:, :, valid_trial_ids], axis=2)
-
-        # get sampling_locations along mean trajectory at t_sampling_locs_per_cond
-        sampling_locs = mean_traj_per_inpCond[:, :, np.asarray(
-            sampling_loc_props["t_sampling_locs_per_cond"]) - 1]
-
-        return sampling_locs
-
+    
     def map_optLocNr_to_startPtNr(self, opt_loc_nr, sampling_loc_props):
         # mapping from 'sampling location number' to 'start_point_number' within on input condition
         # sampling_loc_props: (dict) with properties of all sampling locations

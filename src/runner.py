@@ -52,6 +52,7 @@ def run(config):
     """
     for tag in ["one","two","third"]:
         config["options"]["saving_tag"] = tag
+        
         params = config["model"]
 
         if config["options"]["use_wandb"]:

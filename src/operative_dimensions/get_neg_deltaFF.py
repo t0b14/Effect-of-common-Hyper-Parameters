@@ -20,7 +20,7 @@ def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n
     # network_type: (str), 'swg' or 'ctxt'
 
     n_units = np.size(x0)
-    n_inputs = np.shape(n_Wru_v)[0]
+    n_inputs = np.shape(n_Wru_v.T)[1]
 
     # make x0 orthogonal to prev found dimensions and unit length
     x0 = np.reshape(make_unit_length(x0), [n_units, 1])
@@ -28,35 +28,24 @@ def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n
     x0 = Q[:, -1]
     x0 = np.reshape(make_unit_length(x0), [n_units, 1])
 
-    n_Wrr_n_modified = np.asarray(copy.deepcopy(n_Wrr_n))
+
+    n_Wrr_n_modified = np.asarray(copy.deepcopy(n_Wrr_n.T.detach().numpy()))
     n_Wrr_n_modified = remove_dimension_from_weight_matrix(n_Wrr_n_modified, x0, dim_type)
 
     # run network at sampling location and collect trajectories
     inputs_relax = np.zeros([n_inputs, 1, 1])
-    if network_type == 'swg':
-        conditionIds_relax = np.ones([1, 1])
-        init_n_x0_c = np.reshape(np.asarray(samplingLocParams["sampling_loc"]), [n_units, 1])
-    elif network_type == 'ctxt':
-        ctxt_id = int(samplingLocParams["ctxt_id"])
-        inputs_relax[1 + ctxt_id, :, :] = 0;
-        conditionIds_relax = np.reshape(np.asarray([ctxt_id, ctxt_id]), [1, 2])
-        init_n_x0_c = np.concatenate([samplingLocParams["sampling_loc"],
-                                      samplingLocParams["sampling_loc"]],
-                                     axis=1)
-    else:
-        raise Exception("Network type unknown, please set network_type to 'swg' or 'ctxt'")
-
-    net_noise_trajs = 0;
-    my_seed = None
+    net_noise_trajs = 0
     
-    forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n,
-                                                init_n_x0_c, net_noise_trajs,
-                                                torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1), conditionIds_relax,
-                                                )
+    init_n_x0_c = torch.tensor(samplingLocParams["sampling_loc"], dtype=torch.float32).reshape(1,-1)
+
+    forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n, init_n_x0_c, net_noise_trajs,
+                                                torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1))
     
     # collect state distance between trajectories
     trajs_orgWrr = np.reshape(samplingLocParams["all_trajs_org"][:, 1], [n_units, 1, 1])
     trajs_modWrr = np.reshape(forwardPass_modified["n_x_t"], [n_units, 1, 1])
+
     state_dist_to_org_net = np.squeeze(get_state_distance_between_trajs(trajs_orgWrr, trajs_modWrr))
     neg_deltaFF = state_dist_to_org_net * -1;  # inverse to find maxima with fminunc method...
+
     return neg_deltaFF

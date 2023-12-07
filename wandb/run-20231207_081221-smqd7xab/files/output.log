@@ -1,0 +1,13 @@
+
+Using device: cpu
+  0%|                                                                                                                                                                          | 0/300 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 75, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 103, in fit
+    self.create_hidden_state_plot(cur_epoch, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 482, in create_hidden_state_plot
+    start_h_1 = all_h_1[:,0,:].view(-1)
+RuntimeError: view size is not compatible with input tensor's size and stride (at least one dimension spans across two contiguous subspaces). Use .reshape(...) instead.

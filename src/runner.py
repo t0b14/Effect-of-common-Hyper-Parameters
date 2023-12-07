@@ -50,7 +50,7 @@ def run(config):
             config["model"]["hidden_noise"] = hidden_noise
             config["training"]["with_inputnoise"] = with_inputnoise
     """
-    for tag in ["one","two","third"]:
+    for tag in ["one_correct","two_correct","three_correct"]:
         config["options"]["saving_tag"] = tag
         
         params = config["model"]

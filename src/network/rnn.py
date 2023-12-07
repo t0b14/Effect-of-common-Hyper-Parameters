@@ -83,9 +83,6 @@ class RNNlayer(nn.Module):
         
         return nn.Parameter(weights)
 
-    def set_weights(self, w_in, w_rr):
-        self.W_in.weight = nn.Parameter(w_in)
-        self.W_hidden.weight = nn.Parameter(w_rr)
 
 
 class cRNN(nn.Module):
@@ -114,9 +111,7 @@ class cRNN(nn.Module):
         out = self.batchnorm(out.permute(0,2,1)).permute(0,2,1)
 
         out = torch.tanh(out)
-
         out = self.fc_out(out)
-
         return out, h_0
     
     def get_weight_matrices(self):
@@ -132,11 +127,12 @@ class cRNN(nn.Module):
     
     def set_weight_matrices(self, w_in, w_rr, w_out):
         if not torch.is_tensor(w_rr):
-            w_rr = torch.tensor(w_rr, dtype=torch.float32, requires_grad=True)
+            w_rr = torch.tensor(w_rr, dtype=torch.float32, requires_grad=True).T
 
         with torch.no_grad():
-            self.fc_out.weight = nn.Parameter(w_in)
-            self.rnn.set_weights(w_rr,w_out)
+            self.rnn.W_in = nn.Parameter(w_in)
+            self.rnn.W_hidden = nn.Parameter(w_rr)
+            self.fc_out.weight = nn.Parameter(w_out)
     
     def get_all_weight_matrices(self):
         w_in = self.rnn.W_in

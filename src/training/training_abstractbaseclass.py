@@ -295,7 +295,7 @@ class ABCTrainingModule(ABC):
 
         return all_activities, self.coherencies_trial[:,n_test_trials:], self.conditionIds[:,n_test_trials:]
 
-    def run_one_forwardPass(self, n_Wru_v, n_Wrr_n, m_Wzr_n, n_bx0_c, noise_sigma, inputs, conditionIds):
+    def run_one_forwardPass(self, n_Wru_v, n_Wrr_n, m_Wzr_n, h1, noise_sigma, inputs):
         forwardPass = {};
 
         n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
@@ -304,14 +304,9 @@ class ABCTrainingModule(ABC):
         original_hidden_noise = self.model.get_hidden_noise()
         self.model.set_hidden_noise(noise_sigma)
 
-        # computations
-        trials_per_batch = inputs.shape[0]
-        h_1 = torch.tensor(n_bx0_c[:,0], dtype=torch.float32).reshape(1,-1)
-        h_1 = torch.broadcast_to(h_1, (trials_per_batch, h_1.shape[1]))
+        out, h_1 = self.model.get_activity(inputs, h1)
 
-
-        out, h_1 = self.model.get_activity(inputs, h_1)
-        forwardPass['n_x_t'], forwardPass['n_x0_1'] = out.detach().numpy(), h_1.detach().numpy()
+        forwardPass['n_x_t'], forwardPass['n_x0_1'] = out.detach().numpy(), torch.zeros(out.shape).detach().numpy()
 
         # revert
         self.model.set_hidden_noise(original_hidden_noise)
@@ -319,7 +314,53 @@ class ABCTrainingModule(ABC):
         
         return forwardPass
     
-    #def 
+    def run_one_forwardPass_on_val_set(self, n_Wru_v, n_Wrr_n, m_Wzr_n, noise_sigma=0):
+        forwardPass = {};
+
+        # change model
+        n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+        self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
+        
+        original_hidden_noise = self.model.get_hidden_noise()
+        self.model.set_hidden_noise(noise_sigma)
+
+        # get pred
+        all_activities = torch.empty((0))
+        all_m_z_t = torch.empty((0))
+        all_targets = torch.empty((0))
+
+        for i, (inputs, targets) in enumerate(self.val_dataloader):
+            h_1_act = None
+            h_1_m_z = None
+            activity = torch.empty((0))
+            m_z_t = torch.empty((0))
+            
+            for j in range(self.n_intervals):
+                inter = j*self.seq_length
+                val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
+
+                partial_in = inputs[:,inter:val,:]
+                partial_in = partial_in.to(self.device)
+                
+                out, h_1_m_z  = self.model(partial_in, h_1_m_z)
+                m_z_t = torch.cat((m_z_t, out), dim=1)
+
+                out, h_1_act = self.model.get_activity(partial_in, h_1_act)
+                activity = torch.cat((activity, out), dim=1)
+                
+            all_activities = torch.cat((all_activities, activity), dim=0)
+            all_m_z_t = torch.cat((all_m_z_t, m_z_t), dim=0)
+            all_targets = torch.cat((all_targets, targets), dim=0)
+        
+        forwardPass["n_x_t"] = all_activities.permute((2,1,0)).detach().numpy()
+        forwardPass["m_z_t"] = all_m_z_t.permute((2,1,0)).detach().numpy()
+        all_targets = all_targets.permute((2,1,0)).detach().numpy()
+
+        # revert changes
+        self.model.set_hidden_noise(original_hidden_noise)
+        self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+
+        return forwardPass, all_targets
 
     def plot_gradients(self, gradients):
         if self.gradient_clipping:
@@ -439,9 +480,9 @@ class ABCTrainingModule(ABC):
             for i, (inputs, _) in enumerate(self.train_dataloader):
                 all_h_1, _ = self.model.get_activity(inputs, h_0=None)
                 mid_point = int(len(all_h_1[0,:,0]) / 2)
-                start_h_1 = all_h_1[:,0,:].view(-1)
-                mid_h_1 = all_h_1[:,mid_point,:].view(-1)
-                end_h_1 = all_h_1[:,-1,:].view(-1)
+                start_h_1 = all_h_1[:,0,:].reshape(-1)
+                mid_h_1 = all_h_1[:,mid_point,:].reshape(-1)
+                end_h_1 = all_h_1[:,-1,:].reshape(-1)
 
                 start_h_1_container = torch.concat((start_h_1_container,start_h_1))
                 mid_h_1_container = torch.concat((mid_h_1_container,mid_h_1))

@@ -19,7 +19,7 @@ experiment:
     out_dim: 1
     tau: 10.
     num_processes: 1
-    hidden_noise: 0.05
+    hidden_noise: 0.1
   
   training:
     dataset_name: ctxt
@@ -31,7 +31,7 @@ experiment:
     hidden_dims: 100
     n_trials: 25 #200 # never less than 10 for operative dimension
     with_inputnoise: 1
-    noise_level: 5 # number from 1 to 10; requires with_inputnoise
+    noise_level: 10 # number from 1 to 10; requires with_inputnoise
     coherency_intervals: "uniform" # "original" or "uniform"
     output_path: ./io/output/rnn1
     output_path_plots: ./io/output/rnn1/histograms_and_plots

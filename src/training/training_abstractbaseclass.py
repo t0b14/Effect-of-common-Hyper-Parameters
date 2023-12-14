@@ -264,42 +264,61 @@ class ABCTrainingModule(ABC):
             self.optimizer.step()
         return out, step_loss, h_1, trial_loss   
     
-    def get_activity_and_data_for_op_dimension(self, new_weights=None, revert_weights_at_end=False):
+    def get_activity_and_data_for_op_dimension(self, new_weights=None, bias_hidden=None, bias_out=None, revert_weights_at_end=False, noise_sigma=0):
         n_total_trials = self.coherencies_trial.shape[1]
         n_train_trials = round(n_total_trials * 0.75)
         n_test_trials = round(n_total_trials * 0.8)
 
         if new_weights:
-            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
-            self.model.set_weight_matrices(new_weights[0], new_weights[1], new_weights[2])
+            # change model
+            if self.model.rnn.bias:
+                n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old = self.model.get_all_weight_matrices_with_bias()
+                self.model.set_weight_matrices(new_weights[0], new_weights[1], new_weights[2], bias_hidden, bias_out)
+            else:
+                n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+                self.model.set_weight_matrices(new_weights[0], new_weights[1], new_weights[2])
+        original_hidden_noise = self.model.get_hidden_noise()
+        self.model.set_hidden_noise(noise_sigma)
 
         all_activities = torch.empty((0))
-        for i, (inputs, targets) in enumerate(self.val_dataloader):
-            h_1 = None
-            activity = torch.empty((0))
-            
-            for j in range(self.n_intervals):
-                inter = j*self.seq_length
-                val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
+        for loader in [self.train_dataloader, self.test_dataloader, self.val_dataloader]:
+            for i, (inputs, targets) in enumerate(loader):
+                h_1 = None
+                activity = torch.empty((0))
+                """
+                for j in range(self.n_intervals):
+                    inter = j*self.seq_length
+                    val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
 
-                partial_in = inputs[:,inter:val,:]
-                partial_in = partial_in.to(self.device)
-                
-                out, h_1,  = self.model.get_activity(partial_in, h_1)
+                    partial_in = inputs[:,inter:val,:]
+                    partial_in = partial_in.to(self.device)
+                """
 
+
+                    #out, h_1  = self.model.get_activity(partial_in, h_1)
+                out, h_1  = self.model.get_activity(inputs, h_1)
                 activity = torch.cat((activity, out), dim=1)
-            all_activities = torch.cat((all_activities, activity), dim=0)
+                all_activities = torch.cat((all_activities, activity), dim=0)
 
         if revert_weights_at_end:
-            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+            if self.model.rnn.bias:
+                self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old)
+            else:
+                self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+        self.model.set_hidden_noise(original_hidden_noise)
 
-        return all_activities, self.coherencies_trial[:,n_test_trials:], self.conditionIds[:,n_test_trials:]
+              #([110, 1000, 100]) (2, 110) (1, 110)
+        return all_activities, self.coherencies_trial, self.conditionIds #self.coherencies_trial[:,n_test_trials:], self.conditionIds[:,n_test_trials:]
 
-    def run_one_forwardPass(self, n_Wru_v, n_Wrr_n, m_Wzr_n, h1, noise_sigma, inputs):
+    def run_one_forwardPass(self, n_Wru_v, n_Wrr_n, m_Wzr_n, h1, noise_sigma, inputs, bias_hidden=None, bias_out=None):
         forwardPass = {};
-
-        n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
-        self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
+        # change model
+        if self.model.rnn.bias:
+            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old = self.model.get_all_weight_matrices_with_bias()
+            self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out)
+        else:
+            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+            self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
         
         original_hidden_noise = self.model.get_hidden_noise()
         self.model.set_hidden_noise(noise_sigma)
@@ -310,16 +329,23 @@ class ABCTrainingModule(ABC):
 
         # revert
         self.model.set_hidden_noise(original_hidden_noise)
-        self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+        if self.model.rnn.bias:
+            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old)
+        else:
+            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
         
         return forwardPass
     
-    def run_one_forwardPass_on_val_set(self, n_Wru_v, n_Wrr_n, m_Wzr_n, noise_sigma=0):
+    def run_one_forwardPass_on_val_set(self, n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden=None, bias_out=None, noise_sigma=0):
         forwardPass = {};
 
         # change model
-        n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
-        self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
+        if self.model.rnn.bias:
+            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old = self.model.get_all_weight_matrices_with_bias()
+            self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out)
+        else:
+            n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old = self.model.get_all_weight_matrices()
+            self.model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n)
         
         original_hidden_noise = self.model.get_hidden_noise()
         self.model.set_hidden_noise(noise_sigma)
@@ -328,37 +354,40 @@ class ABCTrainingModule(ABC):
         all_activities = torch.empty((0))
         all_m_z_t = torch.empty((0))
         all_targets = torch.empty((0))
-
-        for i, (inputs, targets) in enumerate(self.val_dataloader):
-            h_1_act = None
-            h_1_m_z = None
-            activity = torch.empty((0))
-            m_z_t = torch.empty((0))
-            
-            for j in range(self.n_intervals):
-                inter = j*self.seq_length
-                val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
-
-                partial_in = inputs[:,inter:val,:]
-                partial_in = partial_in.to(self.device)
+        
+        for loader in [self.train_dataloader, self.test_dataloader, self.val_dataloader]:
+            for i, (inputs, targets) in enumerate(loader):
+                h_1_act = None
+                h_1_m_z = None
+                activity = torch.empty((0))
+                m_z_t = torch.empty((0))
                 
-                out, h_1_m_z  = self.model(partial_in, h_1_m_z)
-                m_z_t = torch.cat((m_z_t, out), dim=1)
+                for j in range(self.n_intervals):
+                    inter = j*self.seq_length
+                    val = (j+1)*self.seq_length if j != (self.n_intervals-1) else None
 
-                out, h_1_act = self.model.get_activity(partial_in, h_1_act)
-                activity = torch.cat((activity, out), dim=1)
-                
-            all_activities = torch.cat((all_activities, activity), dim=0)
-            all_m_z_t = torch.cat((all_m_z_t, m_z_t), dim=0)
-            all_targets = torch.cat((all_targets, targets), dim=0)
+                    partial_in = inputs[:,inter:val,:]
+                    partial_in = partial_in.to(self.device)
+                    
+                    out, h_1_m_z  = self.model(partial_in, h_1_m_z)
+                    m_z_t = torch.cat((m_z_t, out), dim=1)
+
+                    out, h_1_act = self.model.get_activity(partial_in, h_1_act)
+                    activity = torch.cat((activity, out), dim=1)
+                    
+                all_activities = torch.cat((all_activities, activity), dim=0)
+                all_m_z_t = torch.cat((all_m_z_t, m_z_t), dim=0)
+                all_targets = torch.cat((all_targets, targets), dim=0)
         
         forwardPass["n_x_t"] = all_activities.permute((2,1,0)).detach().numpy()
         forwardPass["m_z_t"] = all_m_z_t.permute((2,1,0)).detach().numpy()
         all_targets = all_targets.permute((2,1,0)).detach().numpy()
-
         # revert changes
         self.model.set_hidden_noise(original_hidden_noise)
-        self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
+        if self.model.rnn.bias:
+            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old, bias_hidden_old, bias_out_old)
+        else:
+            self.model.set_weight_matrices(n_Wru_v_old, n_Wrr_n_old, m_Wzr_n_old)
 
         return forwardPass, all_targets
 

@@ -5,6 +5,7 @@ import numpy as np
 from torch.utils.data import Dataset
 import torchvision
 import torchvision.transforms as transforms
+import random
 
 from src.constants import INPUT_DIR
 
@@ -12,7 +13,7 @@ from src.constants import INPUT_DIR
 class InputGeneratorCtxt(object):
     # class to generate input/targets for context-dependent integration
     def __init__(self, params):
-        self.n_inputs = 4
+        self.n_inputs = 5 #4
         self.n_outputs = 1
         self.nIntegrators = 2
         self.maxBound = 1
@@ -141,6 +142,7 @@ class CustomDataset(Dataset):
         return trial_input, trial_output
     
 def dataset_creator(config):
+    random.seed(1000)
     params = config["training"]
     if params["dataset_name"] == "ctxt":
         n_trials, with_inputnoise = params["n_trials"], params["with_inputnoise"]
@@ -165,12 +167,13 @@ def dataset_creator(config):
         
         
         # shuffle
+        """
         indexes = torch.randperm(inputs.shape[2])
         inputs = inputs[:,:,indexes]
         coherencies_trial = coherencies_trial[:,indexes]
         conditionIds = conditionIds[:,indexes]
         targets = targets[:,:,indexes]
-        
+        """
         train_inputs, train_targets = inputs[:,:,:n_train_trials], targets[:,:,:n_train_trials]
         test_inputs, test_targets = inputs[:,:,n_train_trials:n_test_trials], targets[:,:,n_train_trials:n_test_trials] 
         val_inputs, val_targets = inputs[:,:,n_test_trials:], targets[:,:,n_test_trials:] 

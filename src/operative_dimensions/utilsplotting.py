@@ -103,7 +103,7 @@ class UtilsPlotting(object):
         # all_freq_ids: [n_trials, 1], all frequency IDs of each trial
         # conditionIds = [1, n_trials], context ID per trial
         # coherencies_trial = [nIntegrators, n_trials], input coherencies of sensory input 1 and 2 over trials
-
+        
         # constants
         n_timesteps = np.shape(network_activity)[1]
         n_PCs_to_proj = np.shape(PCs)[1]

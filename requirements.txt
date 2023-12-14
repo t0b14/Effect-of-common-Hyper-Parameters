@@ -9,5 +9,6 @@ torchdiffeq
 matplotlib
 wandb
 plotly
+random
 #sys
 #torchmetricss

@@ -8,7 +8,7 @@ from get_state_distance_between_trajs import get_state_distance_between_trajs
 
 
 def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, 
-			m_Wzr_n, dim_type, network_type):
+			m_Wzr_n, dim_type, network_type, with_bias, bias_hidden, bias_out):
     # calculate impact of removing dimension x0 from W as euclidean
     # distance between x_t and ^x_t.
 
@@ -20,7 +20,7 @@ def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n
     # network_type: (str), 'swg' or 'ctxt'
 
     n_units = np.size(x0)
-    n_inputs = np.shape(n_Wru_v.T)[1]
+    n_inputs = np.shape(n_Wru_v)[1]
 
     # make x0 orthogonal to prev found dimensions and unit length
     x0 = np.reshape(make_unit_length(x0), [n_units, 1])
@@ -36,11 +36,13 @@ def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n
     inputs_relax = np.zeros([n_inputs, 1, 1])
     net_noise_trajs = 0
     
-    init_n_x0_c = torch.tensor(samplingLocParams["sampling_loc"], dtype=torch.float32).reshape(1,-1)
-
-    forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n, init_n_x0_c, net_noise_trajs,
-                                                torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1))
-    
+    init_n_x0_c = torch.tensor(samplingLocParams["sampling_loc"], dtype=torch.float32).reshape(-1,1)
+    if with_bias:
+        forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n, init_n_x0_c, net_noise_trajs,
+                                                torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1), bias_hidden, bias_out)
+    else:
+        forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n_modified, m_Wzr_n, init_n_x0_c, net_noise_trajs,
+                                        torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1))
     # collect state distance between trajectories
     trajs_orgWrr = np.reshape(samplingLocParams["all_trajs_org"][:, 1], [n_units, 1, 1])
     trajs_modWrr = np.reshape(forwardPass_modified["n_x_t"], [n_units, 1, 1])

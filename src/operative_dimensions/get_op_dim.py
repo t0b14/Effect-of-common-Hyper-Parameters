@@ -39,7 +39,7 @@ def get_weights(weights=None, path=None):
         [w_in, w_hidden, w_out] = weights 
     return w_in, w_hidden, w_out
 
-def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_Wrr_n, m_Wzr_n, n_units, USL, UOD, UIO):
+def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_Wrr_n, m_Wzr_n, n_units, USL, UOD, UIO, with_bias=False, bias_hidden=None, bias_out=None):
     
     network_type = 'ctxt'
     dim_type = 'columns'
@@ -47,7 +47,7 @@ def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_
     outputfilename = os.path.join(os.getcwd(), 'local_operative_dimensions', 'localOpDims_'+network_type+'_'+dim_type+'_'+time_stamp+'.h5')
 
     n_dims_to_find = 100
-    n_inputs = 4
+    n_inputs = 5 #4
     n_sampling_locs = np.size(sampling_loc_props["t_start_pt_per_loc"]);
     for loc_nr in range(n_sampling_locs):
         samplingLocParams = {}
@@ -69,21 +69,26 @@ def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_
         samplingLocParams["all_trajs_org"] = np.full([n_units, 2], np.nan)
         inputs_relax = np.zeros([n_inputs, 1, 1])
 
-        init_n_x0_c = torch.tensor(samplingLocParams["sampling_loc"], dtype=torch.float32).reshape(1,-1)
+        init_n_x0_c = torch.tensor(samplingLocParams["sampling_loc"], dtype=torch.float32).reshape(-1,1)
 
         net_noise_trajs = 0
-        forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n, m_Wzr_n, init_n_x0_c, net_noise_trajs, torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1))
-        
+        if with_bias:
+            forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n, m_Wzr_n, init_n_x0_c, net_noise_trajs, torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1), bias_hidden, bias_out)
+        else:
+            forwardPass_modified = tm.run_one_forwardPass(n_Wru_v, n_Wrr_n, m_Wzr_n, init_n_x0_c, net_noise_trajs, torch.tensor(inputs_relax, dtype=torch.float32).reshape(1, 1, -1))
         # add first step separately and then all the other steps    
         samplingLocParams["all_trajs_org"][:, 0] = np.reshape(forwardPass_modified["n_x0_1"], [n_units, ])
         samplingLocParams["all_trajs_org"][:, 1] = np.reshape(forwardPass_modified["n_x_t"], [n_units, ])
 
         # always columns type
-        samplingLocParams["local_op_dims"][0, :] = make_unit_length(np.matmul(n_Wrr_n.T.detach().numpy() , np.tanh(samplingLocParams["sampling_loc"]))).T 
+        samplingLocParams["local_op_dims"][0, :] = make_unit_length(np.matmul(n_Wrr_n.detach().numpy() , np.tanh(samplingLocParams["sampling_loc"]))).T 
 
 
         dims_to_be_orth = np.zeros([100,0])
-        fval = get_neg_deltaFF(tm, samplingLocParams["local_op_dims"][0, :].T, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, m_Wzr_n, dim_type="columns", network_type= "ctxt")
+        if with_bias:
+            fval = get_neg_deltaFF(tm, samplingLocParams["local_op_dims"][0, :].T, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, m_Wzr_n, "columns", "ctxt", with_bias, bias_hidden, bias_out)
+        else:
+            fval = get_neg_deltaFF(tm, samplingLocParams["local_op_dims"][0, :].T, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, m_Wzr_n, "columns", "ctxt")
 
         samplingLocParams["all_fvals"] = np.full([n_units, 1], np.nan)
         samplingLocParams["all_fvals"][0, 0] = fval
@@ -112,17 +117,43 @@ def setup_environment(config, path=None, model=None, optimizer=None):
         optimizer = optimizer_creator(model.parameters(), config["optimizer"])
 
     tm = RNNTrainingModule1(model, optimizer, config)
+    return tm, optimizer
+
+def setup_custom_environment(config, path=None, model=None, optimizer=None):
+    # create environment with setup from github which requires bias.
+    n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out = retrieve_custom_weights(custom_weights_path)
+    params = config["model"]
+    if not model:
+        model = cRNN(
+                config["model"],
+                input_s=params["in_dim"],
+                output_s=params["out_dim"],
+                hidden_s=params["hidden_dims"],
+                hidden_noise=params["hidden_noise"],
+                bias= True
+                )
+        model.set_weight_matrices(n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out)
+        model.eval()
+    if not optimizer:
+        optimizer = optimizer_creator(model.parameters(), config["optimizer"])
+    tm = RNNTrainingModule1(model, optimizer, config)
 
     return tm, optimizer
 # calc op dimension with weights or path to model
 # S2
-def retrieve_op_dimensions(path, tm):
+def retrieve_op_dimensions(path, tm, with_bias=False):
     
-    w_in, w_hidden, w_out = get_weights(path=path)
+    if with_bias:
+        w_in, w_hidden, w_out, bias_hidden, bias_out = retrieve_custom_weights(path)
+    else:
+        w_in, w_hidden, w_out = get_weights(path=path)
 
     # run 
-    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
-    activity = torch.permute(activity, (2, 1, 0)).detach().numpy()
+    if with_bias:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out], bias_hidden, bias_out)
+    else:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
+    activity = np.transpose(activity.detach().numpy(), (2,1,0))
 
     usl = UtilsSamplingLocs()
     sampling_locs_props = usl.get_sampling_location_properties(skip_l = 400)
@@ -136,36 +167,40 @@ def retrieve_op_dimensions(path, tm):
     
     fig.savefig('op_dim_PC.png')
 
-    calc_operative_dimensions(tm, sampling_locs, sampling_locs_props, w_in, w_hidden, w_out, 100, usl, uod, uio)
+    calc_operative_dimensions(tm, sampling_locs, sampling_locs_props, w_in, w_hidden, w_out, 100, usl, uod, uio, with_bias, bias_hidden, bias_out)
 
     print("--- end of retrieve op")
 # S1
-def plot_dimensionality_high_variance_dim_W(path, tm):
-
+def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
+    
     n_units = 100
-    w_in, w_hidden, w_out = get_weights(path=path)
+    if with_bias:
+        w_in, w_hidden, w_out, bias_hidden, bias_out = retrieve_custom_weights(path)
+    else:
+        w_in, w_hidden, w_out = get_weights(path=path)
     UPlt = UtilsPlotting()
+
     # plot dimensionality of high-variance dimensions (perform SVD(W))
-    _, S, _ = np.linalg.svd(w_hidden)
+    U, S, _ = np.linalg.svd(w_hidden.detach().numpy())
     S = np.square(S)
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), S/np.sum(S)*100, "Dimensionality W", "PC(W)$_i$", "variance explained (%)")
     fig.savefig('dimensionality_of_high_variance_dimensions_of_W.png')
     # 
 
-    
-    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
-    activity = torch.permute(activity, (2, 1, 0)).detach().numpy()
+    if with_bias:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out], bias_hidden, bias_out)
+    else:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
+    activity = np.transpose(activity.detach().numpy(), (2,1,0))
     # plot dimensionality of network activities
     net_activities = np.reshape(activity, [n_units, -1])
+    assert(activity.shape[0] == 100)
     pca = PCA(n_components=n_units)
     pca.fit(net_activities.T)  # [n_samples, n_features]
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), pca.explained_variance_ratio_, "Dimensionality X", "PC(X)$_i$", "variance explained (%)")
     fig.savefig('dim_network_activity.png')
     #
-
     activity_full_rank = activity
-    # get high-variance dimensions
-    [U, _, _] = np.linalg.svd(w_hidden.T.detach().numpy())
 
     # run network with reduced-rank W and collect performance measures
     # ( = mean squared error (mse) & State distance between full-rank and reduced-rank network trajectories)
@@ -175,11 +210,13 @@ def plot_dimensionality_high_variance_dim_W(path, tm):
     for dim_nr in range(n_high_var_dims):
         
         # modify W
-        n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.T.detach().numpy(), U[:,dim_nr+1:n_units], 'columns')
+        n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.detach().numpy(), U[:,dim_nr+1:n_units], 'columns')
 
         # run modified network
-        forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out)
-
+        if with_bias:
+            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, bias_hidden, bias_out)
+        else:
+            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out)
         # get performance measures
         mses[dim_nr, 0] = get_mse(forwardPass["m_z_t"], targets, 'all')
         statedists_to_org[dim_nr, 0] = get_state_distance_between_trajs(forwardPass["n_x_t"], activity_full_rank)
@@ -191,7 +228,7 @@ def plot_dimensionality_high_variance_dim_W(path, tm):
     fig.savefig('state_distance_to_traj_of_full_r_W.png')
 
 #S3
-def analyse_global_operative_dimensions(path, tm):
+def analyse_global_operative_dimensions(path, tm, with_bias=False):
     network_type = 'ctxt'
     dim_type = 'columns'
     UPlt = UtilsPlotting()
@@ -216,11 +253,16 @@ def analyse_global_operative_dimensions(path, tm):
     fig.savefig("dimensionality_of_global_operative_dimensions.png")
 
     ###  Performance over sequentially removing global operative dimensions
-    w_in, w_hidden, w_out = get_weights(path=path)
+    if with_bias:
+        w_in, w_hidden, w_out, bias_hidden, bias_out = retrieve_custom_weights(path)
+    else:
+        w_in, w_hidden, w_out = get_weights(path=path)
 
     # run full-rank network as reference to calculate state distance measure
-    forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, 0)
-
+    if with_bias:
+        forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+    else:
+        forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0)
     # run network with reduced-rank W and collect performance measures
     # ( = mean squared error (mse) & State distance between full-rank and reduced-rank network trajectories)
     n_op_dims         = n_units
@@ -228,10 +270,13 @@ def analyse_global_operative_dimensions(path, tm):
     statedists_to_org = np.full([n_op_dims, 1], np.nan)
     for dim_nr in range(n_op_dims):
         # modify W
-        n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.T, global_op_dims[:,dim_nr+1:n_units+1], dim_type)
+        n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.detach().numpy(), global_op_dims[:,dim_nr+1:n_units+1], dim_type)
 
         # run modified network
-        forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, 0)
+        if with_bias:
+            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+        else:
+            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)
 
         # get performance measures
         mses[dim_nr, 0] = get_mse(forwardPass["m_z_t"], targets, 'all')
@@ -289,6 +334,19 @@ def plot_various_g_op_dim(path, tm):
                     sampling_loc_props, [], conditionIds, coherencies, network_type, rankW)
     fig.savefig("compare_condition_average_trajectories.png")
 
+def retrieve_custom_weights(path):
+    path = os.getcwd() + path
+    UIO = UtilsIO()
+    n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out = UIO.load_weights(path, 1)
+
+    n_Wru_v = torch.tensor(n_Wru_v, dtype=torch.float32, requires_grad=True)
+    n_Wrr_n = torch.tensor(n_Wrr_n, dtype=torch.float32, requires_grad=True)
+    m_Wzr_n = torch.tensor(m_Wzr_n, dtype=torch.float32, requires_grad=True)
+    bias_hidden = torch.tensor(bias_hidden.reshape(-1), dtype=torch.float32, requires_grad=True)
+    bias_out = torch.tensor(bias_out.reshape(-1), dtype=torch.float32, requires_grad=True)
+    
+    return n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -300,26 +358,36 @@ if __name__ == "__main__":
     set_seed(config["experiment"]["seed"])
 
     path = r"..\..\io\output\rnn1\one_model.pt"
+    custom_weights_path = r"\custom_weights\ctxt_weights.h5"
+ 
+    #model, optimizer = None, None
+    #tm, optimizer = setup_environment(config["experiment"], path, model, optimizer)
 
     model, optimizer = None, None
-    tm, optimizer = setup_environment(config["experiment"], path, model, optimizer)
+    tm, optimizer = setup_custom_environment(config["experiment"], custom_weights_path, model, optimizer)
+    with_bias=True
+    
 
     # S1 
-    #plot_dimensionality_high_variance_dim_W(config["experiment"], path=path, tm)
+    #plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
+    #plot_dimensionality_high_variance_dim_W(path=custom_weights_path, tm=tm, with_bias=with_bias)
     #print("finished S1")
 
     # S2
     #retrieve_op_dimensions(path, tm)
+    #retrieve_op_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
     #print("finished S2")
 
     # S3
     #analyse_global_operative_dimensions(path, tm)
-    #print("finished S3")
+    analyse_global_operative_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
+    print("finished S3")
     
     # S4
-    plot_various_g_op_dim(path, tm)
-    print("finished S4")
-    
+    #plot_various_g_op_dim(path, tm)
+    #print("finished S4")
+
+
 
 
 

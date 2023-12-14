@@ -21,10 +21,13 @@ class UtilsIO(object):
         n_Wrr_n = np.asarray(f[name_dataset + '/n_Wrr_n']).T
         m_Wzr_n = np.asarray(f[name_dataset + '/m_Wzr_n']).T
         n_x0_c = np.asarray(f[name_dataset + '/n_x0_c']).T
+        n_bx_1 = np.asarray(f[name_dataset + '/n_bx_1']).T
+        m_bz_1 = np.asarray(f[name_dataset + '/m_bz_1']).T
+
         f.close()
 
-        return n_Wru_v, n_Wrr_n, m_Wzr_n, n_x0_c
-
+        return n_Wru_v, n_Wrr_n, m_Wzr_n, n_bx_1, m_bz_1
+    
     def save_to_hdf5(self, outputfilename, group_name, my_data):
         # save all fields of data structure my_data to hdf5
         # outputfilename: (str), name of hdf5-file and path to it

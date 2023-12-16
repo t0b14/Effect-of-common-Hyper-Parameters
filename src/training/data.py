@@ -13,7 +13,7 @@ from src.constants import INPUT_DIR
 class InputGeneratorCtxt(object):
     # class to generate input/targets for context-dependent integration
     def __init__(self, params):
-        self.n_inputs = 5 #4
+        self.n_inputs = 4
         self.n_outputs = 1
         self.nIntegrators = 2
         self.maxBound = 1

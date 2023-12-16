@@ -34,7 +34,7 @@ class RNNlayer(nn.Module):
             h_0 = torch.zeros((self.out_size, batch_size), dtype=torch.float)
         
         sigma_all = torch.normal(torch.zeros((self.out_size, timesteps, batch_size)), torch.ones((self.out_size, timesteps, batch_size))*self.noise_var)# (16,time,100)
-
+        
         w_input = torch.matmul(self.W_in, x.permute((0,2,1))).permute((1,2,0))
 
         c_1 = np.float32(1.0 - (self.dt / self.tau))

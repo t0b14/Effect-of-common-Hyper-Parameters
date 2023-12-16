@@ -9,12 +9,12 @@ experiment:
     make_weights_histograms: 1
     make_gradients_plot: 1
     make_hidden_state_plot: 1
-    length_skipped_in_data: 0 #400
+    length_skipped_in_data: 400
     show_plot: 0
 
   model:
     network_name: rnn
-    in_dim: 5 #4
+    in_dim: 4
     hidden_dims: 100
     out_dim: 1
     tau: 10.

@@ -179,12 +179,14 @@ def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
     else:
         w_in, w_hidden, w_out = get_weights(path=path)
     UPlt = UtilsPlotting()
+    w_in = w_in.T
+    
 
     # plot dimensionality of high-variance dimensions (perform SVD(W))
     U, S, _ = np.linalg.svd(w_hidden.detach().numpy())
     S = np.square(S)
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), S/np.sum(S)*100, "Dimensionality W", "PC(W)$_i$", "variance explained (%)")
-    fig.savefig('dimensionality_of_high_variance_dimensions_of_W.png')
+    fig.savefig('dimensionality_of_high_variance_dimensions_of_W.png', bbox_inches="tight")
     # 
 
     if with_bias:
@@ -198,7 +200,7 @@ def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
     pca = PCA(n_components=n_units)
     pca.fit(net_activities.T)  # [n_samples, n_features]
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), pca.explained_variance_ratio_, "Dimensionality X", "PC(X)$_i$", "variance explained (%)")
-    fig.savefig('dim_network_activity.png')
+    fig.savefig('dim_network_activity.png', bbox_inches="tight")
     #
     activity_full_rank = activity
 
@@ -223,9 +225,9 @@ def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
 
     # plot
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), mses, "network output cost for reduced-rank W", "rank(W$^{PC}_k$)", "cost")
-    fig.savefig('network_output_cost_r_r_W.png')
+    fig.savefig('network_output_cost_r_r_W.png', bbox_inches="tight")
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), statedists_to_org, "state distance to trajectory of full-rank W", "rank($W^{PC}_k$)", "state distance (a.u.)")
-    fig.savefig('state_distance_to_traj_of_full_r_W.png')
+    fig.savefig('state_distance_to_traj_of_full_r_W.png', bbox_inches="tight")
 
 #S3
 def analyse_global_operative_dimensions(path, tm, with_bias=False):
@@ -250,7 +252,7 @@ def analyse_global_operative_dimensions(path, tm, with_bias=False):
     # plot dimensionality of global operative dimensions
     var_of_global_op_dims = np.square(singular_values_of_global_op_dims)
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), (var_of_global_op_dims/np.sum(var_of_global_op_dims)*100), "Dimensionality of global operative dimensions", "PC(L)$_i$", "variance explained (#)")
-    fig.savefig("dimensionality_of_global_operative_dimensions.png")
+    fig.savefig("dimensionality_of_global_operative_dimensions.png", bbox_inches="tight")
 
     ###  Performance over sequentially removing global operative dimensions
     if with_bias:
@@ -284,12 +286,12 @@ def analyse_global_operative_dimensions(path, tm, with_bias=False):
 
     # plot performance over reduced-rank Ws
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), mses, "network output cost for reduced-rank W", "rank(W$^{OP}_k$)", "cost")
-    fig.savefig("output_cost_for_reduced_rank_W.png")
+    fig.savefig("output_cost_for_reduced_rank_W.png", bbox_inches="tight")
     [fig, ax] = UPlt.plot_lineplot(np.arange(n_units), statedists_to_org, "state distance to trajectory of full-rank W", "rank(W$^{OP}_k$)", "state distance (a.u.)")
-    fig.savefig("trajectory_of_full_rank_W.png")
+    fig.savefig("trajectory_of_full_rank_W.png", bbox_inches="tight")
 
 #S4
-def plot_various_g_op_dim(path, tm):
+def plot_various_g_op_dim(path, tm, with_bias=False):
     network_type = 'ctxt'
     dim_type = 'columns'
     UPlt = UtilsPlotting()
@@ -310,13 +312,24 @@ def plot_various_g_op_dim(path, tm):
 
      # & COMPARE NETWORK OUTPUT AND CONDITION AVERAGE TRAJECTORIES
     rankW = 15
-    w_in, w_hidden, w_out = get_weights(path=path)
+    if with_bias:
+        w_in, w_hidden, w_out, bias_hidden, bias_out = retrieve_custom_weights(path)
+    else:
+        w_in, w_hidden, w_out = get_weights(path=path)
+
     # run full-rank network
-    forwardPass_fullRank, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, 0)
+    if with_bias:
+        forwardPass_fullRank, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+    else:
+        forwardPass_fullRank, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0)
 
     # run reduced-rank network
-    n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden, global_op_dims[:, rankW:n_units+1], dim_type)
-    forwardPass_reducedRank, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, 0)    
+    n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.detach().numpy(), global_op_dims[:, rankW:n_units+1], dim_type)
+    if with_bias:
+        forwardPass_reducedRank, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+    else:
+        forwardPass_reducedRank, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)   
+     
 
     # plot network outputs for several trials
     for trial_nr in np.arange(1,25,5):
@@ -325,14 +338,17 @@ def plot_various_g_op_dim(path, tm):
                                 np.reshape(forwardPass_reducedRank["m_z_t"][0, :, trial_nr], [-1, 1])], axis=1)
         [fig, ax] = UPlt.plot_lineplot(range(np.shape(targets)[1]), y_data, "network output", "t", "z$_t$", display_names=["target", "full-rank", "reduced-rank"])
         ax.set_ylim(bottom=-1.1, top=1.1)
-        fig.savefig("compare_network_output" + str(trial_nr) +".png")
+        fig.savefig("compare_network_output" + str(trial_nr) +".png", bbox_inches="tight")
 
     # plot one example trials for network trajectory
-    activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
+    if with_bias:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out], bias_hidden, bias_out)
+    else:
+        activity, coherencies, conditionIds = tm.get_activity_and_data_for_op_dimension([w_in, w_hidden, w_out])
 
     [fig, ax] = UPlt.plot_full_and_reduced_rank_condAvgTrajs(forwardPass_fullRank["n_x_t"], forwardPass_reducedRank["n_x_t"], 
                     sampling_loc_props, [], conditionIds, coherencies, network_type, rankW)
-    fig.savefig("compare_condition_average_trajectories.png")
+    fig.savefig("compare_condition_average_trajectories.png", bbox_inches="tight")
 
 def retrieve_custom_weights(path):
     path = os.getcwd() + path
@@ -357,34 +373,35 @@ if __name__ == "__main__":
     config = load_config(CONFIG_DIR / args.config)
     set_seed(config["experiment"]["seed"])
 
-    path = r"..\..\io\output\rnn1\one_model.pt"
-    custom_weights_path = r"\custom_weights\ctxt_weights.h5"
+    path = r"../../io/output/rnn1/one_model.pt"
+    custom_weights_path = "/custom_weights/ctxt_weights.h5" #r"\custom_weights\ctxt_weights.h5"
  
-    #model, optimizer = None, None
-    #tm, optimizer = setup_environment(config["experiment"], path, model, optimizer)
-
     model, optimizer = None, None
-    tm, optimizer = setup_custom_environment(config["experiment"], custom_weights_path, model, optimizer)
-    with_bias=True
+    tm, optimizer = setup_environment(config["experiment"], path, model, optimizer)
+
+    #model, optimizer = None, None
+    #tm, optimizer = setup_custom_environment(config["experiment"], custom_weights_path, model, optimizer)
+    #with_bias=True
     
 
     # S1 
-    #plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
+    plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
     #plot_dimensionality_high_variance_dim_W(path=custom_weights_path, tm=tm, with_bias=with_bias)
-    #print("finished S1")
+    print("finished S1")
 
     # S2
     #retrieve_op_dimensions(path, tm)
     #retrieve_op_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
     #print("finished S2")
-
+    
     # S3
     #analyse_global_operative_dimensions(path, tm)
-    analyse_global_operative_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
-    print("finished S3")
+    #analyse_global_operative_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
+    #print("finished S3")
     
     # S4
     #plot_various_g_op_dim(path, tm)
+    #plot_various_g_op_dim(path=custom_weights_path, tm=tm, with_bias=with_bias)
     #print("finished S4")
 
 

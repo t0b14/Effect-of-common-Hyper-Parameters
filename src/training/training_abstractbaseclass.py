@@ -293,8 +293,6 @@ class ABCTrainingModule(ABC):
                     partial_in = inputs[:,inter:val,:]
                     partial_in = partial_in.to(self.device)
                 """
-
-
                     #out, h_1  = self.model.get_activity(partial_in, h_1)
                 out, h_1  = self.model.get_activity(inputs, h_1)
                 activity = torch.cat((activity, out), dim=1)

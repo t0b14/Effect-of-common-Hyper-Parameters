@@ -25,7 +25,7 @@ class UtilsPlotting(object):
             y_data = np.reshape(y_data, [1, np.shape(y_data)[0]])
 
         # plot
-        fig, ax = plt.subplots(1, 1, figsize=[7, 7])
+        fig, ax = plt.subplots(1, 1)#figsize=[7, 7]) 
         plt.grid()
         for data_nr in range(
                 int(float(np.size(y_data)) / float(np.size(x_data)))):
@@ -46,7 +46,7 @@ class UtilsPlotting(object):
 
         # labels
         ax.tick_params(axis='both', which='major', labelsize=self.my_fontsize - 10)
-        ax.set_title(my_title, fontsize=self.my_fontsize)
+        ax.set_title(my_title, fontsize=self.my_fontsize) # chliner?
         ax.set_xlabel(my_xlabel, fontsize=self.my_fontsize)
         ax.set_ylabel(my_ylabel, fontsize=self.my_fontsize)
         if not (display_names is None):
@@ -103,7 +103,7 @@ class UtilsPlotting(object):
         # all_freq_ids: [n_trials, 1], all frequency IDs of each trial
         # conditionIds = [1, n_trials], context ID per trial
         # coherencies_trial = [nIntegrators, n_trials], input coherencies of sensory input 1 and 2 over trials
-        
+
         # constants
         n_timesteps = np.shape(network_activity)[1]
         n_PCs_to_proj = np.shape(PCs)[1]

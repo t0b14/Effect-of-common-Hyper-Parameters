@@ -13,7 +13,8 @@ from src.constants import INPUT_DIR
 class InputGeneratorCtxt(object):
     # class to generate input/targets for context-dependent integration
     def __init__(self, params):
-        self.n_inputs = 4
+        self.n_inputs = 5
+        self.n_inputs_actual = 4 # remove layers at the end
         self.n_outputs = 1
         self.nIntegrators = 2
         self.maxBound = 1
@@ -82,6 +83,10 @@ class InputGeneratorCtxt(object):
         for trial_nr in range(n_trials_total):
             inputs[:, :, trial_nr], targets[:, :,trial_nr] = self.generate_one_trial(
                 coherencies_trial[0:2, trial_nr], conditionIds[0, trial_nr], noiseSigma)
+        
+
+        if self.n_inputs > self.n_inputs_actual:
+            inputs = inputs[:self.n_inputs_actual,:,:]
 
         return coherencies_trial, conditionIds, inputs, targets
 

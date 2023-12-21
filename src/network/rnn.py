@@ -1,6 +1,5 @@
 import torch.nn as nn
 import torch
-import cython
 from time import time
 import numpy as np
 import torch.multiprocessing as mp
@@ -9,7 +8,7 @@ class RNNlayer(nn.Module):
     def __init__(self, input_size=4, hidden_size=100, bias=False, dt=1, tau = 10, noise_var = 0.1):
         super().__init__()
         self.input_size, self.hidden_size, self.out_size = input_size, hidden_size, hidden_size
-        self.W_in = torch.zeros(self.input_size, self.hidden_size)
+        self.W_in = torch.zeros(self.hidden_size, self.input_size)
         self.W_hidden = torch.zeros(self.hidden_size, self.out_size)
         self.W_in = self.init_W_in(self.W_in)
         self.W_hidden = self.init_W_hidden(self.W_hidden)

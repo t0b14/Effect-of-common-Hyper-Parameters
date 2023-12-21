@@ -8,7 +8,7 @@ from get_state_distance_between_trajs import get_state_distance_between_trajs
 
 
 def get_neg_deltaFF(tm, x0, dims_to_be_orth, samplingLocParams, n_Wru_v, n_Wrr_n, 
-			m_Wzr_n, dim_type, network_type, with_bias, bias_hidden, bias_out):
+			m_Wzr_n, dim_type, network_type, with_bias=False, bias_hidden=None, bias_out=None):
     # calculate impact of removing dimension x0 from W as euclidean
     # distance between x_t and ^x_t.
 

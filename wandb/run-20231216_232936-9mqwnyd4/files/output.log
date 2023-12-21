@@ -1,0 +1,26 @@
+
+Using device: cpu
+  0%|                                                                                                                                                                         | 0/300 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\main.py", line 15, in <module>
+    run(config["experiment"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\runner.py", line 75, in run
+    tm.fit(num_epochs=config["training"]["n_epochs"])
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 103, in fit
+    self.create_hidden_state_plot(cur_epoch, num_epochs)
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\training\training_abstractbaseclass.py", line 508, in create_hidden_state_plot
+    all_h_1, _ = self.model.get_activity(inputs, h_0=None)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 120, in get_activity
+    out, h_0 = self.rnn(x, h_0)
+              ^^^^^^^^^^^^^^^^
+  File "c:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\.conda\Lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\.conda\Lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\src\network\rnn.py", line 37, in forward
+    w_input = torch.matmul(self.W_in, x.permute((0,2,1))).permute((1,2,0))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (16000x4 and 100x4)

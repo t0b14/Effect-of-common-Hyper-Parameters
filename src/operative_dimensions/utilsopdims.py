@@ -99,22 +99,26 @@ class UtilsOpDims(object):
             loc_nrs = range(n_locs_total)
         elif sampling_locs_to_combine == 'ctxt1':
             loc_nrs = np.where(np.squeeze(sampling_loc_props["ctxt_per_loc"] == 1))
+            loc_nrs = loc_nrs[0] # added
         elif sampling_locs_to_combine == 'ctxt2':
             loc_nrs = np.where(np.squeeze(sampling_loc_props["ctxt_per_loc"] == 2))
+            loc_nrs = loc_nrs[0] # added
         elif sampling_locs_to_combine == 'allPosChoice':
             loc_nrs = np.where((np.squeeze(sampling_loc_props["ctxt_per_loc"] == 1) &
                                 np.squeeze(sampling_loc_props["signCoh1_per_loc"] > 0))
                        | (np.squeeze(sampling_loc_props["ctxt_per_loc"] == 2) &
                           np.squeeze(sampling_loc_props["signCoh2_per_loc"] > 0)))
+            loc_nrs = loc_nrs[0] # added
         elif sampling_locs_to_combine == 'allNegChoice':
             loc_nrs = np.where((np.squeeze(sampling_loc_props["ctxt_per_loc"] == 1) &
                                 np.squeeze(sampling_loc_props["signCoh1_per_loc"] < 0))
                        | (np.squeeze(sampling_loc_props["ctxt_per_loc"] == 2) &
                           np.squeeze(sampling_loc_props["signCoh2_per_loc"] < 0)))
+            loc_nrs = loc_nrs[0] # added
         else:
             raise Exception("sampling_locs_to_combine unknown. Please choose a valid option")
         n_locs = np.size(loc_nrs)
-
+        
         # combine all considered sampling locations into one matrix
         # as locOpDim * localDeltaF, ...
         # then SVD(L)

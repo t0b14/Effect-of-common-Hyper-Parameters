@@ -29,6 +29,7 @@ def get_weights(weights=None, path=None):
     if path:    
         model = torch.load(path)
         for name, values in model.items():
+            
             if name == "rnn.W_in":
                 w_in = values
             elif name == "rnn.W_hidden":
@@ -40,14 +41,13 @@ def get_weights(weights=None, path=None):
     return w_in, w_hidden, w_out
 
 def calc_operative_dimensions(tm, sampling_locs, sampling_loc_props, n_Wru_v, n_Wrr_n, m_Wzr_n, n_units, USL, UOD, UIO, with_bias=False, bias_hidden=None, bias_out=None):
-    
     network_type = 'ctxt'
     dim_type = 'columns'
     time_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    outputfilename = os.path.join(os.getcwd(), 'local_operative_dimensions', 'localOpDims_'+network_type+'_'+dim_type+'_'+time_stamp+'.h5')
+    outputfilename = os.path.join(os.getcwd(), 'local_operative_dimensions', 'localOpDims_'+network_type+'_'+dim_type+"h5")#+'_'+time_stamp+'.h5')
 
     n_dims_to_find = 100
-    n_inputs = 5 #4
+    n_inputs = 4
     n_sampling_locs = np.size(sampling_loc_props["t_start_pt_per_loc"]);
     for loc_nr in range(n_sampling_locs):
         samplingLocParams = {}
@@ -142,7 +142,7 @@ def setup_custom_environment(config, path=None, model=None, optimizer=None):
 # calc op dimension with weights or path to model
 # S2
 def retrieve_op_dimensions(path, tm, with_bias=False):
-    
+    bias_hidden, bias_out = None, None
     if with_bias:
         w_in, w_hidden, w_out, bias_hidden, bias_out = retrieve_custom_weights(path)
     else:
@@ -179,7 +179,6 @@ def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
     else:
         w_in, w_hidden, w_out = get_weights(path=path)
     UPlt = UtilsPlotting()
-    w_in = w_in.T
     
 
     # plot dimensionality of high-variance dimensions (perform SVD(W))
@@ -260,6 +259,7 @@ def analyse_global_operative_dimensions(path, tm, with_bias=False):
     else:
         w_in, w_hidden, w_out = get_weights(path=path)
 
+
     # run full-rank network as reference to calculate state distance measure
     if with_bias:
         forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
@@ -306,7 +306,7 @@ def plot_various_g_op_dim(path, tm, with_bias=False):
     [all_local_op_dims, all_fvals] = uod.load_local_op_dims(inputfilename, n_units, sampling_loc_props, network_type='ctxt')
 
     # combine local operative dimensions to obtain global operative dimensions 
-    sampling_locs_to_combine = 'all' # options for ctxt network: 'ctxt1' 'ctxt2' 'allPosChoice' 'allNegChoice'
+    sampling_locs_to_combine = "ctxt2"#'all' # options for ctxt network: 'ctxt1' 'ctxt2' 'allPosChoice' 'allNegChoice'
     [global_op_dims, singular_values_of_global_op_dims] = uod.get_global_operative_dimensions(sampling_locs_to_combine, sampling_loc_props, all_local_op_dims, all_fvals)
 
 
@@ -355,6 +355,9 @@ def retrieve_custom_weights(path):
     UIO = UtilsIO()
     n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden, bias_out = UIO.load_weights(path, 1)
 
+    if(n_Wru_v.shape[1] == 5):
+        n_Wru_v = n_Wru_v[:,:-1]
+
     n_Wru_v = torch.tensor(n_Wru_v, dtype=torch.float32, requires_grad=True)
     n_Wrr_n = torch.tensor(n_Wrr_n, dtype=torch.float32, requires_grad=True)
     m_Wzr_n = torch.tensor(m_Wzr_n, dtype=torch.float32, requires_grad=True)
@@ -373,7 +376,7 @@ if __name__ == "__main__":
     config = load_config(CONFIG_DIR / args.config)
     set_seed(config["experiment"]["seed"])
 
-    path = r"../../io/output/rnn1/one_model.pt"
+    path = r"../../io/output/rnn1/three_correct_model.pt"
     custom_weights_path = "/custom_weights/ctxt_weights.h5" #r"\custom_weights\ctxt_weights.h5"
  
     model, optimizer = None, None
@@ -383,26 +386,29 @@ if __name__ == "__main__":
     #tm, optimizer = setup_custom_environment(config["experiment"], custom_weights_path, model, optimizer)
     #with_bias=True
     
-
     # S1 
-    plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
+    print("start S1")
+    #plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
     #plot_dimensionality_high_variance_dim_W(path=custom_weights_path, tm=tm, with_bias=with_bias)
     print("finished S1")
 
-    # S2
+    # S2    
+    print("start S2")
     #retrieve_op_dimensions(path, tm)
     #retrieve_op_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
-    #print("finished S2")
+    print("finished S2")
     
     # S3
+    print("start S3")
     #analyse_global_operative_dimensions(path, tm)
     #analyse_global_operative_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
-    #print("finished S3")
+    print("finished S3")
     
     # S4
-    #plot_various_g_op_dim(path, tm)
+    print("start S4")
+    plot_various_g_op_dim(path, tm)
     #plot_various_g_op_dim(path=custom_weights_path, tm=tm, with_bias=with_bias)
-    #print("finished S4")
+    print("finished S4")
 
 
 

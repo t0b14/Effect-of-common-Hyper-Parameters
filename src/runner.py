@@ -44,13 +44,8 @@ def init_wandb(config):
     )
 # setup and run 
 def run(config):
-    """"
-    for hidden_noise in [0,0.1]:
-        for with_inputnoise in [0,1]:
-            config["model"]["hidden_noise"] = hidden_noise
-            config["training"]["with_inputnoise"] = with_inputnoise
-    """
-    for tag in ["one_correct","two_correct","three_correct"]:
+
+    for tag in ["three_correct"]:
         config["options"]["saving_tag"] = tag
         
         params = config["model"]

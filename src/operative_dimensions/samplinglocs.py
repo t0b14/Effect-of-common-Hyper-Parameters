@@ -8,7 +8,7 @@ class UtilsSamplingLocs(object):
     # class to collect helper function to collect sampling locations
 
     def get_sampling_location_properties(self, network_type = "ctxt", skip_l=0):
-        skip_l=0 # to be removed
+
         # get properties of sampling locations,
         # here sampling locations defined along condition average
         # trajectories, equally sampled in time ctxt: 1:100:14000

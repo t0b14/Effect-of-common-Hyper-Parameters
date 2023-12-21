@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 class UtilsPlotting(object):
     # class to collect helper functions to visualize results
     def __init__(self):
-        self.my_fontsize = 30;
+        self.my_fontsize = 10#30;
 
     def plot_lineplot(self, x_data, y_data, my_title, my_xlabel, my_ylabel,
                       display_names=None, my_mad=None):

@@ -25,14 +25,14 @@ experiment:
     dataset_name: ctxt
     n_epochs: 300
     batch_size: 16
-    total_seq_length: 1400
+    total_seq_length: 1000
     seq_length: 100 # larger lengths won't fit well into cpu memory; DO NOT CHANGE
     training_help: 0 # 0 to n_epochs (iterations)
     hidden_dims: 100
-    n_trials: 5 #200 # never less than 10 for operative dimension
+    n_trials: 100 #200 # never less than 10 for operative dimension
     with_inputnoise: 1
     noise_level: 10 # number from 1 to 10; requires with_inputnoise
-    coherency_intervals: "original" #"uniform" #  or "uniform"
+    coherency_intervals: "uniform" #"original" #"uniform" #  or "uniform"
     output_path: ./io/output/rnn1
     output_path_plots: ./io/output/rnn1/histograms_and_plots
 

@@ -9,6 +9,8 @@ torchdiffeq
 matplotlib
 wandb
 plotly
+h5py
+scikit-learn
 #random
 #sys
 #torchmetricss

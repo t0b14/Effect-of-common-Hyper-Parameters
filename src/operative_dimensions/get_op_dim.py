@@ -215,9 +215,9 @@ def plot_dimensionality_high_variance_dim_W(path, tm, with_bias=False):
 
         # run modified network
         if with_bias:
-            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, bias_hidden, bias_out)
+            forwardPass, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out, bias_hidden, bias_out)
         else:
-            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out)
+            forwardPass, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out)
         # get performance measures
         mses[dim_nr, 0] = get_mse(forwardPass["m_z_t"], targets, 'all')
         statedists_to_org[dim_nr, 0] = get_state_distance_between_trajs(forwardPass["n_x_t"], activity_full_rank)
@@ -262,9 +262,9 @@ def analyse_global_operative_dimensions(path, tm, with_bias=False):
 
     # run full-rank network as reference to calculate state distance measure
     if with_bias:
-        forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+        forwardPass_org, targets = tm.run_one_forwardPass_all_sets(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
     else:
-        forwardPass_org, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0)
+        forwardPass_org, targets = tm.run_one_forwardPass_all_sets(w_in, w_hidden, w_out, noise_sigma=0)
     # run network with reduced-rank W and collect performance measures
     # ( = mean squared error (mse) & State distance between full-rank and reduced-rank network trajectories)
     n_op_dims         = n_units
@@ -276,9 +276,9 @@ def analyse_global_operative_dimensions(path, tm, with_bias=False):
 
         # run modified network
         if with_bias:
-            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+            forwardPass, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
         else:
-            forwardPass, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)
+            forwardPass, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)
 
         # get performance measures
         mses[dim_nr, 0] = get_mse(forwardPass["m_z_t"], targets, 'all')
@@ -319,16 +319,16 @@ def plot_various_g_op_dim(path, tm, with_bias=False):
 
     # run full-rank network
     if with_bias:
-        forwardPass_fullRank, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+        forwardPass_fullRank, targets = tm.run_one_forwardPass_all_sets(w_in, w_hidden, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
     else:
-        forwardPass_fullRank, targets = tm.run_one_forwardPass_on_val_set(w_in, w_hidden, w_out, noise_sigma=0)
+        forwardPass_fullRank, targets = tm.run_one_forwardPass_all_sets(w_in, w_hidden, w_out, noise_sigma=0)
 
     # run reduced-rank network
     n_Wrr_n_modified = remove_dimension_from_weight_matrix(w_hidden.detach().numpy(), global_op_dims[:, rankW:n_units+1], dim_type)
     if with_bias:
-        forwardPass_reducedRank, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
+        forwardPass_reducedRank, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out, noise_sigma=0, bias_hidden=bias_hidden, bias_out=bias_out)
     else:
-        forwardPass_reducedRank, targets = tm.run_one_forwardPass_on_val_set(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)   
+        forwardPass_reducedRank, targets = tm.run_one_forwardPass_all_sets(w_in, n_Wrr_n_modified, w_out, noise_sigma=0)   
      
 
     # plot network outputs for several trials

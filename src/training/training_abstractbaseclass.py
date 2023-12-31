@@ -334,7 +334,7 @@ class ABCTrainingModule(ABC):
         
         return forwardPass
     
-    def run_one_forwardPass_on_val_set(self, n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden=None, bias_out=None, noise_sigma=0):
+    def run_one_forwardPass_all_sets(self, n_Wru_v, n_Wrr_n, m_Wzr_n, bias_hidden=None, bias_out=None, noise_sigma=0):
         forwardPass = {};
 
         # change model

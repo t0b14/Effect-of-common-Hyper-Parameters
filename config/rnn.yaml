@@ -29,7 +29,7 @@ experiment:
     seq_length: 100 # larger lengths won't fit well into cpu memory; DO NOT CHANGE
     training_help: 0 # 0 to n_epochs (iterations)
     hidden_dims: 100
-    n_trials: 100 #200 # never less than 10 for operative dimension
+    n_trials: 2 #200 # never less than 10 for operative dimension
     with_inputnoise: 1
     noise_level: 10 # number from 1 to 10; requires with_inputnoise
     coherency_intervals: "uniform" #"original" #"uniform" #  or "uniform"

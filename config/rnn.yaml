@@ -15,7 +15,7 @@ experiment:
   model:
     network_name: rnn
     in_dim: 4
-    hidden_dims: 100
+    hidden_dims: 100 #100
     out_dim: 1
     tau: 10.
     num_processes: 1
@@ -29,7 +29,7 @@ experiment:
     seq_length: 100 # larger lengths won't fit well into cpu memory; DO NOT CHANGE
     training_help: 0 # 0 to n_epochs (iterations)
     hidden_dims: 100
-    n_trials: 2 #200 # never less than 10 for operative dimension
+    n_trials: 200 # never less than 10 for operative dimension
     with_inputnoise: 1
     noise_level: 10 # number from 1 to 10; requires with_inputnoise
     coherency_intervals: "uniform" #"original" #"uniform" #  or "uniform"

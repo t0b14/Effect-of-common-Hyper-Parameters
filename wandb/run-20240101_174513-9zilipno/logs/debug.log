@@ -1,0 +1,33 @@
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Current SDK version is 0.16.1
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Configure stats pid to 14864
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\.config\wandb\settings
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Loading settings from C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\settings
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-01-01 17:45:13,248 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program_abspath': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py', 'program': 'C:\\Users\\tobia\\Documents\\GitHub\\RNN_Tobia_Simmler\\main.py'}
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:_log_setup():524] Logging user logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20240101_174513-9zilipno\logs\debug.log
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:_log_setup():525] Logging internal logs to C:\Users\tobia\Documents\GitHub\RNN_Tobia_Simmler\wandb\run-20240101_174513-9zilipno\logs\debug-internal.log
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:init():564] calling init triggers
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:init():571] wandb.init called with sweep_config: {}
+config: {'dataset_name': 'ctxt', 'n_epochs': 300, 'batch_size': 16, 'total_seq_length': 1000, 'seq_length': 100, 'training_help': 0, 'hidden_dims': 100, 'n_trials': 200, 'with_inputnoise': 1, 'noise_level': 10, 'coherency_intervals': 'uniform', 'optimizer_name': 'adagrad', 'lr': 0.01, 'betas': [0.9, 0.999], 'eps': 1e-07, 'weight_decay': 0, 'amsgrad': False, 'momentum': 0.9, 'apply_gradient_clipping': 1, 'tau': 10.0, 'length_skipped_in_data': 400, 'hidden_noise': 0.1}
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:init():614] starting backend
+2024-01-01 17:45:13,249 INFO    MainThread:14864 [wandb_init.py:init():618] setting up manager
+2024-01-01 17:45:13,250 INFO    MainThread:14864 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-01-01 17:45:13,251 INFO    MainThread:14864 [wandb_init.py:init():624] backend started and connected
+2024-01-01 17:45:13,253 INFO    MainThread:14864 [wandb_init.py:init():716] updated telemetry
+2024-01-01 17:45:13,276 INFO    MainThread:14864 [wandb_init.py:init():749] communicating run to backend with 90.0 second timeout
+2024-01-01 17:45:13,901 INFO    MainThread:14864 [wandb_run.py:_on_init():2254] communicating current version
+2024-01-01 17:45:14,242 INFO    MainThread:14864 [wandb_run.py:_on_init():2263] got version response 
+2024-01-01 17:45:14,242 INFO    MainThread:14864 [wandb_init.py:init():800] starting run threads in backend
+2024-01-01 17:45:14,322 INFO    MainThread:14864 [wandb_run.py:_console_start():2233] atexit reg
+2024-01-01 17:45:14,322 INFO    MainThread:14864 [wandb_run.py:_redirect():2088] redirect: wrap_raw
+2024-01-01 17:45:14,323 INFO    MainThread:14864 [wandb_run.py:_redirect():2153] Wrapping output streams.
+2024-01-01 17:45:14,323 INFO    MainThread:14864 [wandb_run.py:_redirect():2178] Redirects installed.
+2024-01-01 17:45:14,323 INFO    MainThread:14864 [wandb_init.py:init():841] run started, returning control to user process
+2024-01-02 01:18:22,690 INFO    MainThread:14864 [wandb_run.py:_finish():1962] finishing run benchmarksforgnn/Single-Layer RNN/9zilipno
+2024-01-02 01:18:22,690 INFO    MainThread:14864 [wandb_run.py:_atexit_cleanup():2202] got exitcode: 0
+2024-01-02 01:18:22,690 INFO    MainThread:14864 [wandb_run.py:_restore():2185] restore
+2024-01-02 01:18:22,690 INFO    MainThread:14864 [wandb_run.py:_restore():2191] restore done
+2024-01-02 01:18:28,846 INFO    MainThread:14864 [wandb_run.py:_footer_history_summary_info():3837] rendering history
+2024-01-02 01:18:28,846 INFO    MainThread:14864 [wandb_run.py:_footer_history_summary_info():3869] rendering summary
+2024-01-02 01:18:28,852 INFO    MainThread:14864 [wandb_run.py:_footer_sync_info():3796] logging synced files

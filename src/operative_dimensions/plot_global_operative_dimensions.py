@@ -29,6 +29,49 @@ from get_op_dim import setup_environment
 from scipy.linalg import subspace_angles
 from matplotlib.ticker import MultipleLocator, FixedLocator
 
+def plot_double_lineplot(x_data, y_data, y_data2, my_xlabel, 
+                         my_ylabel, y_max, display_names=None):
+    my_fontsize = 15
+    # generate standard line plot
+    # x_data: [1 , N], data to plot along x-axis
+    # y_data: [M , N], data to plot along y-axis
+    # my_title, my_xlabel, my_ylabel: (str), axis labels for title, x- and y-axis
+
+    # format y_data
+    if len(y_data.shape) > 1:
+        if y_data.shape[0] > y_data.shape[1]:
+            y_data = y_data.T
+        if y_data2.shape[0] > y_data2.shape[1]:
+            y_data2 = y_data2.T
+    else:
+        y_data = np.reshape(y_data, [1, np.shape(y_data)[0]])
+        y_data2 = np.reshape(y_data2, [1, np.shape(y_data2)[0]])
+
+    # plot
+    fig, ax = plt.subplots(1, 1)#figsize=[7, 7]) 
+    plt.grid()
+    if display_names is None:
+        display_name1 = ''
+        display_name2 = ''
+    else:
+        display_name1 = display_names[0]
+        display_name2 = display_names[1]
+    ax.plot(x_data, y_data[0, :], "r", linewidth=3,
+            label=display_name1)
+    ax.plot(x_data, y_data2[0, :], "b", linewidth=3,
+            label=display_name2)
+
+    # labels
+    ax.tick_params(axis='both', which='major', labelsize=my_fontsize)
+    ax.set_xlabel(my_xlabel, fontsize=my_fontsize)
+    ax.set_ylabel(my_ylabel, fontsize=my_fontsize)
+    if not (display_names is None):
+        plt.legend(fontsize=my_fontsize)
+
+    ax.set_ylim(bottom=0, top=1.1 * y_max)
+
+    return fig, ax
+
 def get_global_operative_dimensions(inputfilename=None, ctxt="all"):
     network_type = 'ctxt'
     dim_type = 'columns'
@@ -120,27 +163,33 @@ def calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim_ctx
     return mses_1, mses_2
 
 def cost_plots_different_settings(inputfilename, weightpath, tm):
-    uplt = UtilsPlotting()
+
     w_in, w_hidden, w_out = get_weights(path=weightpath)
 
     ctxt1_ids, ctxt2_ids = get_ctxt_ids(tm)
     choice1IDs, choice2IDs = get_choice_ids(tm, w_in, w_hidden, w_out)
 
     op_dim = "ctxt1"
-    mses_ctxt1, mses_ctxt2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, ctxt1_ids, ctxt2_ids)
-
+    mses_ctxt1_1, mses_ctxt1_2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, ctxt1_ids, ctxt2_ids)
+    op_dim = "ctxt2"
+    mses_ctxt2_1, mses_ctxt2_2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, ctxt1_ids, ctxt2_ids)
     op_dim = "allPosChoice"
-    mses_choice1, mses_choice2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, choice1IDs, choice2IDs)
+    mses_choice1_1, mses_choice1_2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, choice1IDs, choice2IDs)
+    op_dim = "allNegChoice"
+    mses_choice2_1, mses_choice2_2 = calculate_specific_mses(inputfilename, w_in, w_hidden, w_out, tm, op_dim, choice1IDs, choice2IDs)
+    y_max = np.max([mses_ctxt1_1, mses_ctxt1_2, mses_ctxt2_1, mses_ctxt2_2, mses_choice1_1, mses_choice1_2, mses_choice2_1, mses_choice2_2]) 
 
-    # plot performance over reduced-rank Ws
-    [fig, ax] = uplt.plot_lineplot(np.arange(100), mses_ctxt1, "network output cost for reduced-rank W", "rank(W$^{OP}_k$)", "cost")
-    fig.savefig("ZZZ1.png", bbox_inches="tight")
-    [fig, ax] = uplt.plot_lineplot(np.arange(100), mses_ctxt2, "network output cost for reduced-rank W", "rank(W$^{OP}_k$)", "cost")
-    fig.savefig("ZZZ2.png", bbox_inches="tight")
-    [fig, ax] = uplt.plot_lineplot(np.arange(100), mses_choice1, "network output cost for reduced-rank W", "rank(W$^{OP}_k$)", "cost")
-    fig.savefig("ZZZ3.png", bbox_inches="tight")
-    [fig, ax] = uplt.plot_lineplot(np.arange(100), mses_choice2, "network output cost for reduced-rank W", "rank(W$^{OP}_k$)", "cost")
-    fig.savefig("ZZZ4.png", bbox_inches="tight")
+    [fig, ax] = plot_double_lineplot(np.arange(100), mses_ctxt1_1, mses_ctxt1_2, "rank(W$^{OP_{Ctx}}_{k, 1}$)", "cost", y_max, display_names=["context$_{1}$", "context$_{2}$"])
+    fig.savefig("cost_on_ctx_1.png", bbox_inches="tight")
+    [fig, ax] = plot_double_lineplot(np.arange(100), mses_ctxt2_1, mses_ctxt2_2, "rank(W$^{OP_{Ctx}}_{k, 2}$)", "cost", y_max, display_names=["context$_{1}$", "context$_{2}$"])
+    fig.savefig("cost_on_ctx_2.png", bbox_inches="tight")
+    [fig, ax] = plot_double_lineplot(np.arange(100), mses_choice1_1, mses_choice1_2, "rank(W$^{OP_{Cho}}_{k, 1}$)", "cost", y_max, display_names=["choice$_{1}$", "choice$_{2}$"])
+    fig.savefig("cost_on_cho_1.png", bbox_inches="tight")
+    [fig, ax] = plot_double_lineplot(np.arange(100), mses_choice2_1, mses_choice2_2, "rank(W$^{OP_{Cho}}_{k, 2}$)", "cost", y_max, display_names=["choice$_{1}$", "choice$_{2}$"])
+    fig.savefig("cost_on_cho_2.png", bbox_inches="tight")
+
+
+
 
 if __name__ == "__main__":    
     parser = argparse.ArgumentParser()

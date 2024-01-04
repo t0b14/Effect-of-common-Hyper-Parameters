@@ -45,7 +45,7 @@ def init_wandb(config):
 # setup and run 
 def run(config):
 
-    for tag in ["three_correct"]:
+    for tag in ["batch_norm_only_hidden_one","batch_norm_only_hidden_two","batch_norm_only_hidden_three"]:
         config["options"]["saving_tag"] = tag
         
         params = config["model"]

@@ -376,7 +376,18 @@ if __name__ == "__main__":
     config = load_config(CONFIG_DIR / args.config)
     set_seed(config["experiment"]["seed"])
 
-    path = r"../../io/output/rnn1/three_correct_model.pt"
+    directory = r"../../io/output/rnn1/"
+    # iterate over files in
+    # that directory
+    for filename in os.listdir(directory):
+        path = os.path.join(directory, filename)
+        # checking if it is a file
+        if os.path.isfile(path):
+            if(filename[:filename.index("_")] == "100"):
+                break
+    print(path)
+    """
+        
     custom_weights_path = "/custom_weights/ctxt_weights.h5" #r"\custom_weights\ctxt_weights.h5"
  
     model, optimizer = None, None
@@ -388,19 +399,19 @@ if __name__ == "__main__":
     
     # S1 
     print("start S1")
-    #plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
+    plot_dimensionality_high_variance_dim_W(path=path, tm=tm)
     #plot_dimensionality_high_variance_dim_W(path=custom_weights_path, tm=tm, with_bias=with_bias)
     print("finished S1")
 
     # S2    
     print("start S2")
-    #retrieve_op_dimensions(path, tm)
+    retrieve_op_dimensions(path, tm)
     #retrieve_op_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
     print("finished S2")
     
     # S3
     print("start S3")
-    #analyse_global_operative_dimensions(path, tm)
+    analyse_global_operative_dimensions(path, tm)
     #analyse_global_operative_dimensions(path=custom_weights_path, tm=tm, with_bias=with_bias)
     print("finished S3")
     
@@ -409,7 +420,7 @@ if __name__ == "__main__":
     plot_various_g_op_dim(path, tm)
     #plot_various_g_op_dim(path=custom_weights_path, tm=tm, with_bias=with_bias)
     print("finished S4")
-
+    """    
 
 
 

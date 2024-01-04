@@ -94,7 +94,7 @@ class cRNN(nn.Module):
         if torch.cuda.is_available():
             self.dev = torch.device("cuda")
 
-        self.rnn = RNNlayer(input_size=self.i_s, tau=params["tau"], noise_var=hidden_noise, bias=bias)
+        self.rnn = RNNlayer(input_size=self.i_s, hidden_size=self.h_s, tau=params["tau"], noise_var=hidden_noise, bias=bias)
         
         self.batchnorm = nn.BatchNorm1d(100)
         self.fc_out = nn.Linear(self.h_s, self.o_s)
